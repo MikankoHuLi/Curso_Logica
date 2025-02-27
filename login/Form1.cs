@@ -9,7 +9,13 @@ namespace login
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            string rac = textboxuser.Text;
 
+            if (rac == " ")
+            {
+                textboxuser.Text = "";
+                return;
+            }
         }
 
         private void botaoentrar_Click(object sender, EventArgs e)
@@ -17,6 +23,19 @@ namespace login
             string user = textboxuser.Text;
             string senha = textboxsenha.Text;
 
+            if (user == null || user == "") // user == string.Empty string.NullOrWhiteSpace pode substituir 
+            {
+                labelresult.Text = "usuário é obrigatório";
+                labelresult.ForeColor = Color.Red;
+                return;
+            }
+
+            if (senha == null || senha == "")
+            {
+                labelresult.Text = "senha é obrigatória";
+                labelresult.ForeColor = Color.Red;
+                return;
+            }
 
             if (user == "Dinizo" && senha == "12345")
             {
