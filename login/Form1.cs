@@ -2,6 +2,12 @@ namespace login
 {
     public partial class FormLogin : Form
     {
+        List<string> listaUser = new List<string>()
+        {"neymar.jr","pablo.vitar", "sukuna.silva" } ;
+
+        List<string> listaSenha = new List<string>()
+        {"bruna","12345", "666" };
+
         public FormLogin()
         {
             InitializeComponent();
@@ -9,9 +15,9 @@ namespace login
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string rac = textboxuser.Text;
+            string exclui = textboxuser.Text;
 
-            if (rac == " ")
+            if (exclui == " ")
             {
                 textboxuser.Text = "";
                 return;
@@ -20,10 +26,10 @@ namespace login
 
         private void botaoentrar_Click(object sender, EventArgs e)
         {
-            string user = textboxuser.Text;
+            string userBusc = textboxuser.Text;
             string senha = textboxsenha.Text;
 
-            if (user == null || user == "") // user == string.Empty string.NullOrWhiteSpace pode substituir 
+            if (string.IsNullOrWhiteSpace(userBusc)) // user == string.Empty string.NullOrWhiteSpace pode substituir 
             {
                 labelresult.Text = "usuário é obrigatório";
                 labelresult.ForeColor = Color.Red;
@@ -37,13 +43,26 @@ namespace login
                 return;
             }
 
-            if (user == "Dinizo" && senha == "12345")
+            int posicaoUserCerto = -1;
+
+            for (int i = 0; i < listaUser.Count; i++)
             {
-                labelresult.Text = "autenticado com sucesso";
-                labelresult.ForeColor = Color.Green;
+                if (userBusc == listaUser[i])
+                {
+                    posicaoUserCerto = i;
+                }
+                
             }
 
-            else 
+           
+             if ( posicaoUserCerto != -1 && senha == listaSenha[posicaoUserCerto])
+             {
+                labelresult.Text = "autenticado com sucesso";
+                labelresult.ForeColor = Color.Green;
+         
+             }
+
+            else
             {
                 labelresult.Text = "usuário ou senha incorretos";
                 labelresult.ForeColor = Color.Red;

@@ -36,6 +36,12 @@
             label1 = new Label();
             label3 = new Label();
             labelresult = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            regUser = new TextBox();
+            regSenha = new TextBox();
+            regBotao = new Button();
             SuspendLayout();
             // 
             // textboxuser
@@ -113,12 +119,71 @@
             labelresult.Size = new Size(0, 17);
             labelresult.TabIndex = 7;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 16F);
+            label4.Location = new Point(945, 160);
+            label4.Name = "label4";
+            label4.Size = new Size(143, 25);
+            label4.TabIndex = 8;
+            label4.Text = "Cadastre-se";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Century Gothic", 9F);
+            label5.Location = new Point(898, 215);
+            label5.Name = "label5";
+            label5.Size = new Size(51, 17);
+            label5.TabIndex = 9;
+            label5.Text = "Usuário";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Century Gothic", 9F);
+            label6.Location = new Point(904, 266);
+            label6.Name = "label6";
+            label6.Size = new Size(45, 17);
+            label6.TabIndex = 10;
+            label6.Text = "Senha";
+            // 
+            // regUser
+            // 
+            regUser.Location = new Point(973, 209);
+            regUser.Name = "regUser";
+            regUser.Size = new Size(100, 23);
+            regUser.TabIndex = 11;
+            // 
+            // regSenha
+            // 
+            regSenha.Location = new Point(973, 262);
+            regSenha.Name = "regSenha";
+            regSenha.Size = new Size(100, 23);
+            regSenha.TabIndex = 12;
+            // 
+            // regBotao
+            // 
+            regBotao.Location = new Point(984, 322);
+            regBotao.Name = "regBotao";
+            regBotao.Size = new Size(80, 23);
+            regBotao.TabIndex = 13;
+            regBotao.Text = "Cadastre-se";
+            regBotao.UseVisualStyleBackColor = true;
+            // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(52, 82, 130);
-            ClientSize = new Size(916, 535);
+            ClientSize = new Size(1364, 518);
+            Controls.Add(regBotao);
+            Controls.Add(regSenha);
+            Controls.Add(regUser);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
             Controls.Add(labelresult);
             Controls.Add(label3);
             Controls.Add(label1);
@@ -144,5 +209,11 @@
         private Label label1;
         private Label label3;
         private Label labelresult;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private TextBox regUser;
+        private TextBox regSenha;
+        private Button regBotao;
     }
 }
