@@ -34,7 +34,7 @@
             email = new Label();
             label2 = new Label();
             label1 = new Label();
-            label3 = new Label();
+            emailbut = new Label();
             labelresult = new Label();
             label4 = new Label();
             label5 = new Label();
@@ -42,6 +42,8 @@
             regUser = new TextBox();
             regSenha = new TextBox();
             regBotao = new Button();
+            labelCadast = new Label();
+            esqSenha = new Label();
             SuspendLayout();
             // 
             // textboxuser
@@ -99,24 +101,25 @@
             label1.TabIndex = 5;
             label1.Text = "Tumblr 2";
             // 
-            // label3
+            // emailbut
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 9F);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(399, 286);
-            label3.Name = "label3";
-            label3.Size = new Size(121, 17);
-            label3.TabIndex = 6;
-            label3.Text = "Esqueceu a senha?";
+            emailbut.AutoSize = true;
+            emailbut.Font = new Font("Century Gothic", 9F);
+            emailbut.ForeColor = Color.White;
+            emailbut.Location = new Point(399, 286);
+            emailbut.Name = "emailbut";
+            emailbut.Size = new Size(121, 17);
+            emailbut.TabIndex = 6;
+            emailbut.Text = "Esqueceu a senha?";
+            emailbut.Click += label3_Click;
             // 
             // labelresult
             // 
             labelresult.AutoSize = true;
-            labelresult.Font = new Font("Century Gothic", 9F);
-            labelresult.Location = new Point(584, 207);
+            labelresult.Font = new Font("Century Gothic", 12F);
+            labelresult.Location = new Point(547, 240);
             labelresult.Name = "labelresult";
-            labelresult.Size = new Size(0, 17);
+            labelresult.Size = new Size(0, 21);
             labelresult.TabIndex = 7;
             // 
             // label4
@@ -171,6 +174,25 @@
             regBotao.TabIndex = 13;
             regBotao.Text = "Cadastre-se";
             regBotao.UseVisualStyleBackColor = true;
+            regBotao.Click += regBotao_Click;
+            // 
+            // labelCadast
+            // 
+            labelCadast.AutoSize = true;
+            labelCadast.Font = new Font("Segoe UI", 12F);
+            labelCadast.Location = new Point(1125, 240);
+            labelCadast.Name = "labelCadast";
+            labelCadast.Size = new Size(0, 21);
+            labelCadast.TabIndex = 14;
+            // 
+            // esqSenha
+            // 
+            esqSenha.AutoSize = true;
+            esqSenha.Font = new Font("Segoe UI", 12F);
+            esqSenha.Location = new Point(388, 376);
+            esqSenha.Name = "esqSenha";
+            esqSenha.Size = new Size(0, 21);
+            esqSenha.TabIndex = 15;
             // 
             // FormLogin
             // 
@@ -178,6 +200,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(52, 82, 130);
             ClientSize = new Size(1364, 518);
+            Controls.Add(esqSenha);
+            Controls.Add(labelCadast);
             Controls.Add(regBotao);
             Controls.Add(regSenha);
             Controls.Add(regUser);
@@ -185,7 +209,7 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(labelresult);
-            Controls.Add(label3);
+            Controls.Add(emailbut);
             Controls.Add(label1);
             Controls.Add(label2);
             Controls.Add(email);
@@ -195,6 +219,7 @@
             Name = "FormLogin";
             Padding = new Padding(3);
             Text = "Login";
+          
             ResumeLayout(false);
             PerformLayout();
         }
@@ -207,7 +232,7 @@
         private Label email;
         private Label label2;
         private Label label1;
-        private Label label3;
+        private Label emailbut;
         private Label labelresult;
         private Label label4;
         private Label label5;
@@ -215,5 +240,7 @@
         private TextBox regUser;
         private TextBox regSenha;
         private Button regBotao;
+        private Label labelCadast;
+        private Label esqSenha;
     }
 }
