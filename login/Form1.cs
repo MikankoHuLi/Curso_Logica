@@ -92,15 +92,7 @@ namespace login
         {
             string novoUser = regUser.Text;
             string novaSenha = regSenha.Text;
-            bool userFound = false;
-            bool temNum = false;
-            bool temChar = false;
-            bool temUp = false;
-            bool temLow = false;
-            bool semEsp = true;
             
-            
-
             if (string.IsNullOrWhiteSpace(novoUser))
             {
                 labelCadast.Text = "usuário é obrigatório";
@@ -121,23 +113,77 @@ namespace login
                 labelCadast.ForeColor = Color.Red;
                 return;
             }
-            
 
-            for (int i = 0; i < listaNum.Count; i++)
+            if (!novaSenha.Any(char.IsDigit))
             {
-                if (novaSenha.Contains(listaNum[i]))
+                labelCadast.Text = "senha precisa conter números";
+                labelCadast.ForeColor = Color.Red;
+                return;
+            }
+
+            if (!novaSenha.Any(char.IsPunctuation) && !novaSenha.Any(char.IsSymbol) && !novaSenha.Contains("@"))
+            {
+                labelCadast.Text = "senha precisa conter pelo menos um caractérer especial";
+                labelCadast.ForeColor = Color.Red;
+                return;
+            }
+
+            if (!novaSenha.Any(char.IsUpper))
+            {
+                labelCadast.Text = "senha precisa conter pelo menos uma letra maiuscula";
+                labelCadast.ForeColor = Color.Red;
+                return;
+            }
+
+            if (!novaSenha.Any(char.IsLower))
+            {
+                labelCadast.Text = "senha precisa conter pelo menos uma letra minúscula";
+                labelCadast.ForeColor = Color.Red;
+                return;
+            }
+
+            if (novaSenha.Contains(" "))
+            {
+                labelCadast.Text = "senha não pode conter espaço";
+                labelCadast.ForeColor = Color.Red;
+                return;
+            }
+
+            if (listaUser.Contains(novoUser))
+            {
+                labelCadast.Text = "Usuário já existe";
+                labelCadast.ForeColor = Color.Red;
+                return;
+            }
+  
+                    listaUser.Add(novoUser);
+                    listaSenha.Add(novaSenha);
+                    labelCadast.Text = "Usuário criado com sucesso";
+                    labelCadast.ForeColor = Color.Green;
+                    regUser.Clear();
+                    regSenha.Clear();
+                    
+
+        }
+        /*
+               for (int i = 0; i < novaSenha.Lenght; i++)
+            {
+                if (listaNum.Contains(novaSenha[i].ToString))
                 {
                     temNum = true;
+                    continue;
                 }
+                if (listaLow.Contains(novaSenha[i].ToString))
+                {
+                    temLow = true;
+                    continue;
+                }
+
+               ...
             }
 
-            for (int i = 0; i < listaChar.Count; i++)
-            {
-                if (novaSenha.Contains(listaChar[i]))
-                {
-                    temChar = true;
-                }
-            }
+            ou 
+
             for (int i = 0; i < listaUp.Count; i++)
             {
                 if (novaSenha.Contains(listaUp[i]))
@@ -145,64 +191,11 @@ namespace login
                     temUp = true;
                 }
             }
+             
+             */
+           
 
-            for (int i = 0; i < listaLow.Count; i++)
-            {
-                if (novaSenha.Contains(listaLow[i]))
-                {
-                    temLow = true;
-                }
-            }
-            if (novaSenha.Contains(" "))
-            {
-                semEsp = false;
-            }
-
-            if (temNum && temChar && temUp && temLow && semEsp)
-            {
-
-                for (int i = 0; i < listaUser.Count; i++)
-                {
-                    if (novoUser == listaUser[i])
-                    {
-                        userFound = true;
-                    }
-
-                }
-
-                if (!userFound) //userFound == false
-                {
-                    listaUser.Add(novoUser);
-                    listaSenha.Add(novaSenha);
-                    labelCadast.Text = "Usuário criado com sucesso";
-                    labelCadast.ForeColor = Color.Green;
-                }
-
-                else
-                {
-                    labelCadast.Text = "Usuário já existe";
-                    labelCadast.ForeColor = Color.Red;
-                }
-            }
-            else
-            {
-                labelCadast.Text = "senha precisa conter números" +
-                    "\nsenha precisa conter pelo menos um caractérer especial" +
-                    "\nsenha precisa conter pelo menos uma letra maiúscula" +
-                    "\nsenha precisa conter pelo menos uma letra minúscula" +
-                    "\nsenha não pode conter espaço"
-                    ;
-                labelCadast.ForeColor = Color.Red;
-            }
-                
-
-                
-
-
-            
-        }
-
-        private void label3_Click(object sender, EventArgs e) //emailbut
+    private void label3_Click(object sender, EventArgs e) //emailbut
         {
             esqSenha.Text = "Verifique seu Email";
             esqSenha.ForeColor = Color.Green;
