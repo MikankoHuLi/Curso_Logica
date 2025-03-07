@@ -180,7 +180,7 @@
             // 
             labelCadast.AutoSize = true;
             labelCadast.Font = new Font("Segoe UI", 12F);
-            labelCadast.Location = new Point(1125, 240);
+            labelCadast.Location = new Point(1088, 211);
             labelCadast.Name = "labelCadast";
             labelCadast.Size = new Size(0, 21);
             labelCadast.TabIndex = 14;
@@ -219,7 +219,6 @@
             Name = "FormLogin";
             Padding = new Padding(3);
             Text = "Login";
-          
             ResumeLayout(false);
             PerformLayout();
         }

@@ -6,7 +6,22 @@ namespace login
         {"neymar.jr","pablo.vitar", "sukuna.silva" };
 
         List<string> listaSenha = new List<string>()
-        {"bruna","12345", "666" };
+        {"BrunaS2!","Eoque11?", "Megum!666" };
+
+        List<string> listaNum = new List<string>()
+        {"0","1", "3","4","5","6","7","8","9" };
+
+        List<string> listaChar = new List<string>()
+        {"!","@", "#","$","%","&","*","+","-","_","=","?" };
+
+        List<string> listaUp = new List<string>()
+        {"A","B", "C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z" };
+
+        List<string> listaLow = new List<string>()
+        {"a","b", "c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z" };
+
+
+
 
         public FormLogin()
         {
@@ -28,6 +43,7 @@ namespace login
         {
             string userBusc = textboxuser.Text;
             string senha = textboxsenha.Text;
+            
 
             if (string.IsNullOrWhiteSpace(userBusc)) // user == string.Empty string.NullOrWhiteSpace pode substituir 
             {
@@ -77,6 +93,13 @@ namespace login
             string novoUser = regUser.Text;
             string novaSenha = regSenha.Text;
             bool userFound = false;
+            bool temNum = false;
+            bool temChar = false;
+            bool temUp = false;
+            bool temLow = false;
+            bool semEsp = true;
+            
+            
 
             if (string.IsNullOrWhiteSpace(novoUser))
             {
@@ -92,28 +115,91 @@ namespace login
                 return;
             }
 
-            for (int i = 0; i < listaUser.Count; i++)
+            if (novaSenha.Length < 8)
             {
-                if (novoUser == listaUser[i])
+                labelCadast.Text = "senha precisa conter no mínimo 8 caractéres";
+                labelCadast.ForeColor = Color.Red;
+                return;
+            }
+            
+
+            for (int i = 0; i < listaNum.Count; i++)
+            {
+                if (novaSenha.Contains(listaNum[i]))
                 {
-                    userFound = true;
+                    temNum = true;
+                }
+            }
+
+            for (int i = 0; i < listaChar.Count; i++)
+            {
+                if (novaSenha.Contains(listaChar[i]))
+                {
+                    temChar = true;
+                }
+            }
+            for (int i = 0; i < listaUp.Count; i++)
+            {
+                if (novaSenha.Contains(listaUp[i]))
+                {
+                    temUp = true;
+                }
+            }
+
+            for (int i = 0; i < listaLow.Count; i++)
+            {
+                if (novaSenha.Contains(listaLow[i]))
+                {
+                    temLow = true;
+                }
+            }
+            if (novaSenha.Contains(" "))
+            {
+                semEsp = false;
+            }
+
+            if (temNum && temChar && temUp && temLow && semEsp)
+            {
+
+                for (int i = 0; i < listaUser.Count; i++)
+                {
+                    if (novoUser == listaUser[i])
+                    {
+                        userFound = true;
+                    }
+
                 }
 
-            }
+                if (!userFound) //userFound == false
+                {
+                    listaUser.Add(novoUser);
+                    listaSenha.Add(novaSenha);
+                    labelCadast.Text = "Usuário criado com sucesso";
+                    labelCadast.ForeColor = Color.Green;
+                }
 
-            if (!userFound) //userFound == false
-            {
-                listaUser.Add(novoUser);
-                listaSenha.Add(novaSenha);
-                labelCadast.Text = "Usuário criado com sucesso";
-                labelCadast.ForeColor = Color.Green;
+                else
+                {
+                    labelCadast.Text = "Usuário já existe";
+                    labelCadast.ForeColor = Color.Red;
+                }
             }
-
             else
             {
-                labelCadast.Text = "Usuário já existe";
+                labelCadast.Text = "senha precisa conter números" +
+                    "\nsenha precisa conter pelo menos um caractérer especial" +
+                    "\nsenha precisa conter pelo menos uma letra maiúscula" +
+                    "\nsenha precisa conter pelo menos uma letra minúscula" +
+                    "\nsenha não pode conter espaço"
+                    ;
                 labelCadast.ForeColor = Color.Red;
             }
+                
+
+                
+
+
+            
         }
 
         private void label3_Click(object sender, EventArgs e) //emailbut
