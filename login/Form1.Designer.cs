@@ -126,7 +126,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 16F);
-            label4.Location = new Point(945, 160);
+            label4.Location = new Point(787, 159);
             label4.Name = "label4";
             label4.Size = new Size(143, 25);
             label4.TabIndex = 8;
@@ -136,7 +136,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 9F);
-            label5.Location = new Point(898, 215);
+            label5.Location = new Point(740, 214);
             label5.Name = "label5";
             label5.Size = new Size(51, 17);
             label5.TabIndex = 9;
@@ -146,7 +146,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Century Gothic", 9F);
-            label6.Location = new Point(904, 266);
+            label6.Location = new Point(746, 265);
             label6.Name = "label6";
             label6.Size = new Size(45, 17);
             label6.TabIndex = 10;
@@ -154,21 +154,21 @@
             // 
             // regUser
             // 
-            regUser.Location = new Point(973, 209);
+            regUser.Location = new Point(815, 208);
             regUser.Name = "regUser";
             regUser.Size = new Size(100, 23);
             regUser.TabIndex = 11;
             // 
             // regSenha
             // 
-            regSenha.Location = new Point(973, 262);
+            regSenha.Location = new Point(815, 261);
             regSenha.Name = "regSenha";
             regSenha.Size = new Size(100, 23);
             regSenha.TabIndex = 12;
             // 
             // regBotao
             // 
-            regBotao.Location = new Point(984, 322);
+            regBotao.Location = new Point(826, 321);
             regBotao.Name = "regBotao";
             regBotao.Size = new Size(80, 23);
             regBotao.TabIndex = 13;
@@ -180,7 +180,7 @@
             // 
             labelCadast.AutoSize = true;
             labelCadast.Font = new Font("Segoe UI", 12F);
-            labelCadast.Location = new Point(1088, 211);
+            labelCadast.Location = new Point(930, 210);
             labelCadast.Name = "labelCadast";
             labelCadast.Size = new Size(0, 21);
             labelCadast.TabIndex = 14;

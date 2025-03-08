@@ -2,39 +2,31 @@ namespace login
 {
     public partial class FormLogin : Form
     {
-        List<string> listaUser = new List<string>()
-        {"neymar.jr","pablo.vitar", "sukuna.silva" };
-
-        List<string> listaSenha = new List<string>()
-        {"BrunaS2!","Eoque11?", "Megum!666" };
-
-        List<string> listaNum = new List<string>()
-        {"0","1", "3","4","5","6","7","8","9" };
-
-        List<string> listaChar = new List<string>()
-        {"!","@", "#","$","%","&","*","+","-","_","=","?" };
-
-        List<string> listaUp = new List<string>()
-        {"A","B", "C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z" };
-
-        List<string> listaLow = new List<string>()
-        {"a","b", "c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z" };
+        /* List<string> listaUser = new List<string>()
+         {"neymar.jr","pablo.vitar", "sukuna.silva" };
 
 
+         List<string> listaSenha = new List<string>()
+         {"BrunaS2!","Eoque11?", "Megum!666" };
+        */
+
+
+        List<Usuario> usuarios = new List<Usuario>();
 
 
         public FormLogin()
         {
             InitializeComponent();
+            usuarios.Add(new Usuario() { Email = "neymar.jr@email.com", Senha = "BrunaS2!" });
+            usuarios.Add(new Usuario() { Email = "pablo.vitar@email.com", Senha = "Eoque11?" });
+            usuarios.Add(new Usuario() { Email = "sukuna.silva@email.com", Senha = "Megum!666" });
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string exclui = textboxuser.Text;
-
-            if (exclui == " ")
+            if (textboxuser.Text == " ")
             {
-                textboxuser.Text = "";
+                textboxuser.Clear();
                 return;
             }
         }
@@ -59,17 +51,7 @@ namespace login
                 return;
             }
 
-            int posicaoUserCerto = -1;
-
-            for (int i = 0; i < listaUser.Count; i++)
-            {
-                if (userBusc == listaUser[i])
-                {
-                    posicaoUserCerto = i;
-                }
-
-            }
-
+            int posicaoUserCerto = listaUser.IndexOf(userBusc); //caso haja iguais na lista indexof usa sempre o primeiro
 
             if (posicaoUserCerto != -1 && senha == listaSenha[posicaoUserCerto])
             {
