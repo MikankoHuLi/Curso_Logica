@@ -51,19 +51,26 @@ namespace login
                 return;
             }
 
-            int posicaoUserCerto = listaUser.IndexOf(userBusc); //caso haja iguais na lista indexof usa sempre o primeiro
-
-            if (posicaoUserCerto != -1 && senha == listaSenha[posicaoUserCerto])
+            bool autenticado = false;
+            
+            for (int i = 0; i < usuarios.Count; i++)
             {
-                labelresult.Text = "autenticado com sucesso";
-                labelresult.ForeColor = Color.Green;
-
+               
+                if (usuarios[i].Email == userBusc && usuarios[i].Senha == senha)
+                {
+                    
+                    autenticado = true;
+                }
             }
 
-            else
+            if (!autenticado)
             {
-                labelresult.Text = "usuário ou senha incorretos";
+
+                labelresult.Text = "Usuario ou Senha incorretos...";
+
                 labelresult.ForeColor = Color.Red;
+               
+                return;
             }
 
 
@@ -124,28 +131,36 @@ namespace login
                 return;
             }
 
-            if (novaSenha.Contains(" "))
+            if (novaSenha.Any(char.IsWhiteSpace))
             {
-                labelCadast.Text = "senha não pode conter espaço";
+                labelCadast.Text = "A senha nao deve ter espacos em branco";
                 labelCadast.ForeColor = Color.Red;
                 return;
             }
 
-            if (listaUser.Contains(novoUser))
+            bool encontrado = false;
+            for (int i = 0; i < usuarios.Count; i++)
             {
-                labelCadast.Text = "Usuário já existe";
+                if (usuarios[i].Email == novoUser)
+                {
+                    encontrado = true;
+                }
+            }
+
+           
+            if (encontrado)
+            {
+                labelCadast.Text = "Já existe um usuário cadastrado";
                 labelCadast.ForeColor = Color.Red;
                 return;
             }
-  
-                    listaUser.Add(novoUser);
-                    listaSenha.Add(novaSenha);
-                    labelCadast.Text = "Usuário criado com sucesso";
-                    labelCadast.ForeColor = Color.Green;
-                    regUser.Clear();
-                    regSenha.Clear();
-                    
 
+            
+            usuarios.Add(new Usuario() { Email = novoUser, Senha = novaSenha });
+            labelCadast.Text = "Usuário cadastrado com sucesso!";
+            labelCadast.ForeColor = Color.Green;
+            regUser.Clear();
+            regSenha.Clear();
         }
         /*
                for (int i = 0; i < novaSenha.Lenght; i++)
