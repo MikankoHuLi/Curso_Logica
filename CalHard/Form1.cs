@@ -103,22 +103,18 @@ namespace CalHard
             if (operadores.Contains("-"))
             {
                 textNum.Text = Convert.ToString(numeros[0] - numeros[1]);
-             
             }
             if (operadores.Contains("+"))
             {
                 textNum.Text = Convert.ToString(numeros[0] + numeros[1]);
-              
             }
             if (operadores.Contains("x"))
             {
-                textNum.Text = Convert.ToString(numeros[0] * numeros[1]);
-             
+                textNum.Text = Convert.ToString(numeros[0] * numeros[1]); 
             }
             if (operadores.Contains("/"))
             {
                 textNum.Text = Convert.ToString(numeros[0] / numeros[1]);
-            
             }
             operadores.Clear();
             numeros.Clear();

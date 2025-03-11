@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CalHard")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63a18a17e7f47d7560355f1d9b358fb965d405d8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9bd1572ba827f13ad06239c8f50f21e46b6954a")]
 [assembly: System.Reflection.AssemblyProductAttribute("CalHard")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CalHard")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
