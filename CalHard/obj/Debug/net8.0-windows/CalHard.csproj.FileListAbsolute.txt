@@ -1,0 +1,17 @@
+D:\Curso_Logica\Curso_Logica\CalHard\bin\Debug\net8.0-windows\CalHard.exe
+D:\Curso_Logica\Curso_Logica\CalHard\bin\Debug\net8.0-windows\CalHard.deps.json
+D:\Curso_Logica\Curso_Logica\CalHard\bin\Debug\net8.0-windows\CalHard.runtimeconfig.json
+D:\Curso_Logica\Curso_Logica\CalHard\bin\Debug\net8.0-windows\CalHard.dll
+D:\Curso_Logica\Curso_Logica\CalHard\bin\Debug\net8.0-windows\CalHard.pdb
+D:\Curso_Logica\Curso_Logica\CalHard\obj\Debug\net8.0-windows\CalHard.Form1.resources
+D:\Curso_Logica\Curso_Logica\CalHard\obj\Debug\net8.0-windows\CalHard.csproj.GenerateResource.cache
+D:\Curso_Logica\Curso_Logica\CalHard\obj\Debug\net8.0-windows\CalHard.GeneratedMSBuildEditorConfig.editorconfig
+D:\Curso_Logica\Curso_Logica\CalHard\obj\Debug\net8.0-windows\CalHard.AssemblyInfoInputs.cache
+D:\Curso_Logica\Curso_Logica\CalHard\obj\Debug\net8.0-windows\CalHard.AssemblyInfo.cs
+D:\Curso_Logica\Curso_Logica\CalHard\obj\Debug\net8.0-windows\CalHard.csproj.CoreCompileInputs.cache
+D:\Curso_Logica\Curso_Logica\CalHard\obj\Debug\net8.0-windows\CalHard.sourcelink.json
+D:\Curso_Logica\Curso_Logica\CalHard\obj\Debug\net8.0-windows\CalHard.dll
+D:\Curso_Logica\Curso_Logica\CalHard\obj\Debug\net8.0-windows\refint\CalHard.dll
+D:\Curso_Logica\Curso_Logica\CalHard\obj\Debug\net8.0-windows\CalHard.pdb
+D:\Curso_Logica\Curso_Logica\CalHard\obj\Debug\net8.0-windows\CalHard.genruntimeconfig.cache
+D:\Curso_Logica\Curso_Logica\CalHard\obj\Debug\net8.0-windows\ref\CalHard.dll
