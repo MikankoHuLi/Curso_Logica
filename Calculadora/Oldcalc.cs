@@ -32,11 +32,61 @@ namespace Calculadora
 
         private void novaCalc_Click(object sender, EventArgs e)
         {
-           Form1 Form1 = new Form1();
+            Form1 Form1 = new Form1();
             Form1.Show();
         }
-        
-    
+
+        private void botaoResult_Click(object sender, EventArgs e)
+        {
+            double num1 = Convert.ToDouble(caixaNum1.Text);
+            double num2 = Convert.ToDouble(caixaNum2.Text);
+
+            switch (operador.Text)
+            {
+                case "+":
+                    textResult.Text = Convert.ToString(num1 + num2);
+                    break;
+
+                case "-":
+                    textResult.Text = Convert.ToString(num1 - num2);
+                    break;
+
+                case "*":
+                    textResult.Text = Convert.ToString(num1 * num2);
+                    break;
+
+                case "/":
+                    textResult.Text = Convert.ToString(num1 / num2);
+                    break;
+
+            }
+
+
+
+
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            operador.Text = comboBox1.Text;
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            string result = Convert.ToString(monthCalendar1);
+            operador.Text = result;
+            if (result.Contains("03/07/2000"))
+            {
+                premio.Text = "Parabéns :D";
+                premio.ForeColor = Color.Green;
+            }
+            else 
+            {
+                premio.Text = "Esse não é meu aniversário :c";
+                premio.ForeColor = Color.Red;
+            }
+        }
     }
 }
 
