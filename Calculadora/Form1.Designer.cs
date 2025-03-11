@@ -1,4 +1,4 @@
-﻿namespace Calculadora
+﻿namespace CalHard
 {
     partial class Form1
     {
@@ -28,67 +28,92 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textnum1 = new TextBox();
-            textnum2 = new TextBox();
-            botaomais = new Button();
-            textCabecario = new Label();
-            novaCalc = new Label();
+            textNum = new TextBox();
+            botaoMais = new Button();
+            botaoMenos = new Button();
+            botaoMult = new Button();
+            botaoDiv = new Button();
+            botaoResult = new Button();
+            textCab = new Label();
             SuspendLayout();
             // 
-            // textnum1
+            // textNum
             // 
-            textnum1.Location = new Point(358, 104);
-            textnum1.Name = "textnum1";
-            textnum1.Size = new Size(100, 23);
-            textnum1.TabIndex = 0;
+            textNum.Location = new Point(82, 100);
+            textNum.Name = "textNum";
+            textNum.Size = new Size(100, 23);
+            textNum.TabIndex = 0;
             // 
-            // textnum2
+            // botaoMais
             // 
-            textnum2.Location = new Point(358, 161);
-            textnum2.Name = "textnum2";
-            textnum2.Size = new Size(100, 23);
-            textnum2.TabIndex = 1;
+            botaoMais.Location = new Point(82, 141);
+            botaoMais.Name = "botaoMais";
+            botaoMais.Size = new Size(23, 23);
+            botaoMais.TabIndex = 1;
+            botaoMais.Text = "+";
+            botaoMais.UseVisualStyleBackColor = true;
+            botaoMais.Click += botaoMais_Click;
             // 
-            // botaomais
+            // botaoMenos
             // 
-            botaomais.Location = new Point(370, 207);
-            botaomais.Name = "botaomais";
-            botaomais.Size = new Size(75, 23);
-            botaomais.TabIndex = 2;
-            botaomais.Text = "+";
-            botaomais.UseVisualStyleBackColor = true;
-            botaomais.Click += botaomais_Click;
+            botaoMenos.Location = new Point(121, 141);
+            botaoMenos.Name = "botaoMenos";
+            botaoMenos.Size = new Size(23, 23);
+            botaoMenos.TabIndex = 2;
+            botaoMenos.Text = "-";
+            botaoMenos.UseVisualStyleBackColor = true;
+            botaoMenos.Click += botaoMenos_Click;
             // 
-            // textCabecario
+            // botaoMult
             // 
-            textCabecario.AutoSize = true;
-            textCabecario.Location = new Point(336, 48);
-            textCabecario.Name = "textCabecario";
-            textCabecario.Size = new Size(145, 15);
-            textCabecario.TabIndex = 3;
-            textCabecario.Text = "Insira valores para calcular";
+            botaoMult.Location = new Point(82, 170);
+            botaoMult.Name = "botaoMult";
+            botaoMult.Size = new Size(23, 23);
+            botaoMult.TabIndex = 3;
+            botaoMult.Text = "X";
+            botaoMult.UseVisualStyleBackColor = true;
+            botaoMult.Click += botaoMult_Click;
             // 
-            // novaCalc
+            // botaoDiv
             // 
-            novaCalc.AutoSize = true;
-            novaCalc.ForeColor = Color.Blue;
-            novaCalc.Location = new Point(312, 257);
-            novaCalc.Name = "novaCalc";
-            novaCalc.Size = new Size(194, 15);
-            novaCalc.TabIndex = 4;
-            novaCalc.Text = "Tenta agora nossa nova calculadora";
-            novaCalc.Click += novaCalc_Click;
+            botaoDiv.Location = new Point(121, 170);
+            botaoDiv.Name = "botaoDiv";
+            botaoDiv.Size = new Size(23, 23);
+            botaoDiv.TabIndex = 4;
+            botaoDiv.Text = "/";
+            botaoDiv.UseVisualStyleBackColor = true;
+            botaoDiv.Click += botaoDiv_Click;
+            // 
+            // botaoResult
+            // 
+            botaoResult.Location = new Point(159, 141);
+            botaoResult.Name = "botaoResult";
+            botaoResult.Size = new Size(23, 52);
+            botaoResult.TabIndex = 5;
+            botaoResult.Text = "=";
+            botaoResult.UseVisualStyleBackColor = true;
+            botaoResult.Click += botaoResult_Click;
+            // 
+            // textCab
+            // 
+            textCab.AutoSize = true;
+            textCab.Location = new Point(339, 26);
+            textCab.Name = "textCab";
+            textCab.Size = new Size(0, 15);
+            textCab.TabIndex = 6;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(novaCalc);
-            Controls.Add(textCabecario);
-            Controls.Add(botaomais);
-            Controls.Add(textnum2);
-            Controls.Add(textnum1);
+            ClientSize = new Size(279, 309);
+            Controls.Add(textCab);
+            Controls.Add(botaoResult);
+            Controls.Add(botaoDiv);
+            Controls.Add(botaoMult);
+            Controls.Add(botaoMenos);
+            Controls.Add(botaoMais);
+            Controls.Add(textNum);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -97,10 +122,12 @@
 
         #endregion
 
-        private TextBox textnum1;
-        private TextBox textnum2;
-        private Button botaomais;
-        private Label textCabecario;
-        private Label novaCalc;
+        private TextBox textNum;
+        private Button botaoMais;
+        private Button botaoMenos;
+        private Button botaoMult;
+        private Button botaoDiv;
+        private Button botaoResult;
+        private Label textCab;
     }
 }

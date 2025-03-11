@@ -3,7 +3,6 @@ D:\Curso_Logica\Curso_Logica\Calculadora\bin\Debug\net8.0-windows\Calculadora.de
 D:\Curso_Logica\Curso_Logica\Calculadora\bin\Debug\net8.0-windows\Calculadora.runtimeconfig.json
 D:\Curso_Logica\Curso_Logica\Calculadora\bin\Debug\net8.0-windows\Calculadora.dll
 D:\Curso_Logica\Curso_Logica\Calculadora\bin\Debug\net8.0-windows\Calculadora.pdb
-D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\Calculadora.Form1.resources
 D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\Calculadora.csproj.GenerateResource.cache
 D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\Calculadora.GeneratedMSBuildEditorConfig.editorconfig
 D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\Calculadora.AssemblyInfoInputs.cache
@@ -15,3 +14,5 @@ D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\refint\Calcula
 D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\Calculadora.pdb
 D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\Calculadora.genruntimeconfig.cache
 D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\ref\Calculadora.dll
+D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\CalHard.Form1.resources
+D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\Calculadora.Oldcalc.resources

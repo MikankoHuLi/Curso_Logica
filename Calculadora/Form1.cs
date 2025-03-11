@@ -1,40 +1,124 @@
-using System.Data;
-using System.Security.Cryptography.X509Certificates;
-
-namespace Calculadora
+namespace CalHard
 {
     public partial class Form1 : Form
     {
+        List<double> numeros = new List<double>();
+        List<string> operadores = new List<string>();
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void botaomais_Click(object sender, EventArgs e)
+        private void botaoMais_Click(object sender, EventArgs e)
         {
-            string num1 = textnum1.Text;
-            string num2 = textnum2.Text;
+            string num1 = textNum.Text;
 
-            if (!num1.All(char.IsNumber) || !num2.All(char.IsNumber))
+
+            if (!num1.All(char.IsNumber))
             {
-                textCabecario.Text = "Os valores devem ser números";
+                textCab.Text = "Os valores devem ser números";
                 return;
             }
 
             double dnum1 = Convert.ToDouble(num1);
-            double dnum2 = Convert.ToDouble(num2);
-
-            textnum1.Text = Convert.ToString(dnum1 + dnum2);
-            textnum2.Clear();
-
+            numeros.Add(dnum1);
+            operadores.Add("+");
+            textNum.Clear();
         }
 
-        private void novaCalc_Click(object sender, EventArgs e)
+       
+
+        private void botaoMenos_Click(object sender, EventArgs e)
         {
-           
+            {
+                string num1 = textNum.Text;
+
+
+                if (!num1.All(char.IsNumber))
+                {
+                    textCab.Text = "Os valores devem ser números";
+                    return;
+                }
+
+                double dnum1 = Convert.ToDouble(num1);
+                numeros.Add(dnum1);
+                operadores.Add("-");
+                textNum.Clear();
+            }
         }
-        
-    
+
+        private void botaoMult_Click(object sender, EventArgs e)
+        {
+            {
+                string num1 = textNum.Text;
+
+
+                if (!num1.All(char.IsNumber))
+                {
+                    textCab.Text = "Os valores devem ser números";
+                    return;
+                }
+
+                double dnum1 = Convert.ToDouble(num1);
+                numeros.Add(dnum1);
+                operadores.Add("x");
+                textNum.Clear();
+            }
+        }
+
+        private void botaoDiv_Click(object sender, EventArgs e)
+        {
+            {
+                string num1 = textNum.Text;
+
+
+                if (!num1.All(char.IsNumber))
+                {
+                    textCab.Text = "Os valores devem ser números";
+                    return;
+                }
+
+                double dnum1 = Convert.ToDouble(num1);
+                numeros.Add(dnum1);
+                operadores.Add("/");
+                textNum.Clear();
+            }
+
+        }
+        private void botaoResult_Click(object sender, EventArgs e)
+        {
+            string num2 = textNum.Text;
+
+            if (!num2.All(char.IsNumber))
+            {
+                textCab.Text = "Os valores devem ser números";
+                return;
+            }
+
+            double dnum2 = Convert.ToDouble(num2);
+            numeros.Add(dnum2);
+
+
+
+            if (operadores.Contains("-"))
+            {
+                textNum.Text = Convert.ToString(numeros[0] - numeros[1]);
+            }
+            if (operadores.Contains("+"))
+            {
+                textNum.Text = Convert.ToString(numeros[0] + numeros[1]);
+            }
+            if (operadores.Contains("x"))
+            {
+                textNum.Text = Convert.ToString(numeros[0] * numeros[1]); 
+            }
+            if (operadores.Contains("/"))
+            {
+                textNum.Text = Convert.ToString(numeros[0] / numeros[1]);
+            }
+            operadores.Clear();
+            numeros.Clear();
+        }
     }
 }
 
