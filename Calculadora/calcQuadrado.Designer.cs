@@ -39,6 +39,8 @@
             erro = new Label();
             label4 = new Label();
             volRet = new TextBox();
+            label5 = new Label();
+            label6 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -94,14 +96,14 @@
             // result
             // 
             result.Enabled = false;
-            result.Location = new Point(279, 283);
+            result.Location = new Point(363, 282);
             result.Name = "result";
             result.Size = new Size(100, 23);
             result.TabIndex = 6;
             // 
             // calcBotao
             // 
-            calcBotao.Location = new Point(288, 174);
+            calcBotao.Location = new Point(375, 197);
             calcBotao.Name = "calcBotao";
             calcBotao.Size = new Size(75, 23);
             calcBotao.TabIndex = 7;
@@ -120,7 +122,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(422, 76);
+            label4.Location = new Point(426, 76);
             label4.Name = "label4";
             label4.Size = new Size(181, 15);
             label4.TabIndex = 9;
@@ -133,11 +135,32 @@
             volRet.Size = new Size(100, 23);
             volRet.TabIndex = 10;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(344, 9);
+            label5.Name = "label5";
+            label5.Size = new Size(143, 15);
+            label5.TabIndex = 11;
+            label5.Text = "Calculadora de Retângulo";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 7F);
+            label6.Location = new Point(383, 33);
+            label6.Name = "label6";
+            label6.Size = new Size(67, 12);
+            label6.TabIndex = 12;
+            label6.Text = "(e formas 3d?)";
+            // 
             // calcQuadrado
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label6);
+            Controls.Add(label5);
             Controls.Add(volRet);
             Controls.Add(label4);
             Controls.Add(erro);
@@ -168,5 +191,7 @@
         private Label erro;
         private Label label4;
         private TextBox volRet;
+        private Label label5;
+        private Label label6;
     }
 }
