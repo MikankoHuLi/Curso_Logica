@@ -42,6 +42,17 @@
             monthCalendar1 = new MonthCalendar();
             cabecario = new Label();
             premio = new Label();
+            radioSoma = new RadioButton();
+            radioSub = new RadioButton();
+            radioMult = new RadioButton();
+            radioDiv = new RadioButton();
+            dica1check = new CheckBox();
+            dica1 = new Label();
+            dica2check = new CheckBox();
+            dica2 = new Label();
+            dica3check = new CheckBox();
+            dica3 = new Label();
+            calcQuad = new Label();
             ((System.ComponentModel.ISupportInitialize)caixaNum1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)caixaNum2).BeginInit();
             SuspendLayout();
@@ -143,9 +154,12 @@
             // 
             // monthCalendar1
             // 
-            monthCalendar1.Location = new Point(543, 276);
+            monthCalendar1.BackColor = SystemColors.Window;
+            monthCalendar1.Location = new Point(545, 99);
+            monthCalendar1.MinDate = new DateTime(1990, 1, 1, 0, 0, 0, 0);
             monthCalendar1.Name = "monthCalendar1";
             monthCalendar1.TabIndex = 11;
+            monthCalendar1.TodayDate = new DateTime(2025, 3, 11, 0, 0, 0, 0);
             monthCalendar1.DateChanged += monthCalendar1_DateChanged;
             // 
             // cabecario
@@ -165,11 +179,138 @@
             premio.Size = new Size(0, 15);
             premio.TabIndex = 13;
             // 
+            // radioSoma
+            // 
+            radioSoma.AutoSize = true;
+            radioSoma.Location = new Point(180, 99);
+            radioSoma.Name = "radioSoma";
+            radioSoma.Size = new Size(55, 19);
+            radioSoma.TabIndex = 14;
+            radioSoma.TabStop = true;
+            radioSoma.Text = "Soma";
+            radioSoma.UseVisualStyleBackColor = true;
+            radioSoma.CheckedChanged += radioSoma_CheckedChanged;
+            // 
+            // radioSub
+            // 
+            radioSub.AutoSize = true;
+            radioSub.Location = new Point(180, 134);
+            radioSub.Name = "radioSub";
+            radioSub.Size = new Size(78, 19);
+            radioSub.TabIndex = 15;
+            radioSub.TabStop = true;
+            radioSub.Text = "Subtração";
+            radioSub.UseVisualStyleBackColor = true;
+            radioSub.CheckedChanged += radioSub_CheckedChanged;
+            // 
+            // radioMult
+            // 
+            radioMult.AutoSize = true;
+            radioMult.Location = new Point(180, 165);
+            radioMult.Name = "radioMult";
+            radioMult.Size = new Size(97, 19);
+            radioMult.TabIndex = 16;
+            radioMult.TabStop = true;
+            radioMult.Text = "Multiplicação";
+            radioMult.UseVisualStyleBackColor = true;
+            radioMult.CheckedChanged += radioMult_CheckedChanged;
+            // 
+            // radioDiv
+            // 
+            radioDiv.AutoSize = true;
+            radioDiv.Location = new Point(180, 199);
+            radioDiv.Name = "radioDiv";
+            radioDiv.Size = new Size(63, 19);
+            radioDiv.TabIndex = 17;
+            radioDiv.TabStop = true;
+            radioDiv.Text = "Divisão";
+            radioDiv.UseVisualStyleBackColor = true;
+            radioDiv.CheckedChanged += radioDiv_CheckedChanged;
+            // 
+            // dica1check
+            // 
+            dica1check.AutoSize = true;
+            dica1check.Location = new Point(565, 308);
+            dica1check.Name = "dica1check";
+            dica1check.Size = new Size(95, 19);
+            dica1check.TabIndex = 18;
+            dica1check.Text = "Primeira dica";
+            dica1check.UseVisualStyleBackColor = true;
+            dica1check.CheckedChanged += dica1check_CheckedChanged;
+            // 
+            // dica1
+            // 
+            dica1.AutoSize = true;
+            dica1.Location = new Point(666, 309);
+            dica1.Name = "dica1";
+            dica1.Size = new Size(0, 15);
+            dica1.TabIndex = 19;
+            // 
+            // dica2check
+            // 
+            dica2check.AutoSize = true;
+            dica2check.Location = new Point(565, 334);
+            dica2check.Name = "dica2check";
+            dica2check.Size = new Size(97, 19);
+            dica2check.TabIndex = 20;
+            dica2check.Text = "Segunda dica";
+            dica2check.UseVisualStyleBackColor = true;
+            dica2check.CheckedChanged += dica2check_CheckedChanged;
+            // 
+            // dica2
+            // 
+            dica2.AutoSize = true;
+            dica2.Location = new Point(666, 338);
+            dica2.Name = "dica2";
+            dica2.Size = new Size(0, 15);
+            dica2.TabIndex = 21;
+            // 
+            // dica3check
+            // 
+            dica3check.AutoSize = true;
+            dica3check.Location = new Point(565, 359);
+            dica3check.Name = "dica3check";
+            dica3check.Size = new Size(91, 19);
+            dica3check.TabIndex = 22;
+            dica3check.Text = "Terceira dica";
+            dica3check.UseVisualStyleBackColor = true;
+            dica3check.CheckedChanged += dica3check_CheckedChanged;
+            // 
+            // dica3
+            // 
+            dica3.AutoSize = true;
+            dica3.Location = new Point(666, 363);
+            dica3.Name = "dica3";
+            dica3.Size = new Size(0, 15);
+            dica3.TabIndex = 23;
+            // 
+            // calcQuad
+            // 
+            calcQuad.AutoSize = true;
+            calcQuad.ForeColor = Color.Blue;
+            calcQuad.Location = new Point(292, 363);
+            calcQuad.Name = "calcQuad";
+            calcQuad.Size = new Size(226, 15);
+            calcQuad.TabIndex = 24;
+            calcQuad.Text = "ou então nossa calculadora de quadrados";
+            calcQuad.Click += calcQuad_Click;
+            // 
             // Oldcalc
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(calcQuad);
+            Controls.Add(dica3);
+            Controls.Add(dica3check);
+            Controls.Add(dica2);
+            Controls.Add(dica2check);
+            Controls.Add(dica1);
+            Controls.Add(dica1check);
+            Controls.Add(radioDiv);
+            Controls.Add(radioMult);
+            Controls.Add(radioSub);
+            Controls.Add(radioSoma);
             Controls.Add(premio);
             Controls.Add(cabecario);
             Controls.Add(monthCalendar1);
@@ -208,5 +349,16 @@
         private MonthCalendar monthCalendar1;
         private Label cabecario;
         private Label premio;
+        private RadioButton radioSoma;
+        private RadioButton radioSub;
+        private RadioButton radioMult;
+        private RadioButton radioDiv;
+        private CheckBox dica1check;
+        private Label dica1;
+        private CheckBox dica2check;
+        private Label dica2;
+        private CheckBox dica3check;
+        private Label dica3;
+        private Label calcQuad;
     }
 }

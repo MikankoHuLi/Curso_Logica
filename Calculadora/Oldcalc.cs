@@ -9,6 +9,8 @@ namespace Calculadora
         public Oldcalc()
         {
             InitializeComponent();
+            monthCalendar1.SetDate(new DateTime(1990, 01, 01));
+
         }
 
         private void botaomais_Click(object sender, EventArgs e)
@@ -34,6 +36,7 @@ namespace Calculadora
         {
             Form1 Form1 = new Form1();
             Form1.Show();
+            //this.Hide();
         }
 
         private void botaoResult_Click(object sender, EventArgs e)
@@ -75,17 +78,58 @@ namespace Calculadora
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
             string result = Convert.ToString(monthCalendar1);
-            operador.Text = result;
+
             if (result.Contains("03/07/2000"))
             {
                 premio.Text = "Parabéns :D";
                 premio.ForeColor = Color.Green;
             }
-            else 
+            else
             {
                 premio.Text = "Esse não é meu aniversário :c";
                 premio.ForeColor = Color.Red;
             }
+        }
+
+        private void radioSoma_CheckedChanged(object sender, EventArgs e)
+        {
+            operador.Text = "+";
+        }
+
+        private void radioSub_CheckedChanged(object sender, EventArgs e)
+        {
+            operador.Text = "-";
+        }
+
+        private void radioMult_CheckedChanged(object sender, EventArgs e)
+        {
+            operador.Text = "*";
+        }
+
+        private void radioDiv_CheckedChanged(object sender, EventArgs e)
+        {
+            operador.Text = "/";
+        }
+
+        private void dica1check_CheckedChanged(object sender, EventArgs e)
+        {
+            dica1.Text = "Eu irei fazer 25 anos";
+        }
+
+        private void dica2check_CheckedChanged(object sender, EventArgs e)
+        {
+            dica2.Text = "Sou do signo de câncer";
+        }
+
+        private void dica3check_CheckedChanged(object sender, EventArgs e)
+        {
+            dica3.Text = "Nasci na primeira semana do mês";
+        }
+
+        private void calcQuad_Click(object sender, EventArgs e)
+        {
+            calcQuadrado calcQuadrado = new calcQuadrado();
+            calcQuadrado.Show();
         }
     }
 }

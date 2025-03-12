@@ -16,3 +16,4 @@ D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\Calculadora.ge
 D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\ref\Calculadora.dll
 D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\CalHard.Form1.resources
 D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\Calculadora.Oldcalc.resources
+D:\Curso_Logica\Curso_Logica\Calculadora\obj\Debug\net8.0-windows\Calculadora.calcQuadrado.resources
