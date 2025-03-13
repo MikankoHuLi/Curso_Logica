@@ -53,12 +53,6 @@ namespace Calculadora
                     result.Text = Convert.ToString(dnum1 * dnum2);
                     erro.Text = "";
                 }
-                /*else if (opcoes.Text == "Volume")
-                {
-                    double dnum3 = Convert.ToDouble(num3);
-                    result.Text = Convert.ToString(dnum1 * dnum2 * dnum3);
-                    erro.Text = "";
-                }*/
                 else
                 {
                     erro.Text = "Selecione uma opção válida";
