@@ -53,6 +53,7 @@
             dica3check = new CheckBox();
             dica3 = new Label();
             calcQuad = new Label();
+            calcCirc = new Label();
             ((System.ComponentModel.ISupportInitialize)caixaNum1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)caixaNum2).BeginInit();
             SuspendLayout();
@@ -290,18 +291,31 @@
             calcQuad.AutoSize = true;
             calcQuad.Cursor = Cursors.Hand;
             calcQuad.ForeColor = Color.Blue;
-            calcQuad.Location = new Point(252, 363);
+            calcQuad.Location = new Point(250, 381);
             calcQuad.Name = "calcQuad";
             calcQuad.Size = new Size(292, 15);
             calcQuad.TabIndex = 24;
             calcQuad.Text = "ou então nossa calculadora de retângulos e formas 3D";
             calcQuad.Click += calcQuad_Click;
             // 
+            // calcCirc
+            // 
+            calcCirc.AutoSize = true;
+            calcCirc.Cursor = Cursors.Hand;
+            calcCirc.ForeColor = Color.Blue;
+            calcCirc.Location = new Point(270, 359);
+            calcCirc.Name = "calcCirc";
+            calcCirc.Size = new Size(259, 15);
+            calcCirc.TabIndex = 25;
+            calcCirc.Text = "ou então nossa calculadora de círculos e esferas";
+            calcCirc.Click += calcCirc_Click;
+            // 
             // Oldcalc
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(calcCirc);
             Controls.Add(calcQuad);
             Controls.Add(dica3);
             Controls.Add(dica3check);
@@ -327,7 +341,6 @@
             Controls.Add(botaomais);
             Controls.Add(textnum2);
             Controls.Add(textnum1);
-            Cursor = Cursors.Default;
             Name = "Oldcalc";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)caixaNum1).EndInit();
@@ -363,5 +376,6 @@
         private CheckBox dica3check;
         private Label dica3;
         private Label calcQuad;
+        private Label calcCirc;
     }
 }

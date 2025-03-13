@@ -131,6 +131,12 @@ namespace Calculadora
             calcQuadrado calcQuadrado = new calcQuadrado();
             calcQuadrado.Show();
         }
+
+        private void calcCirc_Click(object sender, EventArgs e)
+        {
+            calcCirculo calcCirculo = new calcCirculo();
+            calcCirculo.Show();
+        }
     }
 }
 
