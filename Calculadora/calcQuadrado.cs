@@ -37,19 +37,26 @@ namespace Calculadora
             }
 
             double dnum1 = Convert.ToDouble(num1);
-            double dnum2 = Convert.ToDouble(num2);
+            
             
 
             if (opcoesForma.Text == "Retângulo")
-            {
+            { // mudar
+                if (string.IsNullOrWhiteSpace(num2)) 
+                {
+                    erro.Text = "Insira um valor";
+                    erro.ForeColor = Color.Red;
+                    return;
+                }
+                double dnum2 = Convert.ToDouble(num2);
+                // mudar
                 if (opcoes.Text == "Perímetro")
                 {
-
-                    erro.Text = "Paralelepido não possu perímetro";
+                    result.Text = Convert.ToString(2 * (dnum1 + dnum2));
+                    erro.Text = "";
                 }
                 else if (opcoes.Text == "Área")
                 {
-
                     result.Text = Convert.ToString(dnum1 * dnum2);
                     erro.Text = "";
                 }
@@ -81,7 +88,17 @@ namespace Calculadora
             }
             if (opcoesForma.Text == "Paralelepípedo")
             {
+                //mudar
+               
+                if (string.IsNullOrWhiteSpace(num2) || string.IsNullOrWhiteSpace(num3))
+                {
+                    erro.Text = "Insira um valor";
+                    erro.ForeColor = Color.Red;
+                    return;
+                }
+                double dnum2 = Convert.ToDouble(num2);
                 double dnum3 = Convert.ToDouble(num3);
+                //mudar
                 if (opcoes.Text == "Perímetro")
                 {
                     result.Text = Convert.ToString((4 * dnum1) + (4 * dnum2) + (4 * dnum3));
