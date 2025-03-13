@@ -36,23 +36,26 @@ namespace Calculadora
             }
 
             double raionum = Convert.ToDouble(raio);
+            double resultado = 0;
 
             if (perimetro.Checked)
             {
-                textResult.Text = Convert.ToString((2 * 3.14) * raionum);
+                resultado = ((2 * 3.14) * raionum);
             }
             if (diametro.Checked)
             {
-                textResult.Text = Convert.ToString(2 * raionum);
+                resultado = 2 * raionum;
             }
             if (area.Checked)
             {
-                textResult.Text = Convert.ToString(3.14 * Math.Pow(raionum,2));
+                resultado = 3.14 * Math.Pow(raionum,2);
             }
             if (volume.Checked)
             {
-                textResult.Text = Convert.ToString((4 * 3.14 * Math.Pow(raionum,3)) / 3);
+                resultado = (4 * 3.14 * Math.Pow(raionum,3)) / 3;
             }
+
+            textResult.Text = Convert.ToString(resultado);
             erro.Text = "";
             textRaio.Clear();
         }
