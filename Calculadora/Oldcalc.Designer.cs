@@ -93,6 +93,7 @@
             // novaCalc
             // 
             novaCalc.AutoSize = true;
+            novaCalc.Cursor = Cursors.Hand;
             novaCalc.ForeColor = Color.Blue;
             novaCalc.Location = new Point(292, 334);
             novaCalc.Name = "novaCalc";
@@ -287,12 +288,13 @@
             // calcQuad
             // 
             calcQuad.AutoSize = true;
+            calcQuad.Cursor = Cursors.Hand;
             calcQuad.ForeColor = Color.Blue;
-            calcQuad.Location = new Point(292, 363);
+            calcQuad.Location = new Point(252, 363);
             calcQuad.Name = "calcQuad";
-            calcQuad.Size = new Size(226, 15);
+            calcQuad.Size = new Size(292, 15);
             calcQuad.TabIndex = 24;
-            calcQuad.Text = "ou então nossa calculadora de quadrados";
+            calcQuad.Text = "ou então nossa calculadora de retângulos e formas 3D";
             calcQuad.Click += calcQuad_Click;
             // 
             // Oldcalc
@@ -325,6 +327,7 @@
             Controls.Add(botaomais);
             Controls.Add(textnum2);
             Controls.Add(textnum1);
+            Cursor = Cursors.Default;
             Name = "Oldcalc";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)caixaNum1).EndInit();
