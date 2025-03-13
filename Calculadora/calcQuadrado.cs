@@ -41,7 +41,8 @@ namespace Calculadora
             
 
             if (opcoesForma.Text == "Retângulo")
-            { // mudar
+            {  
+                // mudar
                 if (string.IsNullOrWhiteSpace(num2)) 
                 {
                     erro.Text = "Insira um valor";
@@ -50,19 +51,19 @@ namespace Calculadora
                 }
                 double dnum2 = Convert.ToDouble(num2);
                 // mudar
+               
                 if (opcoes.Text == "Perímetro")
                 {
                     result.Text = Convert.ToString(2 * (dnum1 + dnum2));
-                    erro.Text = "";
                 }
                 else if (opcoes.Text == "Área")
                 {
                     result.Text = Convert.ToString(dnum1 * dnum2);
-                    erro.Text = "";
                 }
                 else
                 {
                     erro.Text = "Selecione uma opção válida";
+                    return;
                 }
 
             }
@@ -73,23 +74,21 @@ namespace Calculadora
                 {
 
                     result.Text = Convert.ToString(4 * dnum1);
-                    erro.Text = "";
                 }
                 else if (opcoes.Text == "Área")
                 {
 
                     result.Text = Convert.ToString(dnum1 * dnum1);
-                    erro.Text = "";
                 }
                 else
                 {
                     erro.Text = "Selecione uma opção válida";
+                    return;
                 }
             }
             if (opcoesForma.Text == "Paralelepípedo")
             {
                 //mudar
-               
                 if (string.IsNullOrWhiteSpace(num2) || string.IsNullOrWhiteSpace(num3))
                 {
                     erro.Text = "Insira um valor";
@@ -102,22 +101,20 @@ namespace Calculadora
                 if (opcoes.Text == "Perímetro")
                 {
                     result.Text = Convert.ToString((4 * dnum1) + (4 * dnum2) + (4 * dnum3));
-                    erro.Text = "";
                 }
                 else if (opcoes.Text == "Área")
                 {
                     result.Text = Convert.ToString(2 * ((dnum1*dnum2) + (dnum2*dnum3) + (dnum3*dnum1)));
-                    erro.Text = "";
                 }
                 else if (opcoes.Text == "Volume")
                 {
 
                     result.Text = Convert.ToString(dnum1 * dnum2 * dnum3);
-                    erro.Text = "";
                 }
                 else
                 {
                     erro.Text = "Selecione uma opção válida";
+                    return;
                 }
             }
             if (opcoesForma.Text == "Cubo")
@@ -126,26 +123,24 @@ namespace Calculadora
                 if (opcoes.Text == "Perímetro")
                 {
                     result.Text = Convert.ToString(12 * dnum1);
-                    erro.Text = "";
                 }
                 else if (opcoes.Text == "Área")
                 {
                     result.Text = Convert.ToString(6 * (dnum1 * dnum1));
-                    erro.Text = "";
                 }
                 else if (opcoes.Text == "Volume")
                 {
 
                     result.Text = Convert.ToString(dnum1 * dnum1 * dnum1);
-                    erro.Text = "";
                 }
                 else
                 {
                     erro.Text = "Selecione uma opção válida";
+                    return;
                 }
             }
 
-
+            erro.Text = "";
             baseRet.Clear();
             altRet.Clear();
             volRet.Clear();
