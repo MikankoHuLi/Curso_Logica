@@ -71,14 +71,15 @@ namespace Calculadora
 
         private void carinha_Click(object sender, EventArgs e)
         {
-            carinha.Text = ">:3";
-            carinha.Font = new Font("Segoe UI", 64);
-            carinha.ForeColor = Color.Red;
             Random rng = new Random();
-            int rng1 = rng.Next(-10,700);
-            int rng2 = rng.Next(-10, 400);
+            int x = rng.Next(-10, 700);
+            int y = rng.Next(-10, 400);
+            int size = rng.Next(4, 300);
 
-            carinha.Location = new Point(rng1, rng2);
+            carinha.Text = ">:3";
+            carinha.Font = new Font("Segoe UI", size);
+            carinha.ForeColor = Color.Red;
+            carinha.Location = new Point(x, y);
         }
     }
 }

@@ -145,7 +145,8 @@
             carinha.BackColor = Color.Transparent;
             carinha.Cursor = Cursors.No;
             carinha.Font = new Font("Segoe UI", 24F);
-            carinha.Location = new Point(376, 246);
+            carinha.ForeColor = SystemColors.ControlText;
+            carinha.Location = new Point(376, 253);
             carinha.Name = "carinha";
             carinha.Size = new Size(44, 45);
             carinha.TabIndex = 10;
