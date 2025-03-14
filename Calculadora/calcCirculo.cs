@@ -80,6 +80,20 @@ namespace Calculadora
             carinha.Font = new Font("Segoe UI", size);
             carinha.ForeColor = Color.Red;
             carinha.Location = new Point(x, y);
+
+            carinha.Text = ">:3";
+            carinha.Font = new Font("Segoe UI", size);
+            carinha.ForeColor = Color.Red;
+            carinha.Location = new Point(x, y);
+
+            progresso.Minimum = 0;
+            progresso.Maximum = 10;
+            progresso.Step = 1;
+
+            for (int i = 0; i <= 4; i++)
+            {
+                progresso.PerformStep();
+            }
         }
     }
 }
