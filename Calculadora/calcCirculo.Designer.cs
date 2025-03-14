@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             textRaio = new TextBox();
             perimetro = new RadioButton();
             area = new RadioButton();
@@ -38,6 +39,9 @@
             label1 = new Label();
             label2 = new Label();
             erro = new Label();
+            toolTip1 = new ToolTip(components);
+            toolTip2 = new ToolTip(components);
+            carinha = new Label();
             SuspendLayout();
             // 
             // textRaio
@@ -135,11 +139,25 @@
             erro.Size = new Size(0, 15);
             erro.TabIndex = 9;
             // 
+            // carinha
+            // 
+            carinha.AutoSize = true;
+            carinha.BackColor = Color.Transparent;
+            carinha.Cursor = Cursors.No;
+            carinha.Font = new Font("Segoe UI", 24F);
+            carinha.Location = new Point(376, 246);
+            carinha.Name = "carinha";
+            carinha.Size = new Size(44, 45);
+            carinha.TabIndex = 10;
+            carinha.Text = ":3";
+            carinha.Click += carinha_Click;
+            // 
             // calcCirculo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(carinha);
             Controls.Add(erro);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -168,5 +186,8 @@
         private Label label1;
         private Label label2;
         private Label erro;
+        private ToolTip toolTip1;
+        private ToolTip toolTip2;
+        private Label carinha;
     }
 }

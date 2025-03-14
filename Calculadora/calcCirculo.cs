@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Calculadora
 {
@@ -38,26 +39,46 @@ namespace Calculadora
             double raionum = Convert.ToDouble(raio);
             double resultado = 0;
 
+            //procurar alternativa caso todos unchecked
+
             if (perimetro.Checked)
             {
                 resultado = ((2 * 3.14) * raionum);
             }
-            if (diametro.Checked)
+            else if (diametro.Checked)
             {
                 resultado = 2 * raionum;
             }
-            if (area.Checked)
+            else if (area.Checked)
             {
-                resultado = 3.14 * Math.Pow(raionum,2);
+                resultado = 3.14 * Math.Pow(raionum, 2);
             }
-            if (volume.Checked)
+            else if (volume.Checked)
             {
-                resultado = (4 * 3.14 * Math.Pow(raionum,3)) / 3;
+                resultado = (4 * 3.14 * Math.Pow(raionum, 3)) / 3;
+            }
+            else
+            {
+                erro.Text = "Selecione uma opção";
+                return;
             }
 
-            textResult.Text = Convert.ToString(resultado);
+
+            textResult.Text = resultado.ToString("F");
             erro.Text = "";
             textRaio.Clear();
+        }
+
+        private void carinha_Click(object sender, EventArgs e)
+        {
+            carinha.Text = ">:3";
+            carinha.Font = new Font("Segoe UI", 64);
+            carinha.ForeColor = Color.Red;
+            Random rng = new Random();
+            int rng1 = rng.Next(-10,700);
+            int rng2 = rng.Next(-10, 400);
+
+            carinha.Location = new Point(rng1, rng2);
         }
     }
 }
