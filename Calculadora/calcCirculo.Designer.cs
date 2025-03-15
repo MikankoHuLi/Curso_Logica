@@ -43,6 +43,7 @@
             toolTip2 = new ToolTip(components);
             carinha = new Label();
             progresso = new ProgressBar();
+            secret = new Label();
             SuspendLayout();
             // 
             // textRaio
@@ -161,11 +162,20 @@
             progresso.Size = new Size(100, 23);
             progresso.TabIndex = 11;
             // 
+            // secret
+            // 
+            secret.AutoSize = true;
+            secret.Location = new Point(15, 412);
+            secret.Name = "secret";
+            secret.Size = new Size(0, 15);
+            secret.TabIndex = 12;
+            // 
             // calcCirculo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(secret);
             Controls.Add(progresso);
             Controls.Add(carinha);
             Controls.Add(erro);
@@ -200,5 +210,6 @@
         private ToolTip toolTip2;
         private Label carinha;
         private ProgressBar progresso;
+        private Label secret;
     }
 }

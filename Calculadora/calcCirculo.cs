@@ -21,29 +21,28 @@ namespace Calculadora
 
         private void calc_Click(object sender, EventArgs e)
         {
-            string raio = textRaio.Text;
 
-            if (string.IsNullOrWhiteSpace(raio))
+            if (string.IsNullOrWhiteSpace(textRaio.Text))
             {
                 erro.Text = "Insira um valor";
                 erro.ForeColor = Color.Red;
                 return;
             }
-            if (!raio.All(char.IsNumber))
+            if (!textRaio.Text.All(char.IsNumber))
             {
                 erro.Text = "Os valores devem ser números";
                 erro.ForeColor = Color.Red;
                 return;
             }
 
-            double raionum = Convert.ToDouble(raio);
-            double resultado = 0;
+            double raionum = Convert.ToDouble(textRaio.Text);
+            double resultado;
 
             //procurar alternativa caso todos unchecked
 
             if (perimetro.Checked)
             {
-                resultado = ((2 * 3.14) * raionum);
+                resultado = 2 * 3.14 * raionum;
             }
             else if (diametro.Checked)
             {
@@ -62,6 +61,7 @@ namespace Calculadora
                 erro.Text = "Selecione uma opção";
                 return;
             }
+            //Pi = 3.14 = Math.Pi
 
 
             textResult.Text = resultado.ToString("F");
@@ -89,11 +89,22 @@ namespace Calculadora
             progresso.Minimum = 0;
             progresso.Maximum = 10;
             progresso.Step = 1;
+            progresso.PerformStep();
 
-            for (int i = 0; i <= 4; i++)
+            if (progresso.Value == 10)
             {
-                progresso.PerformStep();
+                carinha.Text = ">:3";
+                carinha.Font = new Font("Segoe UI", 300);
+                carinha.ForeColor = Color.Red;
+                carinha.Location = new Point(25, 100); 
+                secret.Text = "Boo!";
+                secret.Font = new Font("MS UI Gothic", 150);
+                secret.ForeColor = Color.Red;
+                secret.Location = new Point(159, 0); 
             }
+
+
+
         }
     }
 }
