@@ -33,7 +33,6 @@
             label3 = new Label();
             baseRet = new TextBox();
             altRet = new TextBox();
-            opcoes = new ComboBox();
             result = new TextBox();
             calcBotao = new Button();
             erro = new Label();
@@ -42,6 +41,9 @@
             label5 = new Label();
             label7 = new Label();
             opcoesForma = new ComboBox();
+            perimetroBut = new RadioButton();
+            areaBut = new RadioButton();
+            volumeBut = new RadioButton();
             SuspendLayout();
             // 
             // label1
@@ -84,16 +86,6 @@
             altRet.Name = "altRet";
             altRet.Size = new Size(100, 23);
             altRet.TabIndex = 4;
-            // 
-            // opcoes
-            // 
-            opcoes.FormattingEnabled = true;
-            opcoes.Items.AddRange(new object[] { "Perímetro", "Área", "Volume" });
-            opcoes.Location = new Point(208, 116);
-            opcoes.Name = "opcoes";
-            opcoes.Size = new Size(121, 23);
-            opcoes.TabIndex = 5;
-            opcoes.SelectedIndexChanged += opcoes_SelectedIndexChanged;
             // 
             // result
             // 
@@ -166,11 +158,47 @@
             opcoesForma.TabIndex = 14;
             opcoesForma.SelectedIndexChanged += opcoesForma_SelectedIndexChanged;
             // 
+            // perimetroBut
+            // 
+            perimetroBut.AutoSize = true;
+            perimetroBut.Location = new Point(226, 116);
+            perimetroBut.Name = "perimetroBut";
+            perimetroBut.Size = new Size(77, 19);
+            perimetroBut.TabIndex = 15;
+            perimetroBut.TabStop = true;
+            perimetroBut.Text = "Perímetro";
+            perimetroBut.UseVisualStyleBackColor = true;
+            // 
+            // areaBut
+            // 
+            areaBut.AutoSize = true;
+            areaBut.Location = new Point(226, 141);
+            areaBut.Name = "areaBut";
+            areaBut.Size = new Size(49, 19);
+            areaBut.TabIndex = 16;
+            areaBut.TabStop = true;
+            areaBut.Text = "Área";
+            areaBut.UseVisualStyleBackColor = true;
+            // 
+            // volumeBut
+            // 
+            volumeBut.AutoSize = true;
+            volumeBut.Location = new Point(226, 166);
+            volumeBut.Name = "volumeBut";
+            volumeBut.Size = new Size(65, 19);
+            volumeBut.TabIndex = 17;
+            volumeBut.TabStop = true;
+            volumeBut.Text = "Volume";
+            volumeBut.UseVisualStyleBackColor = true;
+            // 
             // calcQuadrado
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(volumeBut);
+            Controls.Add(areaBut);
+            Controls.Add(perimetroBut);
             Controls.Add(opcoesForma);
             Controls.Add(label7);
             Controls.Add(label5);
@@ -179,7 +207,6 @@
             Controls.Add(erro);
             Controls.Add(calcBotao);
             Controls.Add(result);
-            Controls.Add(opcoes);
             Controls.Add(altRet);
             Controls.Add(baseRet);
             Controls.Add(label3);
@@ -198,7 +225,6 @@
         private Label label3;
         private TextBox baseRet;
         private TextBox altRet;
-        private ComboBox opcoes;
         private TextBox result;
         private Button calcBotao;
         private Label erro;
@@ -207,5 +233,8 @@
         private Label label5;
         private Label label7;
         private ComboBox opcoesForma;
+        private RadioButton perimetroBut;
+        private RadioButton areaBut;
+        private RadioButton volumeBut;
     }
 }

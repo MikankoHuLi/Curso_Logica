@@ -19,54 +19,69 @@ namespace Calculadora
             InitializeComponent();
         }
 
+        private bool RadioNaoSelecionado(List<RadioButton> radios)
+        {
+            return radios.All(radio => !radio.Checked);
+        }
+        private bool ValorInvalido(string valor)
+        {
+            return string.IsNullOrWhiteSpace(valor) || !valor.All(char.IsNumber);
+        }
+
+        private bool ValidarCirc()
+        {
+            List<RadioButton> radios = new List<RadioButton> { perimetro, diametro, area, volume };
+            if (RadioNaoSelecionado(radios))
+            {
+                erro.Text = "Selecione uma opção";
+                erro.ForeColor = Color.Red;
+                return false;
+            }
+            if (ValorInvalido(textRaio.Text))
+            {
+                erro.Text = "Inserir um valor valido";
+                return false;
+            }
+            return true;
+        }
+
         private void calc_Click(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrWhiteSpace(textRaio.Text))
+            if (!ValidarCirc())
             {
-                erro.Text = "Insira um valor";
-                erro.ForeColor = Color.Red;
-                return;
-            }
-            if (!textRaio.Text.All(char.IsNumber))
-            {
-                erro.Text = "Os valores devem ser números";
-                erro.ForeColor = Color.Red;
                 return;
             }
 
             double raionum = Convert.ToDouble(textRaio.Text);
             double resultado;
 
-            //procurar alternativa caso todos unchecked
+            erro.Text = "";
+            textRaio.Clear();
+
 
             if (perimetro.Checked)
             {
                 resultado = 2 * 3.14 * raionum;
+                textResult.Text = resultado.ToString("F");
             }
             else if (diametro.Checked)
             {
                 resultado = 2 * raionum;
+                textResult.Text = resultado.ToString("F");
             }
             else if (area.Checked)
             {
                 resultado = 3.14 * Math.Pow(raionum, 2);
+                textResult.Text = resultado.ToString("F");
             }
             else if (volume.Checked)
             {
                 resultado = (4 * 3.14 * Math.Pow(raionum, 3)) / 3;
+                textResult.Text = resultado.ToString("F");
             }
-            else
-            {
-                erro.Text = "Selecione uma opção";
-                return;
-            }
+
             //Pi = 3.14 = Math.Pi
 
-
-            textResult.Text = resultado.ToString("F");
-            erro.Text = "";
-            textRaio.Clear();
         }
 
         private void carinha_Click(object sender, EventArgs e)

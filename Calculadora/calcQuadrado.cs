@@ -17,52 +17,158 @@ namespace Calculadora
             InitializeComponent();
         }
 
+        private bool RadioNaoSelecionado(List<RadioButton> radios)
+        {
+            return radios.All(radio => !radio.Checked);
+        }
+        private bool ValorInvalido(string valor)
+        {
+            return string.IsNullOrWhiteSpace(valor) || !valor.All(char.IsNumber);
+        }
+        private bool ValidarRetangulo()
+        {
+            List<RadioButton> radios = new List<RadioButton> { perimetroBut, areaBut, volumeBut };
+            if (RadioNaoSelecionado(radios))
+            {
+                erro.Text = "Selecione uma operação.";
+                return false;
+            }
+
+            if (ValorInvalido(baseRet.Text))
+            {
+                erro.Text = "Insira um valor de base válido";
+                return false;
+            }
+
+            if (ValorInvalido(altRet.Text))
+            {
+                erro.Text = "Insira um valor de altura válido";
+                return false;
+            }
+            return true;
+        }
+        private bool ValidarQuadrado()
+        {
+            List<RadioButton> radios = new List<RadioButton> { perimetroBut, areaBut, volumeBut };
+            if (RadioNaoSelecionado(radios))
+            {
+                erro.Text = "Selecione uma operação.";
+                return false;
+            }
+
+            if (ValorInvalido(baseRet.Text))
+            {
+                erro.Text = "Insira um valor de base válido";
+                return false;
+            }
+            return true;
+        }
+        private bool ValidarParalelepipedo()
+        {
+            List<RadioButton> radios = new List<RadioButton> { perimetroBut, areaBut, volumeBut };
+            if (RadioNaoSelecionado(radios))
+            {
+                erro.Text = "Selecione uma operação.";
+                return false;
+            }
+
+            if (ValorInvalido(baseRet.Text))
+            {
+                erro.Text = "Insira um valor de base válido";
+                return false;
+            }
+
+            if (ValorInvalido(altRet.Text))
+            {
+                erro.Text = "Insira um valor de altura válido";
+                return false;
+            }
+
+            if (ValorInvalido(volRet.Text))
+            {
+                erro.Text = "Insira um valor de comprimento válido";
+                return false;
+            }
+
+            return true;
+        }
+        private bool ValidarCubo()
+        {
+            List<RadioButton> radios = new List<RadioButton> { perimetroBut, areaBut, volumeBut };
+            if (RadioNaoSelecionado(radios))
+            {
+                erro.Text = "Selecione uma operação.";
+                return false;
+            }
+
+            if (ValorInvalido(baseRet.Text))
+            {
+                erro.Text = "Insira um valor de base válido";
+                return false;
+            }
+            return true;
+        }
+
+
+        private bool ValidarForm()
+        {
+            erro.Text = "";
+
+            if (opcoesForma.SelectedItem == null)
+            {
+                erro.Text = "Selecione uma forma";
+                return false;
+            }
+
+            if (opcoesForma.SelectedItem.ToString() == "Quadrado")
+            {
+                return ValidarQuadrado();
+            }
+
+            if (opcoesForma.SelectedItem.ToString() == "Retângulo")
+            {
+                return ValidarRetangulo();
+            }
+
+            if (opcoesForma.SelectedItem.ToString() == "Paralelepípedo")
+            {
+                return ValidarParalelepipedo();
+            }
+            if (opcoesForma.SelectedItem.ToString() == "Cubo")
+            {
+                return ValidarCubo();
+            }
+
+            return false;
+        }
         private void calcBotao_Click(object sender, EventArgs e)
         {
-            string num1 = baseRet.Text;
-            string num2 = altRet.Text;
-            string num3 = volRet.Text;
-
-            if (string.IsNullOrWhiteSpace(num1))
+            if (!ValidarForm())
             {
-                erro.Text = "Insira um valor";
-                erro.ForeColor = Color.Red;
-                return;
-            }
-            if (!num1.All(char.IsNumber) || !num2.All(char.IsNumber) || !num3.All(char.IsNumber))
-            {
-                erro.Text = "Os valores devem ser números";
-                erro.ForeColor = Color.Red;
                 return;
             }
 
-            double dnum1 = Convert.ToDouble(num1);
-            
-            
+            string baseforma = baseRet.Text;
+            string altura = altRet.Text;
+            string comprimento = volRet.Text;
+
+            baseRet.Clear();
+            altRet.Clear();
+            volRet.Clear();
 
             if (opcoesForma.Text == "Retângulo")
-            {  
-                // mudar
-                if (string.IsNullOrWhiteSpace(num2)) 
+            {
+                volumeBut.Enabled = false;
+                if (perimetroBut.Checked)
                 {
-                    erro.Text = "Insira um valor";
-                    erro.ForeColor = Color.Red;
+                    double resultado = 2 * (Convert.ToDouble(baseforma) + Convert.ToDouble(altura));
+                    result.Text = Convert.ToString(resultado);
                     return;
                 }
-                double dnum2 = Convert.ToDouble(num2);
-                // mudar
-               
-                if (opcoes.Text == "Perímetro")
+                if (areaBut.Checked)
                 {
-                    result.Text = Convert.ToString(2 * (dnum1 + dnum2));
-                }
-                else if (opcoes.Text == "Área")
-                {
-                    result.Text = Convert.ToString(dnum1 * dnum2);
-                }
-                else
-                {
-                    erro.Text = "Selecione uma opção válida";
+                    double resultado = Convert.ToDouble(baseforma) * Convert.ToDouble(altura);
+                    result.Text = Convert.ToString(resultado);
                     return;
                 }
 
@@ -70,92 +176,64 @@ namespace Calculadora
 
             if (opcoesForma.Text == "Quadrado")
             {
-                if (opcoes.Text == "Perímetro")
+                volumeBut.Enabled = false;
+                if (perimetroBut.Checked)
                 {
-
-                    result.Text = Convert.ToString(4 * dnum1);
+                    double resultado = 4 * Convert.ToDouble(baseforma);
+                    result.Text = Convert.ToString(resultado);
+                    return;
                 }
-                else if (opcoes.Text == "Área")
+                if (areaBut.Checked)
                 {
-
-                    result.Text = Convert.ToString(dnum1 * dnum1);
-                }
-                else
-                {
-                    erro.Text = "Selecione uma opção válida";
+                    double resultado = Math.Pow(Convert.ToDouble(baseforma), 2);
+                    result.Text = Convert.ToString(resultado);
                     return;
                 }
             }
             if (opcoesForma.Text == "Paralelepípedo")
             {
-                //mudar
-                if (string.IsNullOrWhiteSpace(num2) || string.IsNullOrWhiteSpace(num3))
+                if (perimetroBut.Checked)
                 {
-                    erro.Text = "Insira um valor";
-                    erro.ForeColor = Color.Red;
+                    double resultado = (4 * Convert.ToDouble(baseforma)) + (4 * Convert.ToDouble(altura)) + (4 * Convert.ToDouble(comprimento));
+                    result.Text = Convert.ToString(resultado);
                     return;
                 }
-                double dnum2 = Convert.ToDouble(num2);
-                double dnum3 = Convert.ToDouble(num3);
-                //mudar
-                if (opcoes.Text == "Perímetro")
+                else if (areaBut.Checked)
                 {
-                    result.Text = Convert.ToString((4 * dnum1) + (4 * dnum2) + (4 * dnum3));
+                    double resultado = 2 * (Convert.ToDouble(baseforma) * Convert.ToDouble(altura) + Convert.ToDouble(altura) * Convert.ToDouble(comprimento)
+                        + Convert.ToDouble(comprimento) * Convert.ToDouble(baseforma));
+                    result.Text = Convert.ToString(resultado);
+                    return;
                 }
-                else if (opcoes.Text == "Área")
+                else if (volumeBut.Checked)
                 {
-                    result.Text = Convert.ToString(2 * ((dnum1*dnum2) + (dnum2*dnum3) + (dnum3*dnum1)));
+                    double resultado = Convert.ToDouble(baseforma) * Convert.ToDouble(altura) * Convert.ToDouble(comprimento);
+                    result.Text = Convert.ToString(resultado);
+                    return;
                 }
-                else if (opcoes.Text == "Volume")
-                {
 
-                    result.Text = Convert.ToString(dnum1 * dnum2 * dnum3);
-                }
-                else
-                {
-                    erro.Text = "Selecione uma opção válida";
-                    return;
-                }
             }
             if (opcoesForma.Text == "Cubo")
             {
 
-                if (opcoes.Text == "Perímetro")
+                if (perimetroBut.Checked)
                 {
-                    result.Text = Convert.ToString(12 * dnum1);
-                }
-                else if (opcoes.Text == "Área")
-                {
-                    result.Text = Convert.ToString(6 * (dnum1 * dnum1));
-                }
-                else if (opcoes.Text == "Volume")
-                {
-
-                    result.Text = Convert.ToString(dnum1 * dnum1 * dnum1);
-                }
-                else
-                {
-                    erro.Text = "Selecione uma opção válida";
+                    double resultado = 12 * Convert.ToDouble(baseforma);
+                    result.Text = Convert.ToString(resultado);
                     return;
                 }
-            }
-
-            erro.Text = "";
-            baseRet.Clear();
-            altRet.Clear();
-            volRet.Clear();
-
-        }
-
-        private void opcoes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (opcoesForma.Text == "Paralelepípedo")
-            {
-                volRet.Enabled = true;
-            }
-            else
-            {
-                volRet.Enabled = false;
+                if (areaBut.Checked)
+                {
+                    double resultado = 6 * Math.Pow(Convert.ToDouble(baseforma), 2);
+                    result.Text = Convert.ToString(resultado);
+                    return;
+                }
+                if (volumeBut.Checked)
+                {
+                    double resultado = Math.Pow(Convert.ToDouble(baseforma), 3);
+                    result.Text = Convert.ToString(resultado);
+                    return;
+                }
             }
 
         }
@@ -166,9 +244,26 @@ namespace Calculadora
             {
                 altRet.Enabled = false;
             }
-            else 
+            else
             {
-                altRet.Enabled = true;  
+                altRet.Enabled = true;
+            }
+
+            if (opcoesForma.Text == "Paralelepípedo")
+            {
+                volRet.Enabled = true;
+            }
+            else
+            {
+                volRet.Enabled = false;
+            }
+            if (opcoesForma.Text == "Quadrado" || opcoesForma.Text == "Retângulo")
+            {
+                volumeBut.Enabled = false;
+            }
+            else
+            {
+                volumeBut.Enabled = true;
             }
         }
     }
