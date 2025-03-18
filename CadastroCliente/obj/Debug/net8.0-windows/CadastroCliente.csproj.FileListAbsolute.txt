@@ -1,0 +1,17 @@
+D:\Curso_Logica\Curso_Logica\CadastroCliente\bin\Debug\net8.0-windows\CadastroCliente.exe
+D:\Curso_Logica\Curso_Logica\CadastroCliente\bin\Debug\net8.0-windows\CadastroCliente.deps.json
+D:\Curso_Logica\Curso_Logica\CadastroCliente\bin\Debug\net8.0-windows\CadastroCliente.runtimeconfig.json
+D:\Curso_Logica\Curso_Logica\CadastroCliente\bin\Debug\net8.0-windows\CadastroCliente.dll
+D:\Curso_Logica\Curso_Logica\CadastroCliente\bin\Debug\net8.0-windows\CadastroCliente.pdb
+D:\Curso_Logica\Curso_Logica\CadastroCliente\obj\Debug\net8.0-windows\CadastroCliente.Cadastro.resources
+D:\Curso_Logica\Curso_Logica\CadastroCliente\obj\Debug\net8.0-windows\CadastroCliente.csproj.GenerateResource.cache
+D:\Curso_Logica\Curso_Logica\CadastroCliente\obj\Debug\net8.0-windows\CadastroCliente.GeneratedMSBuildEditorConfig.editorconfig
+D:\Curso_Logica\Curso_Logica\CadastroCliente\obj\Debug\net8.0-windows\CadastroCliente.AssemblyInfoInputs.cache
+D:\Curso_Logica\Curso_Logica\CadastroCliente\obj\Debug\net8.0-windows\CadastroCliente.AssemblyInfo.cs
+D:\Curso_Logica\Curso_Logica\CadastroCliente\obj\Debug\net8.0-windows\CadastroCliente.csproj.CoreCompileInputs.cache
+D:\Curso_Logica\Curso_Logica\CadastroCliente\obj\Debug\net8.0-windows\CadastroCliente.sourcelink.json
+D:\Curso_Logica\Curso_Logica\CadastroCliente\obj\Debug\net8.0-windows\CadastroCliente.dll
+D:\Curso_Logica\Curso_Logica\CadastroCliente\obj\Debug\net8.0-windows\refint\CadastroCliente.dll
+D:\Curso_Logica\Curso_Logica\CadastroCliente\obj\Debug\net8.0-windows\CadastroCliente.pdb
+D:\Curso_Logica\Curso_Logica\CadastroCliente\obj\Debug\net8.0-windows\CadastroCliente.genruntimeconfig.cache
+D:\Curso_Logica\Curso_Logica\CadastroCliente\obj\Debug\net8.0-windows\ref\CadastroCliente.dll
