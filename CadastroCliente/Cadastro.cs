@@ -2,7 +2,7 @@ namespace CadastroCliente
 {
     public partial class Cadastro : Form
     {    
-        List<Cliente> clientes;
+        List<Cliente> clientes = new List<Cliente>();
         public Cadastro()
         {
             InitializeComponent();
