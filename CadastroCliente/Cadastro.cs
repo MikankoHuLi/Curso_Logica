@@ -109,15 +109,13 @@ namespace CadastroCliente
             {
                 return false;
             }
-            if (textTelefone.TextLength < 10)
-            {
-                return false;
-            }
-            if (textTelefone.Text.Any(char.IsWhiteSpace))
+      
+            if (!textTelefone.Text.Any(char.IsNumber))
             {
                 return false;
             }
 
+            //colocar nao deixar parte em branco
             return true;
         }
 
