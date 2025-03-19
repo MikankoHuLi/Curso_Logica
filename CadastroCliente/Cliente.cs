@@ -7,7 +7,7 @@ using static CadastroCliente.Cadastro;
 
 namespace CadastroCliente
 {
-    public class Cliente
+    internal class Cliente
     {
         public int id { get; set; }
         public string nome { get; set; }

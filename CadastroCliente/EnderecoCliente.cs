@@ -1,6 +1,6 @@
 ﻿namespace CadastroCliente
 {
-    public class EnderecoCliente
+    internal class EnderecoCliente
     {
         public string logradouro { get; set; }
         public string numero { get; set; }
