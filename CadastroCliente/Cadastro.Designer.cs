@@ -45,8 +45,8 @@
             checkEstrangeiro = new CheckBox();
             label9 = new Label();
             textEtnia = new ComboBox();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
+            radioPF = new RadioButton();
+            radioPJ = new RadioButton();
             tableLayoutPanel1 = new TableLayoutPanel();
             label10 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
@@ -63,7 +63,7 @@
             textBairro = new TextBox();
             textMunicipio = new TextBox();
             textEstado = new ComboBox();
-            maskedTextBox1 = new MaskedTextBox();
+            textCEP = new MaskedTextBox();
             butCadastro = new Button();
             button1 = new Button();
             cadastrolabel = new Label();
@@ -115,7 +115,7 @@
             // 
             textTelefone.Anchor = AnchorStyles.None;
             textTelefone.Location = new Point(166, 80);
-            textTelefone.Mask = "(99) 00000-0000";
+            textTelefone.Mask = "(99)00000-0000";
             textTelefone.Name = "textTelefone";
             textTelefone.Size = new Size(100, 23);
             textTelefone.TabIndex = 4;
@@ -242,28 +242,26 @@
             textEtnia.Size = new Size(121, 23);
             textEtnia.TabIndex = 17;
             // 
-            // radioButton1
+            // radioPF
             // 
-            radioButton1.Anchor = AnchorStyles.None;
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(216, 551);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(38, 19);
-            radioButton1.TabIndex = 18;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "PF";
-            radioButton1.UseVisualStyleBackColor = true;
+            radioPF.Anchor = AnchorStyles.None;
+            radioPF.AutoSize = true;
+            radioPF.Location = new Point(216, 551);
+            radioPF.Name = "radioPF";
+            radioPF.Size = new Size(38, 19);
+            radioPF.TabIndex = 18;
+            radioPF.Text = "PF";
+            radioPF.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioPJ
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(216, 576);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(35, 19);
-            radioButton2.TabIndex = 19;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "PJ";
-            radioButton2.UseVisualStyleBackColor = true;
+            radioPJ.AutoSize = true;
+            radioPJ.Location = new Point(216, 576);
+            radioPJ.Name = "radioPJ";
+            radioPJ.Size = new Size(35, 19);
+            radioPJ.TabIndex = 19;
+            radioPJ.Text = "PJ";
+            radioPJ.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -330,7 +328,7 @@
             tableLayoutPanel2.Controls.Add(textBairro, 1, 3);
             tableLayoutPanel2.Controls.Add(textMunicipio, 1, 4);
             tableLayoutPanel2.Controls.Add(textEstado, 1, 5);
-            tableLayoutPanel2.Controls.Add(maskedTextBox1, 1, 6);
+            tableLayoutPanel2.Controls.Add(textCEP, 1, 6);
             tableLayoutPanel2.Location = new Point(393, 55);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 8;
@@ -472,14 +470,14 @@
             textEstado.Size = new Size(121, 23);
             textEstado.TabIndex = 34;
             // 
-            // maskedTextBox1
+            // textCEP
             // 
-            maskedTextBox1.Anchor = AnchorStyles.None;
-            maskedTextBox1.Location = new Point(166, 385);
-            maskedTextBox1.Mask = "00000-9999";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(100, 23);
-            maskedTextBox1.TabIndex = 35;
+            textCEP.Anchor = AnchorStyles.None;
+            textCEP.Location = new Point(166, 385);
+            textCEP.Mask = "00000-000";
+            textCEP.Name = "textCEP";
+            textCEP.Size = new Size(100, 23);
+            textCEP.TabIndex = 35;
             // 
             // butCadastro
             // 
@@ -520,11 +518,11 @@
             Controls.Add(button1);
             Controls.Add(butCadastro);
             Controls.Add(tableLayoutPanel2);
-            Controls.Add(radioButton2);
+            Controls.Add(radioPJ);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(label1);
             Controls.Add(label10);
-            Controls.Add(radioButton1);
+            Controls.Add(radioPF);
             Name = "Cadastro";
             Text = "Form1";
             tableLayoutPanel1.ResumeLayout(false);
@@ -554,8 +552,8 @@
         private CheckBox checkEstrangeiro;
         private Label label9;
         private ComboBox textEtnia;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
+        private RadioButton radioPF;
+        private RadioButton radioPJ;
         private TableLayoutPanel tableLayoutPanel1;
         private Label label10;
         private TableLayoutPanel tableLayoutPanel2;
@@ -573,7 +571,7 @@
         private TextBox textMunicipio;
         private ComboBox textEstado;
         private Button butCadastro;
-        private MaskedTextBox maskedTextBox1;
+        private MaskedTextBox textCEP;
         private Button button1;
         private Label cadastrolabel;
     }

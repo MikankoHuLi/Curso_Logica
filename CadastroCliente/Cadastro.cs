@@ -21,21 +21,21 @@ namespace CadastroCliente
 
             Cliente jinx = new Cliente()
             {
-                id = 01, nome = "Powder",dataNascimento = "04/07/2000",telefone = "905888408",email = "jnx@gmail.com",nomeSocial = "Jinx",estrangeiro = true,
+                id = 01, nome = "Powder",dataNascimento = "04/07/2000",telefone = "(11)90588-8408",email = "jnx@gmail.com",nomeSocial = "Jinx",estrangeiro = true,
                 endereco = endereco01,genero = GeneroCliente.Feminino,etnia = EtniaCliente.Branco,tipo = TipoCliente.PF
             };
             clientes.Add(jinx);
 
             Cliente vi = new Cliente()
             {
-                id = 02,nome = "Violet",dataNascimento = "19/04/1995",telefone = "945895612",email = "vi@gmail.com",nomeSocial = "Vi",estrangeiro = true,
+                id = 02,nome = "Violet",dataNascimento = "19/04/1995",telefone = "(11)97788-8408",email = "vi@gmail.com",nomeSocial = "Vi",estrangeiro = true,
                 endereco = endereco02, genero = GeneroCliente.Feminino,etnia = EtniaCliente.Branco,tipo = TipoCliente.PF
             };
             clientes.Add(vi);
 
             Cliente cupcake = new Cliente()
             {
-                id = 03, nome = "Caitlyn", dataNascimento = "09/07/1994",telefone = "947331285",email = "cupcake@gmail.com",nomeSocial = "Cupcake", estrangeiro = false,
+                id = 03, nome = "Caitlyn", dataNascimento = "09/07/1994",telefone = "(11)95688-8408",email = "cupcake@gmail.com",nomeSocial = "Cupcake", estrangeiro = false,
                 endereco = endereco02, genero = GeneroCliente.Feminino,etnia = EtniaCliente.Amarelo,tipo = TipoCliente.PF
             };
             clientes.Add(cupcake);
@@ -71,16 +71,23 @@ namespace CadastroCliente
                 return false;
             }
       
-            if (textTelefone.Text.Length < 15)
+            if (textTelefone.Text.Length < 14)
             {
                 return false;
             }
 
-            if (textTelefone.Text.Contains("  "))
+            if (textTelefone.Text.Any(char.IsWhiteSpace))
             {
                 return false;
             }
-            // criar metodo telefone unico
+         
+            for (int i = 0; i < clientes.Count; i++)
+            {
+                if (clientes[i].telefone == textTelefone.Text)
+                {
+                    return false;
+                }
+            }
             return true;
         }
         private bool ValidarNascimento()
@@ -107,20 +114,19 @@ namespace CadastroCliente
             {
                 return false;
             }
-            if (textEmail.Text.Contains(" "))
+            if (textEmail.Text.Any(char.IsWhiteSpace) || !textEmail.Text.Contains("@") || !textEmail.Text.Contains("."))
             {
                 return false;
             }
-            if (!textEmail.Text.Contains("@"))
+            
+            for (int i = 0; i < clientes.Count; i++)
             {
-                return false;
-            }
-            if (!textEmail.Text.Contains("."))
-            {
-                return false;
+                if (clientes[i].email == textEmail.Text)
+                {
+                    return false;
+                }
             }
             return true;
-            // metodo email unico
         }
         private bool ValidarNomeSocial()
         {
@@ -129,6 +135,15 @@ namespace CadastroCliente
                 return false;
             }
 
+            return true;
+        }
+        private bool ValidarTipo()
+        {
+            if (!radioPF.Checked && !radioPJ.Checked)
+            {
+                return false;
+            }
+           
             return true;
         }
         private bool ValidarGenero()
@@ -148,6 +163,85 @@ namespace CadastroCliente
                 return false;
             }
 
+
+            return true;
+        }
+        private bool ValidarRua()
+        {
+            if (ValorBranco(textRua.Text))
+            {
+                return false;
+            }
+            if (textRua.Text.Any(char.IsPunctuation))
+            {
+                return false;
+            }
+
+            return true;
+        }
+        private bool ValidarNumeroCasa()
+        {
+            if (ValorBranco(textNumeroCasa.Text))
+            {
+                return false;
+            }
+            if (textNumeroCasa.Text.Any(char.IsPunctuation) || textNumeroCasa.Text.All(char.IsLetter))
+            {
+                return false;
+            }
+
+            return true;
+        }
+        private bool ValidarBairro()
+        {
+            if (ValorBranco(textBairro.Text))
+            {
+                return false;
+            }
+            if (textBairro.Text.Any(char.IsPunctuation) || textBairro.Text.All(char.IsNumber))
+            {
+                return false;
+            }
+
+            return true;
+        }
+        private bool ValidarMunicipio()
+        {
+            if (ValorBranco(textMunicipio.Text))
+            {
+                return false;
+            }
+            if (textMunicipio.Text.Any(char.IsPunctuation) || textMunicipio.Text.Any(char.IsNumber))
+            {
+                return false;
+            }
+
+            return true;
+        }
+        private bool ValidarEstado()
+        {
+            if (textEstado.SelectedItem == null)
+            {
+                return false;
+            }
+
+
+            return true;
+        }
+        private bool ValidarCEP()
+        {
+            if (ValorBranco(textCEP.Text))
+            {
+                return false;
+            }
+            if (textCEP.Text.Any(char.IsWhiteSpace))
+            {
+                return false;
+            }
+            if (textCEP.Text.Length < 9)
+            {
+                return false;
+            }
 
             return true;
         }
@@ -180,6 +274,34 @@ namespace CadastroCliente
                 return false;
             }
             if (!ValidarEtnia())
+            {
+                return false;
+            }
+            if (!ValidarRua())
+            {
+                return false;
+            }
+            if (!ValidarNumeroCasa())
+            {
+                return false;
+            }
+            if (!ValidarBairro())
+            {
+                return false;
+            }
+            if (!ValidarMunicipio())
+            {
+                return false;
+            }
+            if (!ValidarEstado())
+            {
+                return false;
+            }
+            if (!ValidarCEP())
+            {
+                return false;
+            }
+            if (!ValidarTipo())
             {
                 return false;
             }
