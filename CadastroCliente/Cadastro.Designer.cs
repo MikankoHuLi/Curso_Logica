@@ -173,6 +173,7 @@
             // textGenero
             // 
             textGenero.Anchor = AnchorStyles.None;
+            textGenero.DropDownStyle = ComboBoxStyle.DropDownList;
             textGenero.FormattingEnabled = true;
             textGenero.Items.AddRange(new object[] { " Masculino", " Feminino", " NãoBinario", " Outro" });
             textGenero.Location = new Point(155, 385);
@@ -235,6 +236,7 @@
             // textEtnia
             // 
             textEtnia.Anchor = AnchorStyles.None;
+            textEtnia.DropDownStyle = ComboBoxStyle.DropDownList;
             textEtnia.FormattingEnabled = true;
             textEtnia.Items.AddRange(new object[] { "Branco", "Negro", "Pardo", "Amarelo", "Indígena", "Outro" });
             textEtnia.Location = new Point(155, 447);
@@ -463,6 +465,7 @@
             // textEstado
             // 
             textEstado.Anchor = AnchorStyles.None;
+            textEstado.DropDownStyle = ComboBoxStyle.DropDownList;
             textEstado.FormattingEnabled = true;
             textEstado.Items.AddRange(new object[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Paraná", "Paraíba", "Pará", "Pernambuco", "Piauí", "Rio Grande do Norte", "Rio Grande do Sul", "Rio de Janeiro", "Rondônia", "Roraima", "Santa Catarina", "Sergipe", "São Paulo", "Tocantins" });
             textEstado.Location = new Point(155, 324);

@@ -21,7 +21,7 @@ namespace CadastroCliente
 
             Cliente jinx = new Cliente()
             {
-                id = 01, nome = "Powder",dataNascimento = "04/07/2000",telefone = "(11)90588-8408",email = "jnx@gmail.com",nomeSocial = "Jinx",estrangeiro = true,
+                id = 01, nome = "Powder",dataNascimento = "04/07/2000",telefone = "(11)90588-8408",email = "jinx@gmail.com",nomeSocial = "Jinx",estrangeiro = true,
                 endereco = endereco01,genero = GeneroCliente.Feminino,etnia = EtniaCliente.Branco,tipo = TipoCliente.PF
             };
             clientes.Add(jinx);
@@ -58,7 +58,7 @@ namespace CadastroCliente
                 return false;
             }
             if (!textNome.Text.Any(char.IsWhiteSpace) || textNome.Text.Any(char.IsNumber) || textNome.Text.Any(char.IsPunctuation))
-            {
+            {          
                 return false;
             }
 
@@ -71,12 +71,7 @@ namespace CadastroCliente
                 return false;
             }
       
-            if (textTelefone.Text.Length < 14)
-            {
-                return false;
-            }
-
-            if (textTelefone.Text.Any(char.IsWhiteSpace))
+            if (textTelefone.Text.Length < 14 || textTelefone.Text.Any(char.IsWhiteSpace))
             {
                 return false;
             }
@@ -95,17 +90,20 @@ namespace CadastroCliente
             if (ValorBranco(textNascimento.Text))
             {
                 return false;
+
             }
 
-            if (textNascimento.Text.Length < 10)
+            if (textNascimento.Text.Length < 10 || textNascimento.Text.Contains(" "))
             {
                 return false;
             }
 
-            if (textNascimento.Text.Contains(" "))
+            DateTime temp;
+            if (!DateTime.TryParse(textNascimento.Text, out temp))
             {
                 return false;
             }
+           
             return true;
         }
         private bool ValidarEmail()
@@ -123,7 +121,7 @@ namespace CadastroCliente
             {
                 if (clientes[i].email == textEmail.Text)
                 {
-                    return false;
+                    return false;             
                 }
             }
             return true;
@@ -251,58 +249,86 @@ namespace CadastroCliente
         {
             if (!ValidarNome())
             {
+                cadastrolabel.Text = "Nome Inválido";
+                cadastrolabel.ForeColor = Color.Red;
                 return false;
             }
             if (!ValidarTelefone())
             {
+                cadastrolabel.Text = "Telefone Inválido";
+                cadastrolabel.ForeColor = Color.Red;
                 return false;
             }
             if (!ValidarNascimento())
             {
+                cadastrolabel.Text = "Data de Nascimento Inválida";
+                cadastrolabel.ForeColor = Color.Red;
                 return false;
             }
             if (!ValidarEmail())
             {
+                cadastrolabel.Text = "Email Inválido";
+                cadastrolabel.ForeColor = Color.Red;
                 return false;
             }
             if (!ValidarNomeSocial())
             {
+                cadastrolabel.Text = "Nome Social Inválido";
+                cadastrolabel.ForeColor = Color.Red;
                 return false;
             }
             if (!ValidarGenero())
             {
+                cadastrolabel.Text = "Gênero Inválido";
+                cadastrolabel.ForeColor = Color.Red;
                 return false;
             }
             if (!ValidarEtnia())
             {
-                return false;
-            }
-            if (!ValidarRua())
-            {
-                return false;
-            }
-            if (!ValidarNumeroCasa())
-            {
-                return false;
-            }
-            if (!ValidarBairro())
-            {
-                return false;
-            }
-            if (!ValidarMunicipio())
-            {
-                return false;
-            }
-            if (!ValidarEstado())
-            {
-                return false;
-            }
-            if (!ValidarCEP())
-            {
+                cadastrolabel.Text = "Etnia Inválido";
+                cadastrolabel.ForeColor = Color.Red;
                 return false;
             }
             if (!ValidarTipo())
             {
+                cadastrolabel.Text = "Tipo de Pessoa Inválido";
+                cadastrolabel.ForeColor = Color.Red;
+                return false;
+            }
+            if (!ValidarRua())
+            {
+                cadastrolabel.Text = "Logradouro Inválido";
+                cadastrolabel.ForeColor = Color.Red;
+                return false;
+            }
+            if (!ValidarNumeroCasa())
+            {
+                cadastrolabel.Text = "Número Inválido";
+                cadastrolabel.ForeColor = Color.Red;
+                return false;
+            }
+            if (!ValidarBairro())
+            {
+                cadastrolabel.Text = "Bairro Inválido";
+                cadastrolabel.ForeColor = Color.Red;
+                return false;
+            }
+            if (!ValidarMunicipio())
+            {
+                cadastrolabel.Text = "Município Inválido";
+                cadastrolabel.ForeColor = Color.Red;
+                return false;
+            }
+            if (!ValidarEstado())
+            {
+                cadastrolabel.Text = "Estado Inválido";
+                cadastrolabel.ForeColor = Color.Red;
+                return false;
+            }
+            if (!ValidarCEP())
+            {
+                cadastrolabel.Text = "CEP Inválido";
+                cadastrolabel.ForeColor = Color.Red;
                 return false;
             }
 
@@ -313,16 +339,55 @@ namespace CadastroCliente
         {
             if (!ValidarCadastro())
             {
-                cadastrolabel.Text = "Não foi possível cadastrar";
-                cadastrolabel.ForeColor = Color.Red;
+                //cadastrolabel.Text = "Não foi possível cadastrar";
+                //cadastrolabel.ForeColor = Color.Red;
+                return;
 
             }
-            else
+
+            EnderecoCliente enderecoCadastro = new EnderecoCliente()
             {
-                cadastrolabel.Text = "Cadastrado com sucesso";
-                cadastrolabel.ForeColor = Color.Green;
+                logradouro = textRua.Text,
+                numero = textNumeroCasa.Text,
+                complemento = textComplemento.Text,
+                bairro = textBairro.Text,
+                municipio = textMunicipio.Text,
+                estado = textEstado.Text,
+                cep = textCEP.Text,
+            };
+
+            TipoCliente cadastroTipo = 0;
+            if (radioPF.Checked)
+            {
+                cadastroTipo = TipoCliente.PF;
             }
+            if (radioPJ.Checked)
+            {
+                cadastroTipo = TipoCliente.Pj;
+            }   
+            
+
+            clientes.Add(new Cliente()
+            {
+                id = clientes.Max(idList => idList.id) + 1, 
+                nome = textNome.Text,
+                dataNascimento = textNascimento.Text,
+                telefone = textTelefone.Text,
+                email = textEmail.Text,
+                nomeSocial = textNomeSocial.Text,
+                estrangeiro = checkEstrangeiro.Checked, 
+                endereco = enderecoCadastro,
+                genero = (GeneroCliente)textGenero.SelectedIndex, 
+                etnia = (EtniaCliente)textEtnia.SelectedIndex, 
+                tipo = cadastroTipo
+
+            });
+            cadastrolabel.Text = "Cadastro realizado com sucesso";
+            cadastrolabel.ForeColor = Color.Green;
+
+
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
