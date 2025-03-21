@@ -192,7 +192,7 @@ namespace CadastroCliente
             {
                 return false;
             }
-            if (textNumeroCasa.Text.Any(char.IsPunctuation) || textNumeroCasa.Text.All(char.IsLetter))
+            if (textNumeroCasa.Text.Any(char.IsPunctuation) || textNumeroCasa.Text.All(char.IsLetter) || !textNumeroCasa.Text.Any(char.IsNumber))
             {
                 return false;
             }
@@ -205,7 +205,7 @@ namespace CadastroCliente
             {
                 return false;
             }
-            if (textBairro.Text.Any(char.IsPunctuation) || textBairro.Text.All(char.IsNumber))
+            if (textBairro.Text.Any(char.IsPunctuation) || textBairro.Text.All(char.IsNumber) || !textBairro.Text.Any(char.IsLetter))
             {
                 return false;
             }
