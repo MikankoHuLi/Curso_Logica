@@ -65,10 +65,11 @@
             textEstado = new ComboBox();
             textCEP = new MaskedTextBox();
             butCadastro = new Button();
-            button1 = new Button();
             cadastrolabel = new Label();
+            gridClientes = new DataGridView();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)gridClientes).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -248,7 +249,7 @@
             // 
             radioPF.Anchor = AnchorStyles.None;
             radioPF.AutoSize = true;
-            radioPF.Location = new Point(216, 551);
+            radioPF.Location = new Point(216, 554);
             radioPF.Name = "radioPF";
             radioPF.Size = new Size(38, 19);
             radioPF.TabIndex = 18;
@@ -306,7 +307,7 @@
             label10.Anchor = AnchorStyles.None;
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(70, 559);
+            label10.Location = new Point(70, 562);
             label10.Name = "label10";
             label10.Size = new Size(47, 21);
             label10.TabIndex = 16;
@@ -493,16 +494,6 @@
             butCadastro.UseVisualStyleBackColor = true;
             butCadastro.Click += butCadastro_Click;
             // 
-            // button1
-            // 
-            button1.Location = new Point(316, 401);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 23;
-            button1.Text = "clear";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // cadastrolabel
             // 
             cadastrolabel.AutoSize = true;
@@ -512,13 +503,26 @@
             cadastrolabel.Size = new Size(0, 21);
             cadastrolabel.TabIndex = 24;
             // 
+            // gridClientes
+            // 
+            gridClientes.AllowUserToAddRows = false;
+            gridClientes.AllowUserToDeleteRows = false;
+            gridClientes.AllowUserToResizeRows = false;
+            gridClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridClientes.Location = new Point(720, 55);
+            gridClientes.MultiSelect = false;
+            gridClientes.Name = "gridClientes";
+            gridClientes.ReadOnly = true;
+            gridClientes.Size = new Size(367, 490);
+            gridClientes.TabIndex = 25;
+            // 
             // Cadastro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(713, 619);
+            ClientSize = new Size(1099, 619);
+            Controls.Add(gridClientes);
             Controls.Add(cadastrolabel);
-            Controls.Add(button1);
             Controls.Add(butCadastro);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(radioPJ);
@@ -532,6 +536,7 @@
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)gridClientes).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -575,7 +580,7 @@
         private ComboBox textEstado;
         private Button butCadastro;
         private MaskedTextBox textCEP;
-        private Button button1;
         private Label cadastrolabel;
+        private DataGridView gridClientes;
     }
 }

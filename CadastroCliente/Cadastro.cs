@@ -5,6 +5,7 @@ namespace CadastroCliente
     public partial class Cadastro : Form
     {
         List<Cliente> clientes = new List<Cliente>();
+        private readonly BindingSource BindingSource = [];
         public Cadastro()
         {
             InitializeComponent();
@@ -44,6 +45,8 @@ namespace CadastroCliente
             //nomeSocial = "Cupcake", estrangeiro = false, endereco = endereco02, genero = GeneroCliente.Feminino, etnia = EtniaCliente.Amarelo, tipo = TipoCliente.PF});
             //dessa forma o cliente anonimo
 
+            BindingSource.DataSource = clientes;
+            gridClientes.DataSource = BindingSource;
 
         }
         private bool ValorBranco(string valor)
@@ -97,6 +100,12 @@ namespace CadastroCliente
             {
                 return false;
             }
+            int index = 6;
+            string ano = textNascimento.Text.Substring(index);
+            if (Convert.ToInt32(ano) > 2007 || Convert.ToInt32(ano) < 1900)
+            {
+                return false;
+            }
 
             DateTime temp;
             if (!DateTime.TryParse(textNascimento.Text, out temp))
@@ -112,7 +121,7 @@ namespace CadastroCliente
             {
                 return false;
             }
-            if (textEmail.Text.Any(char.IsWhiteSpace) || !textEmail.Text.Contains("@") || !textEmail.Text.Contains("."))
+            if (textEmail.Text.Any(char.IsWhiteSpace) || !textEmail.Text.Contains("@") || !textEmail.Text.Contains(".") || textBairro.Text.All(char.IsNumber))
             {
                 return false;
             }
@@ -170,7 +179,7 @@ namespace CadastroCliente
             {
                 return false;
             }
-            if (textRua.Text.Any(char.IsPunctuation))
+            if (textRua.Text.Any(char.IsPunctuation) || textBairro.Text.All(char.IsNumber))
             {
                 return false;
             }
@@ -209,7 +218,7 @@ namespace CadastroCliente
             {
                 return false;
             }
-            if (textMunicipio.Text.Any(char.IsPunctuation) || textMunicipio.Text.Any(char.IsNumber))
+            if (textMunicipio.Text.Any(char.IsPunctuation) || textMunicipio.Text.All(char.IsNumber))
             {
                 return false;
             }
@@ -222,8 +231,6 @@ namespace CadastroCliente
             {
                 return false;
             }
-
-
             return true;
         }
         private bool ValidarCEP()
@@ -285,7 +292,7 @@ namespace CadastroCliente
             }
             if (!ValidarEtnia())
             {
-                cadastrolabel.Text = "Etnia Inválido";
+                cadastrolabel.Text = "Etnia Inválida";
                 cadastrolabel.ForeColor = Color.Red;
                 return false;
             }
@@ -307,6 +314,7 @@ namespace CadastroCliente
                 cadastrolabel.ForeColor = Color.Red;
                 return false;
             }
+
             if (!ValidarBairro())
             {
                 cadastrolabel.Text = "Bairro Inválido";
@@ -385,13 +393,10 @@ namespace CadastroCliente
             cadastrolabel.Text = "Cadastro realizado com sucesso";
             cadastrolabel.ForeColor = Color.Green;
 
+            BindingSource.ResetBindings(false);
+
 
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            cadastrolabel.Text = "";
-        }
     }
 }
