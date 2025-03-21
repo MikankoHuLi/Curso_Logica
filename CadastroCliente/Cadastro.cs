@@ -121,7 +121,7 @@ namespace CadastroCliente
             {
                 return false;
             }
-            if (textEmail.Text.Any(char.IsWhiteSpace) || !textEmail.Text.Contains("@") || !textEmail.Text.Contains(".") || textBairro.Text.All(char.IsNumber))
+            if (textEmail.Text.Any(char.IsWhiteSpace) || !textEmail.Text.Contains("@") || !textEmail.Text.Contains(".") || !textEmail.Text.Any(char.IsLetter))
             {
                 return false;
             }
@@ -179,7 +179,7 @@ namespace CadastroCliente
             {
                 return false;
             }
-            if (textRua.Text.Any(char.IsPunctuation) || textBairro.Text.All(char.IsNumber))
+            if (textRua.Text.Any(char.IsPunctuation) || textRua.Text.All(char.IsNumber))
             {
                 return false;
             }
