@@ -199,6 +199,19 @@ namespace CadastroCliente
 
             return true;
         }
+        private bool ValidarComplemento()
+        {
+            if (ValorBranco(textComplemento.Text))
+            {
+                return true;
+
+            }
+            if (textComplemento.Text.All(char.IsNumber) || textComplemento.Text.All(char.IsPunctuation))
+            {
+                return false;
+            }
+            return true;
+        }
         private bool ValidarBairro()
         {
             if (ValorBranco(textBairro.Text))
@@ -311,6 +324,12 @@ namespace CadastroCliente
             if (!ValidarNumeroCasa())
             {
                 cadastrolabel.Text = "Número Inválido";
+                cadastrolabel.ForeColor = Color.Red;
+                return false;
+            }
+            if (!ValidarComplemento())
+            {
+                cadastrolabel.Text = "Complemento Inválido";
                 cadastrolabel.ForeColor = Color.Red;
                 return false;
             }
