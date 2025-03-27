@@ -17,3 +17,28 @@ FROM
     usuario
 WHERE
     senha LIKE '%@%';
+    
+    CREATE TABLE IF NOT EXISTS usuario (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    senha VARCHAR(16) NOT NULL
+);
+
+INSERT INTO usuario 
+    (
+    nome,
+    email,
+    senha
+    )
+    VALUES
+    ('jinx','jinx@gmail.com','cathsucks123');
+    
+    DROP TABLE comando proibido;
+    
+SELECT 
+    *
+FROM
+    livro
+WHERE
+    data_publicacao BETWEEN '1990/01/01' AND '2000/01/01'
