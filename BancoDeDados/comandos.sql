@@ -42,3 +42,13 @@ FROM
     livro
 WHERE
     data_publicacao BETWEEN '1990/01/01' AND '2000/01/01'
+    
+    DELETE FROM tabela
+    WHERE id = x
+    WHERE autor = y;
+       mexe na linha
+       
+    UPDATE tabela
+    SET (nome = rafael);
+    WHERE id = x;
+    mexe na coluna

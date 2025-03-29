@@ -7,11 +7,7 @@ SELECT
     autor.nome AS autor,
     editora.nome AS editora
 FROM
-    livro,
-    genero,
-    autor,
-    editora
-WHERE
-    livro.id_genero = genero.id
-        AND livro.id_autor = autor.id
-        AND livro.id_editora = editora.id;
+    livro
+    JOIN genero ON livro.id_genero = genero.id
+    JOIN autor ON livro.id_autor = autor.id
+    JOIN editora ON livro.id_editora = editora.id;
