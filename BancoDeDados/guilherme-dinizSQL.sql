@@ -161,10 +161,10 @@ FROM produto
 WHERE preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Eletrônicos')
 OR preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Móveis')
 ;
-
 SELECT nome, preco,categoria 
 FROM produto
-WHERE preco > (SELECT AVG(preco) FROM produto GROUP BY categoria)
+WHERE preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Eletrônicos')
+OR preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Móveis')
 ;
 
 SELECT nome, preco,categoria 
@@ -177,7 +177,6 @@ FROM produto
 WHERE preco > (SELECT AVG(preco) FROM produto )
 GROUP BY categoria
 ;
-
 
 
 SELECT AVG(preco), categoria
