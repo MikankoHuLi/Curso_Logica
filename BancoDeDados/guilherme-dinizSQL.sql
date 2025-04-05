@@ -135,14 +135,14 @@ INNER JOIN fornecedor ON id_fornecedor = fornecedor.id
 ORDER BY fornecedor.nome ASC;
 
 -- 4.2
-SELECT data_pedido AS 'Data do Pedido', pedido.id AS 'Número do Pedido', cliente.nome AS 'Cliente', produto.nome AS 'Produto', quantidade
+SELECT pedido.id AS 'Número do Pedido', cliente.nome AS 'Cliente', produto.nome AS 'Produto', quantidade
 FROM pedido
 JOIN cliente ON id_cliente = cliente.id
 JOIN produto ON id_produto = produto.id
 ORDER BY data_pedido ASC;
 
 -- 4.3
-SELECT data_pedido AS 'Data do Pedido', pedido.id AS 'Número do Pedido', cliente.nome AS 'Cliente', produto.nome AS 'Produto',
+SELECT pedido.id AS 'Número do Pedido', cliente.nome AS 'Cliente', produto.nome AS 'Produto',
 quantidade, fornecedor.nome AS 'Fornecedor'
 FROM pedido
 JOIN cliente ON id_cliente = cliente.id
@@ -158,37 +158,11 @@ GROUP BY cliente.nome ORDER BY SUM(quantidade) DESC;
 -- 5.1
 SELECT nome, preco,categoria 
 FROM produto
-WHERE preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Eletrônicos')
-OR preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Móveis')
+WHERE preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Eletrônicos') AND categoria = 'Eletrônicos'
+OR preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Móveis') AND categoria = 'Móveis';
 ;
-SELECT nome, preco,categoria 
-FROM produto
-WHERE preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Eletrônicos')
-OR preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Móveis')
-;
-
-SELECT nome, preco,categoria 
-FROM produto
-WHERE preco > (SELECT AVG(preco) FROM produto )
-;
-
-SELECT nome, preco,categoria 
-FROM produto
-WHERE preco > (SELECT AVG(preco) FROM produto )
-GROUP BY categoria
-;
-
-
-SELECT AVG(preco), categoria
- FROM produto
-GROUP BY categoria;
-
-SELECT nome, preco,categoria 
-FROM produto
-WHERE preco GROUP BY categoria;
-
-select *
-from produto;
+-- consulta media
+-- SELECT AVG(preco) FROM produto GROUP BY categoria;
 
 -- 5.2
 
