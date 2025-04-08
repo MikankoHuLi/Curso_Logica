@@ -115,7 +115,8 @@ GROUP BY categoria;
 SELECT pedido.id AS 'Numero do Pedido', produto.nome AS 'Produto',  quantidade
 FROM pedido
 INNER JOIN produto ON id_produto = produto.id
-ORDER BY quantidade DESC;
+ORDER BY quantidade DESC
+LIMIT 1;
 
 -- 3.5
 -- insert opcional
@@ -126,7 +127,7 @@ VALUES
 SELECT COUNT(nome) AS 'Quantidade de Clientes', cidade
 FROM cliente
 GROUP BY cidade 
-ORDER BY COUNT(nome) DESC;
+ORDER BY 'Quantidade de Clientes' DESC;
 
 -- 4.1
 SELECT fornecedor.nome AS 'Fornecedor', produto.nome AS 'Produto'
@@ -157,10 +158,16 @@ GROUP BY cliente.nome ORDER BY SUM(quantidade) DESC;
 
 -- 5.1
 SELECT nome, preco,categoria 
-FROM produto
-WHERE preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Eletrônicos') AND categoria = 'Eletrônicos'
-OR preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Móveis') AND categoria = 'Móveis';
+FROM produto p
+WHERE preco > (SELECT AVG(preco) FROM produto pr WHERE p.categoria = pr.categoria)
 ;
+
+
+-- SELECT nome, preco,categoria 
+-- FROM produto
+-- WHERE preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Eletrônicos') AND categoria = 'Eletrônicos'
+-- OR preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Móveis') AND categoria = 'Móveis ;
+ 
 -- consulta media
 -- SELECT AVG(preco) FROM produto GROUP BY categoria;
 
@@ -168,11 +175,11 @@ OR preco > (SELECT AVG(preco) FROM produto WHERE categoria = 'Móveis') AND cate
 
 UPDATE produto
 SET preco = preco * 1.1
-WHERE categoria = 'Eletrónicos';
+WHERE categoria = 'Eletrônicos';
 
 -- 5.3
 DELETE from pedido
-WHERE id_cliente = (SELECT id_cliente FROM cliente WHERE cidade = 'Curitiba');
+WHERE id_cliente IN (SELECT id_cliente FROM cliente WHERE cidade = 'Curitiba');
 
 -- 5.4
 INSERT INTO cliente (nome,cidade,idade)
@@ -180,17 +187,20 @@ VALUES
 ('Ricardo Lopes','Porto Alegre',38);
 
 -- 5.5
+
 INSERT INTO pedido
 (id_produto,quantidade,data_pedido,id_cliente)
 VALUES
-(2,2,'2024-03-25',1);
+((SELECT id FROM produto WHERE nome = 'Notebook Y'),
+2,'2024-03-25',
+(SELECT id FROM cliente WHERE nome = 'João Silva'));
 
 -- 5.6
-SELECT cliente.nome, pedido.id AS 'Número do Pedido', produto.nome AS 'Nome do Produto'
+SELECT DISTINCT cliente.nome, pedido.id AS 'Número do Pedido', produto.nome AS 'Nome do Produto'
 FROM pedido
 JOIN cliente ON id_cliente = cliente.id
 JOIN produto ON id_produto = produto.id
-WHERE produto.id =  ANY (SELECT produto.id FROM produto WHERE categoria = 'Móveis')
+WHERE produto.categoria = 'Móveis'
 ;
 
 
