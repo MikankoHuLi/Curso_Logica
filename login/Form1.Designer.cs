@@ -50,7 +50,7 @@
             // 
             textboxuser.Location = new Point(409, 207);
             textboxuser.Name = "textboxuser";
-            textboxuser.Size = new Size(100, 23);
+            textboxuser.Size = new Size(138, 23);
             textboxuser.TabIndex = 0;
             textboxuser.TextChanged += textBox1_TextChanged;
             // 
@@ -58,7 +58,7 @@
             // 
             textboxsenha.Location = new Point(409, 260);
             textboxsenha.Name = "textboxsenha";
-            textboxsenha.Size = new Size(100, 23);
+            textboxsenha.Size = new Size(138, 23);
             textboxsenha.TabIndex = 1;
             // 
             // botaoentrar
@@ -117,7 +117,7 @@
             // 
             labelresult.AutoSize = true;
             labelresult.Font = new Font("Century Gothic", 12F);
-            labelresult.Location = new Point(547, 240);
+            labelresult.Location = new Point(553, 239);
             labelresult.Name = "labelresult";
             labelresult.Size = new Size(0, 21);
             labelresult.TabIndex = 7;

@@ -1,3 +1,5 @@
+using MySql.Data.MySqlClient;
+
 namespace login
 {
     public partial class FormLogin : Form
@@ -10,16 +12,18 @@ namespace login
          {"BrunaS2!","Eoque11?", "Megum!666" };
         */
 
+       private static readonly string  ConnectionString = "datasource=localhost;username=root;password=;database=senac;" ;
+       private readonly MySqlConnection Connection = new MySqlConnection(ConnectionString);
 
-        List<Usuario> usuarios = new List<Usuario>();
+        //List<Usuario> usuarios = new List<Usuario>();
 
 
         public FormLogin()
         {
             InitializeComponent();
-            usuarios.Add(new Usuario() { Email = "neymar.jr@email.com", Senha = "BrunaS2!" });
-            usuarios.Add(new Usuario() { Email = "pablo.vitar@email.com", Senha = "Eoque11?" });
-            usuarios.Add(new Usuario() { Email = "sukuna.silva@email.com", Senha = "Megum!666" });
+            //usuarios.Add(new Usuario() { Email = "neymar.jr@email.com", Senha = "BrunaS2!" });
+            //usuarios.Add(new Usuario() { Email = "pablo.vitar@email.com", Senha = "Eoque11?" });
+            //usuarios.Add(new Usuario() { Email = "sukuna.silva@email.com", Senha = "Megum!666" });
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -52,15 +56,36 @@ namespace login
             }
 
             bool autenticado = false;
-            
-            for (int i = 0; i < usuarios.Count; i++)
+
+            //for (int i = 0; i < usuarios.Count; i++)
+            //{
+
+            //    if (usuarios[i].Email == userBusc && usuarios[i].Senha == senha)
+            //    {
+
+            //        autenticado = true;
+            //    }
+            //}
+
+            try
             {
-               
-                if (usuarios[i].Email == userBusc && usuarios[i].Senha == senha)
-                {
-                    
-                    autenticado = true;
-                }
+                Connection.Open();
+
+                string query = $"SELECT senha FROM usuario WHERE email = '{userBusc}';"; 
+
+                MySqlCommand mySqlCommand = new MySqlCommand(query, Connection);
+                MySqlDataReader reader = mySqlCommand.ExecuteReader();
+
+                autenticado = reader.Read() && reader.GetString(0) == senha;
+
+            }
+            catch
+            {
+                MessageBox.Show("Erro de Banco de Dados");
+            }
+            finally 
+            {
+                Connection.Close();
             }
 
             if (!autenticado)
@@ -73,7 +98,10 @@ namespace login
                 return;
             }
 
-
+            labelresult.Text = "Usuário cadastrado com sucesso!";
+            labelresult.ForeColor = Color.Green;
+            textboxuser.Clear();
+            textboxsenha.Clear();
 
         }
 
@@ -139,15 +167,28 @@ namespace login
             }
 
             bool encontrado = false;
-            for (int i = 0; i < usuarios.Count; i++)
+            try
             {
-                if (usuarios[i].Email == novoUser)
-                {
-                    encontrado = true;
-                }
+                Connection.Open();
+
+                string query = $"SELECT email FROM usuario WHERE email = '{novoUser}';";
+
+                MySqlCommand mySqlCommand = new MySqlCommand(query, Connection);
+                MySqlDataReader reader = mySqlCommand.ExecuteReader();
+
+                encontrado = reader.Read();
+
+            }
+            catch
+            {
+                MessageBox.Show("Erro de Banco de Dados");
+            }
+            finally
+            {
+                Connection.Close();
             }
 
-           
+
             if (encontrado)
             {
                 labelCadast.Text = "Já existe um usuário cadastrado";
@@ -155,12 +196,31 @@ namespace login
                 return;
             }
 
-            
-            usuarios.Add(new Usuario() { Email = novoUser, Senha = novaSenha });
-            labelCadast.Text = "Usuário cadastrado com sucesso!";
-            labelCadast.ForeColor = Color.Green;
-            regUser.Clear();
-            regSenha.Clear();
+
+            try
+            {
+                Connection.Open();
+
+                string query = $"INSERT INTO usuario (email,senha) VALUES ('{novoUser}','{novaSenha}');";
+
+                MySqlCommand mySqlCommand = new MySqlCommand(query, Connection);
+                mySqlCommand.ExecuteNonQuery();
+                labelCadast.Text = "Usuário cadastrado com sucesso!";
+                labelCadast.ForeColor = Color.Green;
+                regUser.Clear();
+                regSenha.Clear();
+
+            }
+            catch
+            {
+                MessageBox.Show("Erro de Banco de Dados");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+           
         }
         /*
                for (int i = 0; i < novaSenha.Lenght; i++)
