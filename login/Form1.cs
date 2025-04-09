@@ -98,7 +98,7 @@ namespace login
                 return;
             }
 
-            labelresult.Text = "Usuário cadastrado com sucesso!";
+            labelresult.Text = "Usuário logado sucesso!";
             labelresult.ForeColor = Color.Green;
             textboxuser.Clear();
             textboxsenha.Clear();

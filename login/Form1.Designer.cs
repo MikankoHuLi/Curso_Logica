@@ -48,7 +48,7 @@
             // 
             // textboxuser
             // 
-            textboxuser.Location = new Point(409, 207);
+            textboxuser.Location = new Point(388, 208);
             textboxuser.Name = "textboxuser";
             textboxuser.Size = new Size(138, 23);
             textboxuser.TabIndex = 0;
@@ -56,7 +56,7 @@
             // 
             // textboxsenha
             // 
-            textboxsenha.Location = new Point(409, 260);
+            textboxsenha.Location = new Point(388, 261);
             textboxsenha.Name = "textboxsenha";
             textboxsenha.Size = new Size(138, 23);
             textboxsenha.TabIndex = 1;
@@ -75,7 +75,7 @@
             // 
             email.AutoSize = true;
             email.Font = new Font("Century Gothic", 9F);
-            email.Location = new Point(356, 209);
+            email.Location = new Point(335, 210);
             email.Name = "email";
             email.Size = new Size(50, 17);
             email.TabIndex = 3;
@@ -85,7 +85,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 9F);
-            label2.Location = new Point(360, 262);
+            label2.Location = new Point(339, 263);
             label2.Name = "label2";
             label2.Size = new Size(43, 17);
             label2.TabIndex = 4;
@@ -95,7 +95,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 50F);
-            label1.Location = new Point(317, 45);
+            label1.Location = new Point(308, 45);
             label1.Name = "label1";
             label1.Size = new Size(305, 81);
             label1.TabIndex = 5;
@@ -117,7 +117,7 @@
             // 
             labelresult.AutoSize = true;
             labelresult.Font = new Font("Century Gothic", 12F);
-            labelresult.Location = new Point(553, 239);
+            labelresult.Location = new Point(537, 239);
             labelresult.Name = "labelresult";
             labelresult.Size = new Size(0, 21);
             labelresult.TabIndex = 7;
@@ -156,14 +156,14 @@
             // 
             regUser.Location = new Point(815, 208);
             regUser.Name = "regUser";
-            regUser.Size = new Size(100, 23);
+            regUser.Size = new Size(136, 23);
             regUser.TabIndex = 11;
             // 
             // regSenha
             // 
             regSenha.Location = new Point(815, 261);
             regSenha.Name = "regSenha";
-            regSenha.Size = new Size(100, 23);
+            regSenha.Size = new Size(136, 23);
             regSenha.TabIndex = 12;
             // 
             // regBotao
