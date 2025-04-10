@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CadastroCliente
+namespace CadastroCliente.dominio
 {
-    internal enum GeneroCliente
+    internal enum EtniaCliente
     {
-        Masculino,
-        Feminino,
-        NãoBinario,
+        Branco,
+        Negro,
+        Pardo,
+        Amarelo,
+        Indígena,
         Outro
     }
 }

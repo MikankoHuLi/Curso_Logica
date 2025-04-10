@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using static CadastroCliente.Cadastro;
 
-namespace CadastroCliente
+namespace CadastroCliente.dominio
 {
     internal class Cliente
     {
         public int id { get; set; }
         public string nome { get; set; }
-        public string dataNascimento { get; set; }
+        public DateTime dataNascimento { get; set; }
         public string telefone { get; set; }
         public string email { get; set; }
         public string nomeSocial { get; set; }
