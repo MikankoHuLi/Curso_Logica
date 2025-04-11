@@ -21,3 +21,5 @@ values
 ('Violet','Vi','1995-04-19','vi@gmail.com','(11)97788-8408',0,0,1,0,(SELECT id FROM endereco WHERE logradouro = 'Kiramman Manor')),
 ('Caitlyn','Cupcake','1994-07-09','cupcake@gmail.com','(11)95688-8408',0,3,1,1,(SELECT id FROM endereco WHERE logradouro = 'Kiramman Manor'))
 ;
+
+

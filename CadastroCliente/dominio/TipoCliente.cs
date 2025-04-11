@@ -9,6 +9,6 @@ namespace CadastroCliente.dominio
     internal enum TipoCliente
     {
         PF,
-        Pj
+        PJ
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CadastroCliente.repositorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace CadastroCliente.dominio
 {
     internal class Cliente
     {
+        private readonly ClienteRepositorio clienteRepositorio = new();
         public int id { get; set; }
         public string nome { get; set; }
         public DateTime dataNascimento { get; set; }
@@ -20,5 +22,15 @@ namespace CadastroCliente.dominio
         public GeneroCliente genero { get; set; }
         public EtniaCliente etnia { get; set; }
         public TipoCliente tipo { get; set; }
+
+        public List<Cliente> ListarClientes()
+        {
+            return clienteRepositorio.ListarClientes();
+        }
+
+        public void InserirCliente(Cliente novocliente)
+        {
+            clienteRepositorio.InserirCliente(novocliente);
+        }
     }
 }

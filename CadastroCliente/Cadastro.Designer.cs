@@ -532,6 +532,7 @@
             Controls.Add(radioPF);
             Name = "Cadastro";
             Text = "Form1";
+            Load += Cadastro_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);

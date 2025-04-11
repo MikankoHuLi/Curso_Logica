@@ -59,5 +59,71 @@ namespace CadastroCliente.repositorio
 
             return clientes;
         }
+
+        public void InserirCliente(Cliente novocliente)
+        {
+            using (var conn = Database.GetConnection())
+            {
+                conn.Open();
+
+                string queryEndereco = "INSERT INTO endereco (logradouro, numero, bairro, municipio, estado, cep, complemento)" +
+                                       "VALUES (@logradouro, @numero, @bairro, @municipio, @estado, @cep, @complemento);";
+                using (var cmd = new MySqlCommand(queryEndereco, conn))
+                {
+                    cmd.Parameters.AddWithValue("@logradouro", novocliente.endereco.logradouro);
+                    cmd.Parameters.AddWithValue("@numero", novocliente.endereco.numero);
+                    cmd.Parameters.AddWithValue("@bairro", novocliente.endereco.bairro);
+                    cmd.Parameters.AddWithValue("@municipio", novocliente.endereco.municipio);
+                    cmd.Parameters.AddWithValue("@estado", novocliente.endereco.estado);
+                    cmd.Parameters.AddWithValue("@cep", novocliente.endereco.cep);
+                    cmd.Parameters.AddWithValue("@complemento", novocliente.endereco.complemento);
+                    cmd.ExecuteNonQuery();
+                }
+
+                int idEndereco = -1;
+
+                string queryIdEndereco = "SELECT id FROM endereco" +                                           
+                                         "WHERE logradouro = @logradouro" +                                            
+                                         "AND numero = @numero" +                                            
+                                         "AND bairro = @bairro" +                                           
+                                         "AND municipio = @municipio" +                                            
+                                         "AND estado = @estado" +                                            
+                                         "AND cep = @cep" +                                            
+                                         "AND complemento = @complemento;";
+
+                using (var cmd = new MySqlCommand(queryIdEndereco, conn))
+                {
+                    cmd.Parameters.AddWithValue("@logradouro", novocliente.endereco.logradouro);
+                    cmd.Parameters.AddWithValue("@numero", novocliente.endereco.numero);
+                    cmd.Parameters.AddWithValue("@bairro", novocliente.endereco.bairro);
+                    cmd.Parameters.AddWithValue("@municipio", novocliente.endereco.municipio);
+                    cmd.Parameters.AddWithValue("@estado", novocliente.endereco.estado);
+                    cmd.Parameters.AddWithValue("@cep", novocliente.endereco.cep);
+                    cmd.Parameters.AddWithValue("@complemento", novocliente.endereco.complemento);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        idEndereco = reader.Read() ? reader.GetInt32("id") : -1;
+                    }
+                }
+
+                string query = "INSERT INTO cliente (nome, nome_social, data_nascimento, email, telefone, tipo, etnia, genero, estrangeiro, id_endereco)" +
+                               "VALUES (@nome, @nome_social, @data_nascimento, @email, @telefone, @tipo, @etnia, @genero, @estrangeiro, @id_endereco);";
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@nome", novocliente.nome);
+                    cmd.Parameters.AddWithValue("@nome_social", novocliente.nomeSocial);
+                    cmd.Parameters.AddWithValue("@data_nascimento", novocliente.dataNascimento);
+                    cmd.Parameters.AddWithValue("@email", novocliente.email);
+                    cmd.Parameters.AddWithValue("@telefone", novocliente.telefone);
+                    cmd.Parameters.AddWithValue("@tipo", novocliente.tipo);
+                    cmd.Parameters.AddWithValue("@etnia", novocliente.etnia);
+                    cmd.Parameters.AddWithValue("@genero", novocliente.genero);
+                    cmd.Parameters.AddWithValue("@estrangeiro", novocliente.estrangeiro);
+                    cmd.Parameters.AddWithValue("@id_endereco", idEndereco);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            
+        }
     }
 }
