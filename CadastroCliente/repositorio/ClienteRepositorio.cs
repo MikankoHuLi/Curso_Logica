@@ -82,13 +82,13 @@ namespace CadastroCliente.repositorio
 
                 int idEndereco = -1;
 
-                string queryIdEndereco = "SELECT id FROM endereco" +                                           
-                                         "WHERE logradouro = @logradouro" +                                            
-                                         "AND numero = @numero" +                                            
-                                         "AND bairro = @bairro" +                                           
-                                         "AND municipio = @municipio" +                                            
-                                         "AND estado = @estado" +                                            
-                                         "AND cep = @cep" +                                            
+                string queryIdEndereco = "SELECT id FROM endereco " +                                           
+                                         "WHERE logradouro = @logradouro " +                                            
+                                         "AND numero = @numero " +                                            
+                                         "AND bairro = @bairro " +                                           
+                                         "AND municipio = @municipio " +                                            
+                                         "AND estado = @estado " +                                            
+                                         "AND cep = @cep " +                                            
                                          "AND complemento = @complemento;";
 
                 using (var cmd = new MySqlCommand(queryIdEndereco, conn))
