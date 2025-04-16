@@ -54,7 +54,7 @@ namespace ListaAtividades.repositorio
             {
                 conn.Open ();
 
-                string query = $"SELECT * FROM atividade WHERE situacao = {Situacao.Realizando};";
+                string query = $"SELECT * FROM atividade WHERE situacao = {(int) Situacao.Realizando};";
 
                 using (var cmd = new MySqlCommand(query, conn))
                 {
@@ -85,7 +85,7 @@ namespace ListaAtividades.repositorio
             {
                 conn.Open ();
 
-                string query = $"SELECT * FROM atividade WHERE situacao = {Situacao.Pendente}; ";
+                string query = $"SELECT * FROM atividade WHERE situacao = {(int) Situacao.Pendente}; ";
 
                 using (var cmd = new MySqlCommand(query, conn))
                 {
