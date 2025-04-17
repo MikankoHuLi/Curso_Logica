@@ -5,6 +5,7 @@ namespace ListaAtividades
     public partial class ListaDeAtividades : Form
     {
         private Atividade? atividadeEmAndamento;
+
         public ListaDeAtividades()
         {
             InitializeComponent();
@@ -12,14 +13,15 @@ namespace ListaAtividades
 
         private void ListaDeAtividades_Load(object sender, EventArgs e)
         {
-            CarregarAtividades();
             CarregarAtividadeEmAndamento();
+            CarregarAtividades();
+            textErro.Text = "Não ";
         }
         private void CarregarAtividadeEmAndamento()
         {
-            Atividade atividade = new Atividade();
+            Atividade atividade = new ();
 
-            var atividadeEmAndamento = atividade.BuscarAtividadesAndamento();
+            atividadeEmAndamento = atividade.BuscarAtividadesAndamento();
             string textoAtividade = $"{atividadeEmAndamento.id} - {atividadeEmAndamento.titulo}";
 
             textAtividadeEmAndamento.Text = atividadeEmAndamento.id > 0 ? textoAtividade :string.Empty ;
@@ -29,7 +31,7 @@ namespace ListaAtividades
 
         private void CarregarAtividades()
         {
-            Atividade atividade = new Atividade();
+            Atividade atividade = new ();
 
             var atividadesPendentes = atividade.ListarAtividadesPendentes();
             gridAtividades.DataSource = atividadesPendentes;
@@ -37,12 +39,15 @@ namespace ListaAtividades
 
         private void buttonFinalizar_Click(object sender, EventArgs e)
         {
+
+
             if (atividadeEmAndamento == null || atividadeEmAndamento.id <= 0)
             {
                 textErro.Text = "Não há atividade em andamento";
                 textErro.ForeColor = Color.Red;
                 return;
             }
+
             if (!atividadeEmAndamento.AtualizarSituacao())
             {
                 textErro.Text = "Não foi possível finalizar a atividade";
@@ -50,8 +55,9 @@ namespace ListaAtividades
                 return;
             }
 
-            textErro.Text = string.Empty;
             CarregarAtividadeEmAndamento();
+            textErro.Text = string.Empty;
+            
         }
 
         private void buttonAtualizar_Click(object sender, EventArgs e)

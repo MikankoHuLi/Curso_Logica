@@ -34,3 +34,6 @@ D:\Curso_Logica\Curso_Logica\ListaAtividades\obj\Debug\net8.0-windows\ListaAtivi
 D:\Curso_Logica\Curso_Logica\ListaAtividades\obj\Debug\net8.0-windows\ListaAtividades.genruntimeconfig.cache
 D:\Curso_Logica\Curso_Logica\ListaAtividades\obj\Debug\net8.0-windows\ref\ListaAtividades.dll
 D:\Curso_Logica\Curso_Logica\ListaAtividades\obj\Debug\net8.0-windows\ListaAtividades.CriarAtividade.resources
+C:\Users\Júlia Diniz\source\repos\Guilherme\Curso_Logica\ListaAtividades\obj\Debug\net8.0-windows\ListaAtividades.dll
+C:\Users\Júlia Diniz\source\repos\Guilherme\Curso_Logica\ListaAtividades\obj\Debug\net8.0-windows\refint\ListaAtividades.dll
+C:\Users\Júlia Diniz\source\repos\Guilherme\Curso_Logica\ListaAtividades\obj\Debug\net8.0-windows\ListaAtividades.pdb
