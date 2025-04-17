@@ -15,7 +15,6 @@ namespace ListaAtividades
         {
             CarregarAtividadeEmAndamento();
             CarregarAtividades();
-            textErro.Text = "Não ";
         }
         private void CarregarAtividadeEmAndamento()
         {
@@ -57,7 +56,6 @@ namespace ListaAtividades
 
             CarregarAtividadeEmAndamento();
             textErro.Text = string.Empty;
-            
         }
 
         private void buttonAtualizar_Click(object sender, EventArgs e)
