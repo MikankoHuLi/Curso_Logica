@@ -33,6 +33,7 @@
             gridAtividades = new DataGridView();
             buttonCriar = new Button();
             buttonAtualizar = new Button();
+            textErro = new Label();
             ((System.ComponentModel.ISupportInitialize)gridAtividades).BeginInit();
             SuspendLayout();
             // 
@@ -52,38 +53,56 @@
             buttonFinalizar.TabIndex = 1;
             buttonFinalizar.Text = "Finalizar";
             buttonFinalizar.UseVisualStyleBackColor = true;
+            buttonFinalizar.Click += buttonFinalizar_Click;
             // 
             // gridAtividades
             // 
+            gridAtividades.AllowUserToAddRows = false;
+            gridAtividades.AllowUserToDeleteRows = false;
+            gridAtividades.AllowUserToResizeColumns = false;
+            gridAtividades.AllowUserToResizeRows = false;
             gridAtividades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridAtividades.Location = new Point(23, 103);
+            gridAtividades.Location = new Point(23, 79);
+            gridAtividades.MultiSelect = false;
             gridAtividades.Name = "gridAtividades";
+            gridAtividades.ReadOnly = true;
             gridAtividades.Size = new Size(587, 322);
             gridAtividades.TabIndex = 2;
             // 
             // buttonCriar
             // 
-            buttonCriar.Location = new Point(630, 402);
+            buttonCriar.Location = new Point(630, 378);
             buttonCriar.Name = "buttonCriar";
             buttonCriar.Size = new Size(158, 23);
             buttonCriar.TabIndex = 3;
             buttonCriar.Text = "Criar";
             buttonCriar.UseVisualStyleBackColor = true;
+            buttonCriar.Click += buttonCriar_Click;
             // 
             // buttonAtualizar
             // 
-            buttonAtualizar.Location = new Point(630, 103);
+            buttonAtualizar.Location = new Point(630, 79);
             buttonAtualizar.Name = "buttonAtualizar";
             buttonAtualizar.Size = new Size(158, 23);
             buttonAtualizar.TabIndex = 4;
             buttonAtualizar.Text = "Atualizar";
             buttonAtualizar.UseVisualStyleBackColor = true;
+            buttonAtualizar.Click += buttonAtualizar_Click;
+            // 
+            // textErro
+            // 
+            textErro.AutoSize = true;
+            textErro.Location = new Point(23, 415);
+            textErro.Name = "textErro";
+            textErro.Size = new Size(0, 15);
+            textErro.TabIndex = 5;
             // 
             // ListaDeAtividades
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(textErro);
             Controls.Add(buttonAtualizar);
             Controls.Add(buttonCriar);
             Controls.Add(gridAtividades);
@@ -104,5 +123,6 @@
         private DataGridView gridAtividades;
         private Button buttonCriar;
         private Button buttonAtualizar;
+        private Label textErro;
     }
 }

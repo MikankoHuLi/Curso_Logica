@@ -53,7 +53,7 @@ namespace ListaAtividades.dominio
             return repositorio.BuscarAtividadeAndamento();
         }
 
-        public List<Atividade> ListarAtivadadesPendentes()
+        public List<Atividade> ListarAtividadesPendentes()
         {
             return repositorio.ListarAtividadesPendentes();
         }
