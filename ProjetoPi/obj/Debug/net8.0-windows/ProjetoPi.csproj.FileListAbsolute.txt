@@ -1,0 +1,17 @@
+D:\Curso_Logica\Curso_Logica\ProjetoPi\bin\Debug\net8.0-windows\ProjetoPi.exe
+D:\Curso_Logica\Curso_Logica\ProjetoPi\bin\Debug\net8.0-windows\ProjetoPi.deps.json
+D:\Curso_Logica\Curso_Logica\ProjetoPi\bin\Debug\net8.0-windows\ProjetoPi.runtimeconfig.json
+D:\Curso_Logica\Curso_Logica\ProjetoPi\bin\Debug\net8.0-windows\ProjetoPi.dll
+D:\Curso_Logica\Curso_Logica\ProjetoPi\bin\Debug\net8.0-windows\ProjetoPi.pdb
+D:\Curso_Logica\Curso_Logica\ProjetoPi\obj\Debug\net8.0-windows\ProjetoPi.CriarCliente.resources
+D:\Curso_Logica\Curso_Logica\ProjetoPi\obj\Debug\net8.0-windows\ProjetoPi.csproj.GenerateResource.cache
+D:\Curso_Logica\Curso_Logica\ProjetoPi\obj\Debug\net8.0-windows\ProjetoPi.GeneratedMSBuildEditorConfig.editorconfig
+D:\Curso_Logica\Curso_Logica\ProjetoPi\obj\Debug\net8.0-windows\ProjetoPi.AssemblyInfoInputs.cache
+D:\Curso_Logica\Curso_Logica\ProjetoPi\obj\Debug\net8.0-windows\ProjetoPi.AssemblyInfo.cs
+D:\Curso_Logica\Curso_Logica\ProjetoPi\obj\Debug\net8.0-windows\ProjetoPi.csproj.CoreCompileInputs.cache
+D:\Curso_Logica\Curso_Logica\ProjetoPi\obj\Debug\net8.0-windows\ProjetoPi.sourcelink.json
+D:\Curso_Logica\Curso_Logica\ProjetoPi\obj\Debug\net8.0-windows\ProjetoPi.dll
+D:\Curso_Logica\Curso_Logica\ProjetoPi\obj\Debug\net8.0-windows\refint\ProjetoPi.dll
+D:\Curso_Logica\Curso_Logica\ProjetoPi\obj\Debug\net8.0-windows\ProjetoPi.pdb
+D:\Curso_Logica\Curso_Logica\ProjetoPi\obj\Debug\net8.0-windows\ProjetoPi.genruntimeconfig.cache
+D:\Curso_Logica\Curso_Logica\ProjetoPi\obj\Debug\net8.0-windows\ref\ProjetoPi.dll
