@@ -41,6 +41,7 @@
             textCep = new TextBox();
             button1 = new Button();
             labelErro = new Label();
+            buttonCriar = new Button();
             SuspendLayout();
             // 
             // Nome
@@ -138,7 +139,7 @@
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 11;
-            button1.Text = "button1";
+            button1.Text = "Cadastrar";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -151,11 +152,22 @@
             labelErro.TabIndex = 12;
             labelErro.Text = "label5";
             // 
+            // buttonCriar
+            // 
+            buttonCriar.Location = new Point(654, 585);
+            buttonCriar.Name = "buttonCriar";
+            buttonCriar.Size = new Size(75, 23);
+            buttonCriar.TabIndex = 13;
+            buttonCriar.Text = "Voltar";
+            buttonCriar.UseVisualStyleBackColor = true;
+            buttonCriar.Click += buttonCriar_Click;
+            // 
             // CriarCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(741, 620);
+            Controls.Add(buttonCriar);
             Controls.Add(labelErro);
             Controls.Add(button1);
             Controls.Add(textCep);
@@ -171,6 +183,7 @@
             Controls.Add(Nome);
             Name = "CriarCliente";
             Text = "Form1";
+            Load += CriarCliente_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -190,5 +203,6 @@
         private TextBox textCep;
         private Button button1;
         private Label labelErro;
+        private Button buttonCriar;
     }
 }

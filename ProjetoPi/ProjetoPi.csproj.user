@@ -4,5 +4,14 @@
     <Compile Update="CriarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="CriarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

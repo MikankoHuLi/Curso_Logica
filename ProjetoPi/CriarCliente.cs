@@ -5,10 +5,11 @@ namespace ProjetoPi
     public partial class CriarCliente : Form
     {
         private Cliente? cliente;
-       
+
         public CriarCliente()
         {
             InitializeComponent();
+            //telefone,cep,cpf poderiam ser masked opcional e converter na interface
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -23,13 +24,27 @@ namespace ProjetoPi
             };
 
 
-            if (!cliente.ValidarCadastro()) // trocar validação unica por metodo com todas validacoes
+            if (!cliente.VALIDARCADASTRO()) // trocar validação unica por metodo com todas validacoes
             {
-                labelErro.Text = "nasceu";
+                labelErro.Text = "invalido";
                 return;
             }
             labelErro.Text = "cadastro";
-            
+
+
+        }
+
+        private void CriarCliente_Load(object sender, EventArgs e)
+        {
+            labelErro.Text = string.Empty;
+        }
+
+        private void buttonCriar_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+
+            menu.Show();
+            this.Hide();
         }
     }
 }

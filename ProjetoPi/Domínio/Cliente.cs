@@ -15,21 +15,22 @@ namespace ProjetoPi.Domínio
         public string cpf { get; set; }
         public string cep { get; set; }
 
-     // criar metodo texto branco
-        public bool ValidarNome()
+        // criar metodo texto branco
+        public bool VALIDARNOME()
         {
-        
+
             if (!nome.Any(char.IsWhiteSpace) || nome.Any(char.IsNumber) || nome.Any(char.IsPunctuation))
             {
                 return false;
             }
-            return true;
-        }
-        public bool ValidarTelefone()
-        {
-         
 
-            if (telefone.Length < 14 || telefone.Any(char.IsWhiteSpace))
+            return !string.IsNullOrWhiteSpace(nome);
+        }
+        public bool VALIDARTELEFONE()
+        {
+
+
+            if (telefone.Length < 14 || telefone.Any(char.IsWhiteSpace)) //validar numeros sequenciais ou repetidos
             {
                 return false;
             }
@@ -41,11 +42,11 @@ namespace ProjetoPi.Domínio
             //        return false;
             //    }
             //} trocar trocar pelo metodo banco de dados
-            return true;
+            return !string.IsNullOrWhiteSpace(telefone);
         }
-        public bool ValidarEmail()
+        public bool VALIDAREMAIL()
         {
-          
+
             if (email.Any(char.IsWhiteSpace) || !email.Contains("@") || !email.Contains(".") || !email.Any(char.IsLetter))
             {
                 return false;
@@ -58,11 +59,11 @@ namespace ProjetoPi.Domínio
             //        return false;
             //    }
             //} trocar pelo metodo banco de dados
-            return true;
+            return !string.IsNullOrWhiteSpace(email);
         }
-        public bool ValidarCPF()
+        public bool VALIDARCPF() //validar numeros sequenciais ou repetidos
         {
-         
+
             if (cpf.Any(char.IsWhiteSpace))
             {
                 return false;
@@ -72,11 +73,11 @@ namespace ProjetoPi.Domínio
                 return false;
             }
 
-            return true;
+            return !string.IsNullOrWhiteSpace(cpf);
         }
-        public bool ValidarCEP()
+        public bool VALIDARCEP() //validar numeros sequenciais ou repetidos
         {
-         
+
             if (cep.Any(char.IsWhiteSpace))
             {
                 return false;
@@ -86,21 +87,20 @@ namespace ProjetoPi.Domínio
                 return false;
             }
 
-            return true;
+            return !string.IsNullOrWhiteSpace(cep);
         }
 
-        public bool ValidarCadastro()
+        public bool VALIDARCADASTRO()
         {
-            // mudar pra tenario
-            if (!ValidarNome())
-            { return false;}
-            if (!ValidarTelefone())
+            if (!VALIDARNOME())
             { return false; }
-            if (!ValidarEmail())
+            if (!VALIDARTELEFONE())
             { return false; }
-            if (!ValidarCEP())
+            if (!VALIDAREMAIL())
             { return false; }
-            if (!ValidarCPF())
+            if (!VALIDARCEP())
+            { return false; }
+            if (!VALIDARCPF())
             { return false; }
 
 
@@ -109,4 +109,4 @@ namespace ProjetoPi.Domínio
     }
 }
 
-  
+
