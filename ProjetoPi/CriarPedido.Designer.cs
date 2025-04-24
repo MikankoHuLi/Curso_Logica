@@ -52,7 +52,7 @@
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 0;
-            button1.Text = "button1";
+            button1.Text = "Finalizar";
             button1.UseVisualStyleBackColor = true;
             // 
             // label1

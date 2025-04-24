@@ -146,7 +146,7 @@
             // labelErro
             // 
             labelErro.AutoSize = true;
-            labelErro.Location = new Point(288, 345);
+            labelErro.Location = new Point(12, 596);
             labelErro.Name = "labelErro";
             labelErro.Size = new Size(38, 15);
             labelErro.TabIndex = 12;
