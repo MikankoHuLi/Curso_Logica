@@ -33,6 +33,8 @@
             dataGridView1 = new DataGridView();
             btnExtender = new Button();
             button1 = new Button();
+            textBox1 = new TextBox();
+            button = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -81,11 +83,29 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(21, 71);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(240, 23);
+            textBox1.TabIndex = 5;
+            // 
+            // button
+            // 
+            button.Location = new Point(274, 69);
+            button.Name = "button";
+            button.Size = new Size(83, 25);
+            button.TabIndex = 6;
+            button.Text = "Buscar";
+            button.UseVisualStyleBackColor = true;
+            // 
             // EditarPedido
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(548, 439);
+            Controls.Add(button);
+            Controls.Add(textBox1);
             Controls.Add(button1);
             Controls.Add(btnExtender);
             Controls.Add(dataGridView1);
@@ -105,5 +125,7 @@
         private DataGridView dataGridView1;
         private Button btnExtender;
         private Button button1;
+        private TextBox textBox1;
+        private Button button;
     }
 }

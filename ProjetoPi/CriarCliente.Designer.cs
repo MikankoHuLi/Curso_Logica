@@ -182,7 +182,7 @@
             Controls.Add(label2);
             Controls.Add(Nome);
             Name = "CriarCliente";
-            Text = "Form1";
+            Text = "Criar Cliente";
             Load += CriarCliente_Load;
             ResumeLayout(false);
             PerformLayout();

@@ -103,7 +103,6 @@ namespace ProjetoPi.Domínio
             if (!VALIDARCPF())
             { return false; }
 
-
             return true;
         }
     }
