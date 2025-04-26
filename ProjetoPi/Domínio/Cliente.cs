@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoPi.Repositório;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,20 @@ namespace ProjetoPi.Domínio
         public string cpf { get; set; }
         public string cep { get; set; }
 
-        // criar metodo texto branco
+        private readonly ClienteRepositoriocs repositorioCliente = new ClienteRepositoriocs();
+
+        public List<Cliente> BuscarClientesPorNome(string nomedigitado)
+        {
+            return repositorioCliente.BuscarClientesPorNome(nomedigitado);      
+        }
+        public List<Cliente> BuscarTodosClientes()
+        {
+            return repositorioCliente.BuscarTodosClientes();
+        }
+        public void CriarClientes(Cliente novoCliente)
+        {
+            repositorioCliente.CriarClientes(this);
+        }
         public bool VALIDARNOME()
         {
 

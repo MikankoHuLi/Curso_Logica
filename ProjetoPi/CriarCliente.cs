@@ -14,6 +14,7 @@ namespace ProjetoPi
 
         private void button1_Click(object sender, EventArgs e)
         {
+   
             cliente = new Cliente() //popular todos os dados
             {
                 nome = textNome.Text,
@@ -23,7 +24,6 @@ namespace ProjetoPi
                 cep = textCep.Text,
             };
 
-
             if (!cliente.VALIDARCADASTRO()) // trocar validação unica por metodo com todas validacoes
             {
                 labelErro.Text = "invalido";
@@ -31,6 +31,7 @@ namespace ProjetoPi
             }
             labelErro.Text = "cadastro";
 
+            cliente.CriarClientes(cliente);
 
         }
 

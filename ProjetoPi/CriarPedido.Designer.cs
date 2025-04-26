@@ -39,26 +39,26 @@
             textValor = new TextBox();
             comboBox1 = new ComboBox();
             label2 = new Label();
-            dataGridView1 = new DataGridView();
-            dataGridView2 = new DataGridView();
+            dataGridJogo = new DataGridView();
+            dataGridCliente = new DataGridView();
             button2 = new Button();
             button3 = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            textBoxBuscarCliente = new TextBox();
+            textBoxBuscarJogo = new TextBox();
             button4 = new Button();
             button5 = new Button();
             button6 = new Button();
             dataGridView3 = new DataGridView();
             label5 = new Label();
             label6 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridJogo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridCliente).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(353, 387);
+            button1.Location = new Point(344, 552);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 0;
@@ -68,7 +68,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 452);
+            label1.Location = new Point(3, 617);
             label1.Name = "label1";
             label1.Size = new Size(38, 15);
             label1.TabIndex = 1;
@@ -95,7 +95,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(33, 190);
+            label4.Location = new Point(24, 355);
             label4.Name = "label4";
             label4.Size = new Size(31, 15);
             label4.TabIndex = 6;
@@ -104,7 +104,7 @@
             // textBox3
             // 
             textBox3.Enabled = false;
-            textBox3.Location = new Point(87, 187);
+            textBox3.Location = new Point(78, 352);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
             textBox3.Size = new Size(100, 23);
@@ -113,7 +113,7 @@
             // textBox4
             // 
             textBox4.Enabled = false;
-            textBox4.Location = new Point(230, 187);
+            textBox4.Location = new Point(221, 352);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
             textBox4.Size = new Size(100, 23);
@@ -122,7 +122,7 @@
             // labelValor
             // 
             labelValor.AutoSize = true;
-            labelValor.Location = new Point(474, 296);
+            labelValor.Location = new Point(465, 461);
             labelValor.Name = "labelValor";
             labelValor.Size = new Size(33, 15);
             labelValor.TabIndex = 9;
@@ -131,7 +131,7 @@
             // textValor
             // 
             textValor.Enabled = false;
-            textValor.Location = new Point(528, 293);
+            textValor.Location = new Point(519, 458);
             textValor.Name = "textValor";
             textValor.ReadOnly = true;
             textValor.Size = new Size(100, 23);
@@ -142,7 +142,7 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Crédito", "Débito" });
-            comboBox1.Location = new Point(200, 288);
+            comboBox1.Location = new Point(191, 453);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 23);
             comboBox1.TabIndex = 11;
@@ -150,31 +150,31 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(75, 291);
+            label2.Location = new Point(66, 456);
             label2.Name = "label2";
             label2.Size = new Size(119, 15);
             label2.TabIndex = 12;
             label2.Text = "forma de pagamento";
             // 
-            // dataGridView1
+            // dataGridJogo
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(466, 113);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(240, 31);
-            dataGridView1.TabIndex = 13;
+            dataGridJogo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridJogo.Location = new Point(466, 113);
+            dataGridJogo.Name = "dataGridJogo";
+            dataGridJogo.Size = new Size(240, 153);
+            dataGridJogo.TabIndex = 13;
             // 
-            // dataGridView2
+            // dataGridCliente
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(72, 113);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(240, 31);
-            dataGridView2.TabIndex = 14;
+            dataGridCliente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridCliente.Location = new Point(66, 113);
+            dataGridCliente.Name = "dataGridCliente";
+            dataGridCliente.Size = new Size(240, 153);
+            dataGridCliente.TabIndex = 14;
             // 
             // button2
             // 
-            button2.Location = new Point(695, 409);
+            button2.Location = new Point(686, 574);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 15;
@@ -190,20 +190,21 @@
             button3.TabIndex = 16;
             button3.Text = "buscar";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
-            // textBox1
+            // textBoxBuscarCliente
             // 
-            textBox1.Location = new Point(72, 73);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(240, 23);
-            textBox1.TabIndex = 17;
+            textBoxBuscarCliente.Location = new Point(72, 73);
+            textBoxBuscarCliente.Name = "textBoxBuscarCliente";
+            textBoxBuscarCliente.Size = new Size(240, 23);
+            textBoxBuscarCliente.TabIndex = 17;
             // 
-            // textBox2
+            // textBoxBuscarJogo
             // 
-            textBox2.Location = new Point(483, 70);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(223, 23);
-            textBox2.TabIndex = 18;
+            textBoxBuscarJogo.Location = new Point(483, 70);
+            textBoxBuscarJogo.Name = "textBoxBuscarJogo";
+            textBoxBuscarJogo.Size = new Size(223, 23);
+            textBoxBuscarJogo.TabIndex = 18;
             // 
             // button4
             // 
@@ -213,6 +214,7 @@
             button4.TabIndex = 19;
             button4.Text = "buscar";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button5
             // 
@@ -235,7 +237,7 @@
             // dataGridView3
             // 
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(466, 187);
+            dataGridView3.Location = new Point(457, 352);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.Size = new Size(240, 70);
             dataGridView3.TabIndex = 22;
@@ -243,7 +245,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(422, 187);
+            label5.Location = new Point(413, 352);
             label5.Name = "label5";
             label5.Size = new Size(44, 15);
             label5.TabIndex = 23;
@@ -252,7 +254,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(144, 158);
+            label6.Location = new Point(135, 323);
             label6.Name = "label6";
             label6.Size = new Size(108, 15);
             label6.TabIndex = 24;
@@ -262,19 +264,19 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 476);
+            ClientSize = new Size(800, 681);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(dataGridView3);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(textBoxBuscarJogo);
+            Controls.Add(textBoxBuscarCliente);
             Controls.Add(button3);
             Controls.Add(button2);
-            Controls.Add(dataGridView2);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridCliente);
+            Controls.Add(dataGridJogo);
             Controls.Add(label2);
             Controls.Add(comboBox1);
             Controls.Add(textValor);
@@ -289,8 +291,8 @@
             Name = "CriarPedido";
             Text = "CriarPedido";
             Load += CriarPedido_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridJogo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridCliente).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -309,12 +311,12 @@
         private TextBox textValor;
         private ComboBox comboBox1;
         private Label label2;
-        private DataGridView dataGridView1;
-        private DataGridView dataGridView2;
+        private DataGridView dataGridJogo;
+        private DataGridView dataGridCliente;
         private Button button2;
         private Button button3;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox textBoxBuscarCliente;
+        private TextBox textBoxBuscarJogo;
         private Button button4;
         private Button button5;
         private Button button6;
