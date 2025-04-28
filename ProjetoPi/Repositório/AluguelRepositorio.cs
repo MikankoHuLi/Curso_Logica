@@ -76,5 +76,26 @@ namespace ProjetoPi.Repositório
 
             return buscaJogos;
         }
+
+        public void CriarPedidos(Aluguel novoAluguel)
+        {
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+
+                string query = "INSERT INTO aluguel (cliente_id, data_inicio, data_devolução, pagamento, valor) VALUES (@cliente_id, @data_inicio, @data_devolução, @pagamento,@valor;";
+
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@cliente_id", novoAluguel.cliente_id);
+                    cmd.Parameters.AddWithValue("@data_inicio", novoAluguel.data_inicio);
+                    cmd.Parameters.AddWithValue("@data_devolução", novoAluguel.data_devolucao);
+                    cmd.Parameters.AddWithValue("@pagamento", novoAluguel.pagamento);
+                    cmd.Parameters.AddWithValue("@valor", novoAluguel.valor);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

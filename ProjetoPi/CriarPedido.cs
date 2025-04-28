@@ -17,6 +17,7 @@ namespace ProjetoPi
     {
         private Cliente cliente = new Cliente();
         private Jogo jogo = new Jogo();
+        private Aluguel? aluguel;
 
         public CriarPedido()
         {
@@ -24,7 +25,7 @@ namespace ProjetoPi
         }
 
         private void CriarPedido_Load(object sender, EventArgs e)
-        {         
+        {
             dataGridCliente.DataSource = cliente.BuscarTodosClientes();
             dataGridJogo.DataSource = jogo.BuscarTodosJogos();
         }
@@ -47,6 +48,22 @@ namespace ProjetoPi
         {
             var jogodigitado = jogo.BuscarJogoPorNome(textBoxBuscarJogo.Text);
             dataGridJogo.DataSource = jogodigitado;
+        }
+
+        private void buttonCriarAluguel_Click(object sender, EventArgs e)
+        {
+            aluguel = new Aluguel() //popular todos os dados
+            {
+                cliente_id = (int)dataGridCliente.SelectedRows[0].Cells[0].Value,
+                data_inicio = DateTime.Now,
+                data_devolucao = DateTime.Now.AddDays(10),
+                pagamento = Convert.ToInt32(comboBoxPagamento.Text),
+                valor = Convert.ToDecimal(textValor.Text),
+            };
+
+         
+
+            aluguel.CriarPedidos(aluguel);
         }
     }
 }

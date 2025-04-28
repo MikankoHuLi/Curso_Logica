@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            buttonCriarAluguel = new Button();
             label1 = new Label();
             Cliente = new Label();
             label3 = new Label();
@@ -37,7 +37,7 @@
             textBox4 = new TextBox();
             labelValor = new Label();
             textValor = new TextBox();
-            comboBox1 = new ComboBox();
+            comboBoxPagamento = new ComboBox();
             label2 = new Label();
             dataGridJogo = new DataGridView();
             dataGridCliente = new DataGridView();
@@ -56,14 +56,15 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // buttonCriarAluguel
             // 
-            button1.Location = new Point(344, 552);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Finalizar";
-            button1.UseVisualStyleBackColor = true;
+            buttonCriarAluguel.Location = new Point(344, 552);
+            buttonCriarAluguel.Name = "buttonCriarAluguel";
+            buttonCriarAluguel.Size = new Size(75, 23);
+            buttonCriarAluguel.TabIndex = 0;
+            buttonCriarAluguel.Text = "Finalizar";
+            buttonCriarAluguel.UseVisualStyleBackColor = true;
+            buttonCriarAluguel.Click += buttonCriarAluguel_Click;
             // 
             // label1
             // 
@@ -137,15 +138,15 @@
             textValor.Size = new Size(100, 23);
             textValor.TabIndex = 10;
             // 
-            // comboBox1
+            // comboBoxPagamento
             // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Crédito", "Débito" });
-            comboBox1.Location = new Point(191, 453);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 11;
+            comboBoxPagamento.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxPagamento.FormattingEnabled = true;
+            comboBoxPagamento.Items.AddRange(new object[] { "Crédito", "Débito" });
+            comboBoxPagamento.Location = new Point(191, 453);
+            comboBoxPagamento.Name = "comboBoxPagamento";
+            comboBoxPagamento.Size = new Size(121, 23);
+            comboBoxPagamento.TabIndex = 11;
             // 
             // label2
             // 
@@ -278,7 +279,7 @@
             Controls.Add(dataGridCliente);
             Controls.Add(dataGridJogo);
             Controls.Add(label2);
-            Controls.Add(comboBox1);
+            Controls.Add(comboBoxPagamento);
             Controls.Add(textValor);
             Controls.Add(labelValor);
             Controls.Add(textBox4);
@@ -287,7 +288,7 @@
             Controls.Add(label3);
             Controls.Add(Cliente);
             Controls.Add(label1);
-            Controls.Add(button1);
+            Controls.Add(buttonCriarAluguel);
             Name = "CriarPedido";
             Text = "CriarPedido";
             Load += CriarPedido_Load;
@@ -300,7 +301,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button buttonCriarAluguel;
         private Label label1;
         private Label Cliente;
         private Label label3;
@@ -309,7 +310,7 @@
         private TextBox textBox4;
         private Label labelValor;
         private TextBox textValor;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxPagamento;
         private Label label2;
         private DataGridView dataGridJogo;
         private DataGridView dataGridCliente;

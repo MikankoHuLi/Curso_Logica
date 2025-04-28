@@ -17,7 +17,12 @@ namespace ProjetoPi.Domínio
         public decimal valor { get; set; }
         public bool multa { get; set; }
         public bool entregue { get; set; }
+        private readonly AluguelRepositorio repositorioAluguel = new AluguelRepositorio();
+        public void CriarPedidos(Aluguel novoAluguel)
+        {
+            repositorioAluguel.CriarPedidos(this);
+        }
 
-        
+
     }
 }
