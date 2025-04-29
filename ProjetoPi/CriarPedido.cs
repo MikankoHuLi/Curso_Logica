@@ -28,6 +28,8 @@ namespace ProjetoPi
         {
             dataGridCliente.DataSource = cliente.BuscarTodosClientes();
             dataGridJogo.DataSource = jogo.BuscarTodosJogos();
+            textData_Inicio.Text = Convert.ToString(DateTime.Now);
+            textData_Devolucao.Text = Convert.ToString(DateTime.Now.AddDays(10));
         }
 
         private void button2_Click(object sender, EventArgs e)

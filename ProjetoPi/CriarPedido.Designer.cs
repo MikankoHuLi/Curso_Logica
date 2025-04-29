@@ -33,8 +33,8 @@
             Cliente = new Label();
             label3 = new Label();
             label4 = new Label();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            textData_Inicio = new TextBox();
+            textData_Devolucao = new TextBox();
             labelValor = new Label();
             textValor = new TextBox();
             comboBoxPagamento = new ComboBox();
@@ -102,23 +102,23 @@
             label4.TabIndex = 6;
             label4.Text = "Data";
             // 
-            // textBox3
+            // textData_Inicio
             // 
-            textBox3.Enabled = false;
-            textBox3.Location = new Point(78, 352);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 7;
+            textData_Inicio.Enabled = false;
+            textData_Inicio.Location = new Point(78, 352);
+            textData_Inicio.Name = "textData_Inicio";
+            textData_Inicio.ReadOnly = true;
+            textData_Inicio.Size = new Size(127, 23);
+            textData_Inicio.TabIndex = 7;
             // 
-            // textBox4
+            // textData_Devolucao
             // 
-            textBox4.Enabled = false;
-            textBox4.Location = new Point(221, 352);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 8;
+            textData_Devolucao.Enabled = false;
+            textData_Devolucao.Location = new Point(242, 352);
+            textData_Devolucao.Name = "textData_Devolucao";
+            textData_Devolucao.ReadOnly = true;
+            textData_Devolucao.Size = new Size(131, 23);
+            textData_Devolucao.TabIndex = 8;
             // 
             // labelValor
             // 
@@ -282,8 +282,8 @@
             Controls.Add(comboBoxPagamento);
             Controls.Add(textValor);
             Controls.Add(labelValor);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
+            Controls.Add(textData_Devolucao);
+            Controls.Add(textData_Inicio);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(Cliente);
@@ -306,8 +306,8 @@
         private Label Cliente;
         private Label label3;
         private Label label4;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox textData_Inicio;
+        private TextBox textData_Devolucao;
         private Label labelValor;
         private TextBox textValor;
         private ComboBox comboBoxPagamento;
