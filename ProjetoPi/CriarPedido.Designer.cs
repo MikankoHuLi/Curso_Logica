@@ -46,19 +46,22 @@
             textBoxBuscarCliente = new TextBox();
             textBoxBuscarJogo = new TextBox();
             button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            dataGridView3 = new DataGridView();
+            buttonSelecionarCliente = new Button();
+            buttonAdicionarJogo = new Button();
+            dataGridJogosPedido = new DataGridView();
             label5 = new Label();
-            label6 = new Label();
+            labelClienteSelecionado = new Label();
+            buttonRemover = new Button();
+            labelJogoSelecionado = new Label();
+            buttonLimparPedido = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridJogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridCliente).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridJogosPedido).BeginInit();
             SuspendLayout();
             // 
             // buttonCriarAluguel
             // 
-            buttonCriarAluguel.Location = new Point(344, 552);
+            buttonCriarAluguel.Location = new Point(342, 620);
             buttonCriarAluguel.Name = "buttonCriarAluguel";
             buttonCriarAluguel.Size = new Size(75, 23);
             buttonCriarAluguel.TabIndex = 0;
@@ -123,7 +126,7 @@
             // labelValor
             // 
             labelValor.AutoSize = true;
-            labelValor.Location = new Point(465, 461);
+            labelValor.Location = new Point(463, 529);
             labelValor.Name = "labelValor";
             labelValor.Size = new Size(33, 15);
             labelValor.TabIndex = 9;
@@ -132,7 +135,7 @@
             // textValor
             // 
             textValor.Enabled = false;
-            textValor.Location = new Point(519, 458);
+            textValor.Location = new Point(517, 526);
             textValor.Name = "textValor";
             textValor.ReadOnly = true;
             textValor.Size = new Size(100, 23);
@@ -143,7 +146,7 @@
             comboBoxPagamento.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxPagamento.FormattingEnabled = true;
             comboBoxPagamento.Items.AddRange(new object[] { "Crédito", "Débito" });
-            comboBoxPagamento.Location = new Point(191, 453);
+            comboBoxPagamento.Location = new Point(189, 521);
             comboBoxPagamento.Name = "comboBoxPagamento";
             comboBoxPagamento.Size = new Size(121, 23);
             comboBoxPagamento.TabIndex = 11;
@@ -151,7 +154,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(66, 456);
+            label2.Location = new Point(64, 524);
             label2.Name = "label2";
             label2.Size = new Size(119, 15);
             label2.TabIndex = 12;
@@ -175,7 +178,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(686, 574);
+            button2.Location = new Point(684, 642);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 15;
@@ -217,31 +220,33 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
-            // button5
+            // buttonSelecionarCliente
             // 
-            button5.Location = new Point(331, 113);
-            button5.Name = "button5";
-            button5.Size = new Size(75, 23);
-            button5.TabIndex = 20;
-            button5.Text = "selecionar";
-            button5.UseVisualStyleBackColor = true;
+            buttonSelecionarCliente.Location = new Point(331, 113);
+            buttonSelecionarCliente.Name = "buttonSelecionarCliente";
+            buttonSelecionarCliente.Size = new Size(75, 23);
+            buttonSelecionarCliente.TabIndex = 20;
+            buttonSelecionarCliente.Text = "selecionar";
+            buttonSelecionarCliente.UseVisualStyleBackColor = true;
+            buttonSelecionarCliente.Click += buttonSelecionarCliente_Click;
             // 
-            // button6
+            // buttonAdicionarJogo
             // 
-            button6.Location = new Point(723, 121);
-            button6.Name = "button6";
-            button6.Size = new Size(75, 23);
-            button6.TabIndex = 21;
-            button6.Text = "adicionar";
-            button6.UseVisualStyleBackColor = true;
+            buttonAdicionarJogo.Location = new Point(723, 121);
+            buttonAdicionarJogo.Name = "buttonAdicionarJogo";
+            buttonAdicionarJogo.Size = new Size(75, 23);
+            buttonAdicionarJogo.TabIndex = 21;
+            buttonAdicionarJogo.Text = "adicionar";
+            buttonAdicionarJogo.UseVisualStyleBackColor = true;
+            buttonAdicionarJogo.Click += buttonAdicionarJogo_Click;
             // 
-            // dataGridView3
+            // dataGridJogosPedido
             // 
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(457, 352);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(240, 70);
-            dataGridView3.TabIndex = 22;
+            dataGridJogosPedido.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridJogosPedido.Location = new Point(457, 352);
+            dataGridJogosPedido.Name = "dataGridJogosPedido";
+            dataGridJogosPedido.Size = new Size(240, 134);
+            dataGridJogosPedido.TabIndex = 22;
             // 
             // label5
             // 
@@ -252,25 +257,57 @@
             label5.TabIndex = 23;
             label5.Text = "pedido";
             // 
-            // label6
+            // labelClienteSelecionado
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(135, 323);
-            label6.Name = "label6";
-            label6.Size = new Size(108, 15);
-            label6.TabIndex = 24;
-            label6.Text = "cliente selecionado";
+            labelClienteSelecionado.AutoSize = true;
+            labelClienteSelecionado.Location = new Point(135, 323);
+            labelClienteSelecionado.Name = "labelClienteSelecionado";
+            labelClienteSelecionado.Size = new Size(31, 15);
+            labelClienteSelecionado.TabIndex = 24;
+            labelClienteSelecionado.Text = "nulo";
+            // 
+            // buttonRemover
+            // 
+            buttonRemover.Location = new Point(723, 150);
+            buttonRemover.Name = "buttonRemover";
+            buttonRemover.Size = new Size(75, 23);
+            buttonRemover.TabIndex = 25;
+            buttonRemover.Text = "remover";
+            buttonRemover.UseVisualStyleBackColor = true;
+            buttonRemover.Click += buttonRemover_Click;
+            // 
+            // labelJogoSelecionado
+            // 
+            labelJogoSelecionado.AutoSize = true;
+            labelJogoSelecionado.Location = new Point(576, 292);
+            labelJogoSelecionado.Name = "labelJogoSelecionado";
+            labelJogoSelecionado.Size = new Size(31, 15);
+            labelJogoSelecionado.TabIndex = 26;
+            labelJogoSelecionado.Text = "nulo";
+            // 
+            // buttonLimparPedido
+            // 
+            buttonLimparPedido.Location = new Point(723, 179);
+            buttonLimparPedido.Name = "buttonLimparPedido";
+            buttonLimparPedido.Size = new Size(75, 23);
+            buttonLimparPedido.TabIndex = 27;
+            buttonLimparPedido.Text = "limpar";
+            buttonLimparPedido.UseVisualStyleBackColor = true;
+            buttonLimparPedido.Click += buttonLimparPedido_Click;
             // 
             // CriarPedido
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 681);
-            Controls.Add(label6);
+            ClientSize = new Size(941, 681);
+            Controls.Add(buttonLimparPedido);
+            Controls.Add(labelJogoSelecionado);
+            Controls.Add(buttonRemover);
+            Controls.Add(labelClienteSelecionado);
             Controls.Add(label5);
-            Controls.Add(dataGridView3);
-            Controls.Add(button6);
-            Controls.Add(button5);
+            Controls.Add(dataGridJogosPedido);
+            Controls.Add(buttonAdicionarJogo);
+            Controls.Add(buttonSelecionarCliente);
             Controls.Add(button4);
             Controls.Add(textBoxBuscarJogo);
             Controls.Add(textBoxBuscarCliente);
@@ -294,7 +331,7 @@
             Load += CriarPedido_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridJogo).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridCliente).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridJogosPedido).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -319,10 +356,13 @@
         private TextBox textBoxBuscarCliente;
         private TextBox textBoxBuscarJogo;
         private Button button4;
-        private Button button5;
-        private Button button6;
-        private DataGridView dataGridView3;
+        private Button buttonSelecionarCliente;
+        private Button buttonAdicionarJogo;
+        private DataGridView dataGridJogosPedido;
         private Label label5;
-        private Label label6;
+        private Label labelClienteSelecionado;
+        private Button buttonRemover;
+        private Label labelJogoSelecionado;
+        private Button buttonLimparPedido;
     }
 }

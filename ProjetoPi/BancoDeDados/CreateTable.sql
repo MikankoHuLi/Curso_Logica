@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS aluguel (
 id INT PRIMARY KEY AUTO_INCREMENT,
 cliente_id INT NOT NULL,
 data_inicio DATETIME NOT NULL,
-data_devolução DATETIME NOT NULL,
+data_devolucao DATETIME NOT NULL,
 pagamento INT NOT NULL,
 valor DECIMAL(6,2) NOT NULL,
 multa  BIT NOT NULL DEFAULT 0,
@@ -34,3 +34,5 @@ CREATE TABLE IF NOT EXISTS aluguel_jogo (
     FOREIGN KEY (aluguel_id) REFERENCES aluguel(id),
     FOREIGN KEY (jogo_id) REFERENCES jogo(id)
 );
+
+

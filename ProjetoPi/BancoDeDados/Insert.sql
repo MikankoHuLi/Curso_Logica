@@ -14,7 +14,7 @@ VALUES
 ('Paulo', '11999007541', 'paulo.coelhos@gmail.com', '25552228692', '98775676')
 ;
 
-INSERT INTO aluguel (cliente_id, data_inicio, data_devolução, pagamento, valor)
+INSERT INTO aluguel (cliente_id, data_inicio, data_devolucao, pagamento, valor)
 VALUES
 (1, '2025-04-24','2025-05-04',0,59.89),
 (2, '2025-04-24','2025-05-04',1,39.82)
@@ -27,5 +27,4 @@ VALUES
 (2,3),
 (2,4)
 ;
-
-
+SELECT * FROM aluguel;

@@ -1,4 +1,5 @@
-﻿using ProjetoPi.Domínio;
+﻿using Mysqlx.Resultset;
+using ProjetoPi.Domínio;
 using ProjetoPi.Repositório;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,9 @@ namespace ProjetoPi
         private Cliente cliente = new Cliente();
         private Jogo jogo = new Jogo();
         private Aluguel? aluguel;
+        private int clienteIdSelecionado;
+        private List<Jogo> jogosSelecionado = [];
+
 
         public CriarPedido()
         {
@@ -50,22 +54,88 @@ namespace ProjetoPi
         {
             var jogodigitado = jogo.BuscarJogoPorNome(textBoxBuscarJogo.Text);
             dataGridJogo.DataSource = jogodigitado;
+
+
         }
 
         private void buttonCriarAluguel_Click(object sender, EventArgs e)
         {
-            aluguel = new Aluguel() //popular todos os dados
+
+
+            //aluguel = new Aluguel() //popular todos os dados
+            //{
+            //    cliente_id = (int)dataGridCliente.SelectedRows[0].Cells[0].Value,
+            //    data_inicio = DateTime.Now,
+            //    data_devolucao = DateTime.Now.AddDays(10),
+            //    /*pagamento = Convert.ToInt32(comboBoxPagamento.Text),*/
+            //    valor = Convert.ToDecimal(textValor.Text)
+            //};
+
+
+
+            //aluguel.CriarPedidos(aluguel);
+        }
+
+        private void buttonSelecionarCliente_Click(object sender, EventArgs e)
+        {
+            if (dataGridCliente.SelectedRows.Count <= 0)
             {
-                cliente_id = (int)dataGridCliente.SelectedRows[0].Cells[0].Value,
-                data_inicio = DateTime.Now,
-                data_devolucao = DateTime.Now.AddDays(10),
-                pagamento = Convert.ToInt32(comboBoxPagamento.Text),
-                valor = Convert.ToDecimal(textValor.Text),
-            };
+                labelClienteSelecionado.Text = "Selecione um Cliente";
+                return;
+            }
 
-         
+            var linhaSelecionada = dataGridCliente.SelectedRows[0];
+            clienteIdSelecionado = (int)linhaSelecionada.Cells[0].Value;
 
-            aluguel.CriarPedidos(aluguel);
+            if (clienteIdSelecionado != -1)
+            {
+                labelClienteSelecionado.Text = "Cliente Selecionado";
+            }
+        }
+
+        private void buttonAdicionarJogo_Click(object sender, EventArgs e)
+        {
+            if (dataGridJogo.SelectedRows.Count <= 0)
+            {
+                labelJogoSelecionado.Text = "Selecione um Jogo";
+                return;
+            }
+
+            var linhaSelecionada = dataGridJogo.SelectedRows[0];
+
+            var jogodigitado = jogo.BuscarJogoPorNome((string)linhaSelecionada.Cells[1].Value);
+
+            jogosSelecionado.AddRange(jogodigitado);
+
+            dataGridJogosPedido.DataSource = null;
+            dataGridJogosPedido.DataSource = jogosSelecionado;
+
+        }
+
+        private void buttonRemover_Click(object sender, EventArgs e)
+        {
+            if (dataGridJogosPedido.SelectedRows.Count <= 0)
+            {
+                labelJogoSelecionado.Text = "Selecione um Jogo";
+                return;
+            }
+
+            var linhaSelecionada = dataGridJogosPedido.SelectedRows[0];
+
+            var jogodigitado = jogo.BuscarJogoPorNome((string)linhaSelecionada.Cells[1].Value);
+
+            jogosSelecionado.RemoveAt((dataGridJogosPedido.Rows.IndexOf(dataGridJogosPedido.SelectedRows[0])));
+
+            dataGridJogosPedido.DataSource = null;
+            dataGridJogosPedido.DataSource = jogosSelecionado;
+
+        }
+
+        private void buttonLimparPedido_Click(object sender, EventArgs e)
+        {
+            jogosSelecionado.Clear();
+            dataGridJogosPedido.DataSource = null;
+            dataGridJogosPedido.DataSource = jogosSelecionado;
         }
     }
 }

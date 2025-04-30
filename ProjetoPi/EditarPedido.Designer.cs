@@ -30,12 +30,12 @@
         {
             btnFinalizar = new Button();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
+            dataGridPedidos = new DataGridView();
             btnExtender = new Button();
             button1 = new Button();
-            textBox1 = new TextBox();
-            button = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            textBuscarPedido = new TextBox();
+            buttonBuscaPedido = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridPedidos).BeginInit();
             SuspendLayout();
             // 
             // btnFinalizar
@@ -56,13 +56,13 @@
             label1.TabIndex = 1;
             label1.Text = "label1";
             // 
-            // dataGridView1
+            // dataGridPedidos
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(21, 109);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(240, 150);
-            dataGridView1.TabIndex = 2;
+            dataGridPedidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridPedidos.Location = new Point(21, 109);
+            dataGridPedidos.Name = "dataGridPedidos";
+            dataGridPedidos.Size = new Size(240, 150);
+            dataGridPedidos.TabIndex = 2;
             // 
             // btnExtender
             // 
@@ -83,37 +83,39 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // textBox1
+            // textBuscarPedido
             // 
-            textBox1.Location = new Point(21, 71);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(240, 23);
-            textBox1.TabIndex = 5;
+            textBuscarPedido.Location = new Point(21, 71);
+            textBuscarPedido.Name = "textBuscarPedido";
+            textBuscarPedido.Size = new Size(240, 23);
+            textBuscarPedido.TabIndex = 5;
             // 
-            // button
+            // buttonBuscaPedido
             // 
-            button.Location = new Point(274, 69);
-            button.Name = "button";
-            button.Size = new Size(83, 25);
-            button.TabIndex = 6;
-            button.Text = "Buscar";
-            button.UseVisualStyleBackColor = true;
+            buttonBuscaPedido.Location = new Point(274, 69);
+            buttonBuscaPedido.Name = "buttonBuscaPedido";
+            buttonBuscaPedido.Size = new Size(83, 25);
+            buttonBuscaPedido.TabIndex = 6;
+            buttonBuscaPedido.Text = "Buscar";
+            buttonBuscaPedido.UseVisualStyleBackColor = true;
+            buttonBuscaPedido.Click += buttonBuscaPedido_Click;
             // 
             // EditarPedido
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(548, 439);
-            Controls.Add(button);
-            Controls.Add(textBox1);
+            Controls.Add(buttonBuscaPedido);
+            Controls.Add(textBuscarPedido);
             Controls.Add(button1);
             Controls.Add(btnExtender);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridPedidos);
             Controls.Add(label1);
             Controls.Add(btnFinalizar);
             Name = "EditarPedido";
             Text = "EditarPedido";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += EditarPedido_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridPedidos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -122,10 +124,10 @@
 
         private Button btnFinalizar;
         private Label label1;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridPedidos;
         private Button btnExtender;
         private Button button1;
-        private TextBox textBox1;
-        private Button button;
+        private TextBox textBuscarPedido;
+        private Button buttonBuscaPedido;
     }
 }

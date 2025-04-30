@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MySqlX.XDevAPI;
+using ProjetoPi.Domínio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,7 @@ namespace ProjetoPi
 {
     public partial class EditarPedido : Form
     {
+        private Aluguel aluguel = new Aluguel();
         public EditarPedido()
         {
             InitializeComponent();
@@ -23,6 +26,17 @@ namespace ProjetoPi
 
             menu.Show();
             this.Hide();
+        }
+
+        private void EditarPedido_Load(object sender, EventArgs e)
+        {
+            dataGridPedidos.DataSource = aluguel.BuscarPedidos();
+        }
+
+        private void buttonBuscaPedido_Click(object sender, EventArgs e)
+        {
+            var pedidoDigitado = aluguel.BuscarPedidosPorNome(textBuscarPedido.Text);
+            dataGridPedidos.DataSource = pedidoDigitado;
         }
     }
 }
