@@ -8,7 +8,8 @@ namespace ProjetoPi.Domínio
 {
     internal class Aluguel_Jogo
     {
-        public int aluguel_id { get; set; }
-        public int jogo_id { get; set; }
+        public string nome { get; set; }
+        public decimal valor { get; set; }
+
     }
 }

@@ -97,6 +97,7 @@ namespace ProjetoPi.Repositório
                 }
             }
         }
+
         public List<Aluguel> BuscarPedidos()
         {
             List<Aluguel> buscaPedidos = [];
@@ -166,6 +167,55 @@ namespace ProjetoPi.Repositório
             }
 
             return buscaPedidos;
+        }
+        public List<Aluguel_Jogo> BuscarDetalhesAluguel(int aluguel)
+        {
+            List<Aluguel_Jogo> AluguelJogos = [];
+
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+                string query = "SELECT jogo.nome,jogo.valor FROM aluguel_jogo INNER JOIN aluguel ON aluguel.id = aluguel_jogo.aluguel_id INNER JOIN jogo ON jogo.id = aluguel_jogo.jogo_id INNER JOIN cliente ON cliente.id = aluguel.cliente_id  where aluguel.id = @aluguel;";
+
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@aluguel", $"{aluguel}%");
+                    using (var reader = cmd.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+                            AluguelJogos.Add(new Aluguel_Jogo()
+                            {
+                                nome = reader.GetString("nome"),
+                                valor = reader.GetDecimal("valor")
+                            });
+                        }
+                    }
+                }
+
+            }
+
+            return AluguelJogos;
+        }
+
+        public void ExtenderAluguel(DateTime novaDataDevolucao, int clienteSelecionado, decimal novoValor)
+        {
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+
+                string query = "UPDATE aluguel SET data_devolucao = @novaDataDevolucao , valor = @novoValor WHERE id = @clienteSelecionado;";
+
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@clienteSelecionado", clienteSelecionado);
+                    cmd.Parameters.AddWithValue("@novaDataDevolucao", novaDataDevolucao);
+                    cmd.Parameters.AddWithValue("@novoValor", novoValor);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

@@ -28,3 +28,6 @@ VALUES
 (2,4)
 ;
 SELECT * FROM aluguel;
+
+UPDATE aluguel SET data_devolucao = @novaDataDevolucao , valor = @novoValor WHERE id = @clienteSelecionado;
+    

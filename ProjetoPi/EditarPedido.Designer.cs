@@ -29,32 +29,34 @@
         private void InitializeComponent()
         {
             btnFinalizar = new Button();
-            label1 = new Label();
+            labelErroPedido = new Label();
             dataGridPedidos = new DataGridView();
             btnExtender = new Button();
             button1 = new Button();
             textBuscarPedido = new TextBox();
             buttonBuscaPedido = new Button();
+            btnDetalhes = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridPedidos).BeginInit();
             SuspendLayout();
             // 
             // btnFinalizar
             // 
-            btnFinalizar.Location = new Point(282, 236);
+            btnFinalizar.Location = new Point(364, 236);
             btnFinalizar.Name = "btnFinalizar";
             btnFinalizar.Size = new Size(75, 23);
             btnFinalizar.TabIndex = 0;
             btnFinalizar.Text = "Finalizar";
             btnFinalizar.UseVisualStyleBackColor = true;
+            btnFinalizar.Click += btnFinalizar_Click;
             // 
-            // label1
+            // labelErroPedido
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(21, 410);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 1;
-            label1.Text = "label1";
+            labelErroPedido.AutoSize = true;
+            labelErroPedido.Location = new Point(21, 410);
+            labelErroPedido.Name = "labelErroPedido";
+            labelErroPedido.Size = new Size(38, 15);
+            labelErroPedido.TabIndex = 1;
+            labelErroPedido.Text = "label1";
             // 
             // dataGridPedidos
             // 
@@ -66,12 +68,13 @@
             // 
             // btnExtender
             // 
-            btnExtender.Location = new Point(376, 236);
+            btnExtender.Location = new Point(445, 236);
             btnExtender.Name = "btnExtender";
             btnExtender.Size = new Size(75, 23);
             btnExtender.TabIndex = 3;
             btnExtender.Text = "Extender";
             btnExtender.UseVisualStyleBackColor = true;
+            btnExtender.Click += btnExtender_Click;
             // 
             // button1
             // 
@@ -100,17 +103,28 @@
             buttonBuscaPedido.UseVisualStyleBackColor = true;
             buttonBuscaPedido.Click += buttonBuscaPedido_Click;
             // 
+            // btnDetalhes
+            // 
+            btnDetalhes.Location = new Point(282, 236);
+            btnDetalhes.Name = "btnDetalhes";
+            btnDetalhes.Size = new Size(75, 23);
+            btnDetalhes.TabIndex = 7;
+            btnDetalhes.Text = "Detalhes";
+            btnDetalhes.UseVisualStyleBackColor = true;
+            btnDetalhes.Click += btnDetalhes_Click;
+            // 
             // EditarPedido
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(548, 439);
+            Controls.Add(btnDetalhes);
             Controls.Add(buttonBuscaPedido);
             Controls.Add(textBuscarPedido);
             Controls.Add(button1);
             Controls.Add(btnExtender);
             Controls.Add(dataGridPedidos);
-            Controls.Add(label1);
+            Controls.Add(labelErroPedido);
             Controls.Add(btnFinalizar);
             Name = "EditarPedido";
             Text = "EditarPedido";
@@ -123,11 +137,12 @@
         #endregion
 
         private Button btnFinalizar;
-        private Label label1;
+        private Label labelErroPedido;
         private DataGridView dataGridPedidos;
         private Button btnExtender;
         private Button button1;
         private TextBox textBuscarPedido;
         private Button buttonBuscaPedido;
+        private Button btnDetalhes;
     }
 }

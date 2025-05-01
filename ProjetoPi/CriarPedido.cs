@@ -1,4 +1,5 @@
 ﻿using Mysqlx.Resultset;
+using MySqlX.XDevAPI;
 using ProjetoPi.Domínio;
 using ProjetoPi.Repositório;
 using System;
@@ -21,12 +22,14 @@ namespace ProjetoPi
         private Aluguel? aluguel;
         private int clienteIdSelecionado;
         private List<Jogo> jogosSelecionado = [];
+        
 
 
         public CriarPedido()
         {
             InitializeComponent();
         }
+
 
         private void CriarPedido_Load(object sender, EventArgs e)
         {
@@ -110,6 +113,8 @@ namespace ProjetoPi
             dataGridJogosPedido.DataSource = null;
             dataGridJogosPedido.DataSource = jogosSelecionado;
 
+            CalcularValorPedido();
+   
         }
 
         private void buttonRemover_Click(object sender, EventArgs e)
@@ -129,6 +134,8 @@ namespace ProjetoPi
             dataGridJogosPedido.DataSource = null;
             dataGridJogosPedido.DataSource = jogosSelecionado;
 
+            CalcularValorPedido();
+
         }
 
         private void buttonLimparPedido_Click(object sender, EventArgs e)
@@ -136,6 +143,24 @@ namespace ProjetoPi
             jogosSelecionado.Clear();
             dataGridJogosPedido.DataSource = null;
             dataGridJogosPedido.DataSource = jogosSelecionado;
+
+            textValor.Clear();
+        }
+
+        private void CalcularValorPedido()
+        {
+            decimal valorPedido = 0;
+
+            for (int i = 0; i < jogosSelecionado.Count; i++)
+            {
+
+                if (jogosSelecionado[i].valor != 0)
+                {
+                    valorPedido = valorPedido + jogosSelecionado[i].valor;
+                }
+                
+                textValor.Text = Convert.ToString(valorPedido);
+            }
         }
     }
 }

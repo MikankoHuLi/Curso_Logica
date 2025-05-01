@@ -38,5 +38,48 @@ namespace ProjetoPi
             var pedidoDigitado = aluguel.BuscarPedidosPorNome(textBuscarPedido.Text);
             dataGridPedidos.DataSource = pedidoDigitado;
         }
+
+        private void btnDetalhes_Click(object sender, EventArgs e)
+        {
+            if (btnDetalhes.Text == "Retornar")
+            {
+                dataGridPedidos.DataSource = aluguel.BuscarPedidos();
+                btnDetalhes.Text = "Detalhes";
+                return;
+            }
+
+            if (btnDetalhes.Text == "Detalhes")
+            {
+                if (dataGridPedidos.SelectedRows.Count <= 0)
+                {
+                    labelErroPedido.Text = "Selecione um Pedido";
+                    return;
+                }
+
+                var linhaSelecionada = dataGridPedidos.SelectedRows[0];
+                var aluguelDetalhes = aluguel.BuscarDetalhesAluguel((int)linhaSelecionada.Cells[0].Value);
+                dataGridPedidos.DataSource = aluguelDetalhes;
+                btnDetalhes.Text = "Retornar";
+                return;
+            }
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExtender_Click(object sender, EventArgs e)
+        {
+            if (dataGridPedidos.SelectedRows.Count <= 0)
+            {
+                labelErroPedido.Text = "Selecione um Pedido";
+                return;
+            }
+
+            var linhaSelecionada = dataGridPedidos.SelectedRows[0];
+            aluguel.ExtenderAluguel(((DateTime)linhaSelecionada.Cells[3].Value).AddDays(10), (int)linhaSelecionada.Cells[0].Value, ((decimal)linhaSelecionada.Cells[5].Value)+20);
+            dataGridPedidos.DataSource = aluguel.BuscarPedidos();
+        }
     }
 }

@@ -15,13 +15,15 @@ namespace ProjetoPi.Domínio
         public DateTime data_devolucao { get; set; }
         public FormaDePagamento pagamento { get; set; }
         public decimal valor { get; set; }
-        public bool multa { get; set; }
-        public bool entregue { get; set; }
         public int cliente_id { get; set; }
         private readonly AluguelRepositorio repositorioAluguel = new AluguelRepositorio();
         public void CriarPedidos(Aluguel novoAluguel)
         {
             repositorioAluguel.CriarPedidos(this);
+        }
+        public void ExtenderAluguel(DateTime novaDataDevolucao, int clienteSelecionado, decimal novoValor)
+        {
+            repositorioAluguel.ExtenderAluguel(novaDataDevolucao, clienteSelecionado, novoValor);
         }
         public List<Aluguel> BuscarPedidos()
         {
@@ -30,6 +32,10 @@ namespace ProjetoPi.Domínio
         public List<Aluguel> BuscarPedidosPorNome(string pedidoDigitado)
         {
             return repositorioAluguel.BuscarPedidosPorNome(pedidoDigitado);
+        }
+        public List<Aluguel_Jogo> BuscarDetalhesAluguel(int aluguel)
+        {
+            return repositorioAluguel.BuscarDetalhesAluguel(aluguel);
         }
 
     }
