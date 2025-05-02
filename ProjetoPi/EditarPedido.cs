@@ -41,6 +41,7 @@ namespace ProjetoPi
 
         private void btnDetalhes_Click(object sender, EventArgs e)
         {
+            // TabIndex(?) arrumar ordem datagrid
             if (btnDetalhes.Text == "Retornar")
             {
                 dataGridPedidos.DataSource = aluguel.BuscarPedidos();

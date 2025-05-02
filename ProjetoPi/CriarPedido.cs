@@ -63,20 +63,33 @@ namespace ProjetoPi
 
         private void buttonCriarAluguel_Click(object sender, EventArgs e)
         {
+            if (dataGridJogosPedido.DataSource == null)
+            {
+                labelClienteSelecionado.Text = "Adicione um jogo ao pedido";
+                return;
+            }
 
+            aluguel = new Aluguel() //popular todos os dados
+            {
+                cliente_id = (int)dataGridCliente.SelectedRows[0].Cells[0].Value,
+                data_inicio = DateTime.Now,
+                data_devolucao = DateTime.Now.AddDays(10),
+                pagamento = (FormaDePagamento)comboBoxPagamento.SelectedIndex,
+                valor = Convert.ToDecimal(textValor.Text)
+            };
 
-            //aluguel = new Aluguel() //popular todos os dados
-            //{
-            //    cliente_id = (int)dataGridCliente.SelectedRows[0].Cells[0].Value,
-            //    data_inicio = DateTime.Now,
-            //    data_devolucao = DateTime.Now.AddDays(10),
-            //    /*pagamento = Convert.ToInt32(comboBoxPagamento.Text),*/
-            //    valor = Convert.ToDecimal(textValor.Text)
-            //};
+            aluguel.CriarPedidos(aluguel);
 
+            int aluguelId = -1; //pegar id aluguel criado agr
+            int jogoId = -1;
 
-
-            //aluguel.CriarPedidos(aluguel);
+            for (int i = 0; i < jogosSelecionado.Count; i++)
+            {
+                var linhaSelecionada = dataGridJogo.Rows; //informação tabela toda(?)
+                jogoId = 0;                              //passar pelos jogos da lista 
+                aluguel.AdicionarJogoAoPedido(aluguelId, jogoId);
+            }
+      
         }
 
         private void buttonSelecionarCliente_Click(object sender, EventArgs e)

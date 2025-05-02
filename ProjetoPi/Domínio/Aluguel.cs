@@ -19,7 +19,11 @@ namespace ProjetoPi.Domínio
         private readonly AluguelRepositorio repositorioAluguel = new AluguelRepositorio();
         public void CriarPedidos(Aluguel novoAluguel)
         {
-            repositorioAluguel.CriarPedidos(this);
+            repositorioAluguel.CriarPedidos(novoAluguel);
+        }
+        public void AdicionarJogoAoPedido(int aluguelId, int jogoId)
+        {
+            repositorioAluguel.AdicionarJogoAoPedido(aluguelId, jogoId);
         }
         public void ExtenderAluguel(DateTime novaDataDevolucao, int clienteSelecionado, decimal novoValor)
         {

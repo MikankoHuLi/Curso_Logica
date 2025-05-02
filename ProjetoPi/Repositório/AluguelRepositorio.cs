@@ -97,6 +97,23 @@ namespace ProjetoPi.Repositório
                 }
             }
         }
+        public void AdicionarJogoAoPedido(int aluguelId, int jogoId)
+        {
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+
+                string query = "INSERT INTO aluguel_jogo (aluguel_id, jogo_id) VALUES (@aluguel_id, @jogo_id ;";
+
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@cliente_id", aluguelId);
+                    cmd.Parameters.AddWithValue("@jogo_id", jogoId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
         public List<Aluguel> BuscarPedidos()
         {
