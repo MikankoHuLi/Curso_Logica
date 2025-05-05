@@ -83,7 +83,16 @@ namespace InterfaceProjeto
 
         private void buttonFinalizar_Click(object sender, EventArgs e)
         {
-            //repo
+            if (dataGridPedidos.SelectedRows.Count <= 0)
+            {
+                labelErroPedido.Text = "Selecione um Pedido";
+                return;
+            }
+
+            var linhaSelecionada = dataGridPedidos.SelectedRows[0];
+            aluguel.PedidoEntregue((int)linhaSelecionada.Cells[0].Value);
+            dataGridPedidos.DataSource = null;
+            dataGridPedidos.DataSource = aluguel.BuscarPedidos();
         }
     }
 }

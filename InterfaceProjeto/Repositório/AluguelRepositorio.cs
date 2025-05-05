@@ -233,5 +233,20 @@ namespace InterfaceProjeto.Repositório
                 }
             }
         }
+        public void PedidoEntregue(int pedidoSelecionado)
+        {
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+
+                string query = "UPDATE aluguel SET entregue = 1 WHERE id = @pedidoSelecionado;";
+
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@pedidoSelecionado", pedidoSelecionado);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

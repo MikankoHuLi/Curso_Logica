@@ -29,6 +29,10 @@ namespace InterfaceProjeto.Domínio
         {
             repositorioAluguel.ExtenderAluguel(novaDataDevolucao, clienteSelecionado, novoValor);
         }
+        public void PedidoEntregue(int pedidoSelecionado)
+        {
+            repositorioAluguel.PedidoEntregue(pedidoSelecionado);
+        }
         public List<Aluguel> BuscarPedidos()
         {
             return repositorioAluguel.BuscarPedidos();
