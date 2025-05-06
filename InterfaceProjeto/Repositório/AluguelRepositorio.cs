@@ -168,5 +168,20 @@ namespace InterfaceProjeto.Repositório
                 }
             }
         }
+        public void Multa(int pedidoSelecionado, decimal novoValor)
+        {
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+
+                string query = "UPDATE aluguel SET multa = 1 , valor = @novoValor WHERE id = @pedidoSelecionado;";
+
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@pedidoSelecionado", pedidoSelecionado);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

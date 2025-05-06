@@ -29,6 +29,10 @@ namespace InterfaceProjeto.Domínio
         {
             repositorioAluguel.PedidoEntregue(pedidoSelecionado);
         }
+        public void Multa(int pedidoSelecionado, decimal novoValor)
+        {
+            repositorioAluguel.Multa(pedidoSelecionado, novoValor);
+        }
         public List<Aluguel> BuscarPedidos()
         {
             return repositorioAluguel.BuscarPedidos();

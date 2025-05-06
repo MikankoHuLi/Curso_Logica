@@ -87,13 +87,23 @@ namespace InterfaceProjeto
             {
                 labelErroPedido.Text = "Selecione um Pedido";
                 return;
-            }
-
-            var linhaSelecionada = dataGridPedidos.SelectedRows[0];
+            }         
+            var linhaSelecionada = dataGridPedidos.SelectedRows[0];          
             aluguel.PedidoEntregue((int)linhaSelecionada.Cells[0].Value);
             dataGridPedidos.DataSource = null;
             dataGridPedidos.DataSource = aluguel.BuscarPedidos();
+
+            if ((DateTime)linhaSelecionada.Cells[3].Value < DateTime.Now)
+            {
+                decimal novoValor = ((decimal)linhaSelecionada.Cells[5].Value) + 20;
+                aluguel.Multa((int)linhaSelecionada.Cells[0].Value,novoValor);
+                labelErroPedido.Text = "Pedido entregue com multa de 20 reais";
+                return;
+            }
+
             labelErroPedido.Text = "Pedido Entregue";
+
+            
         }
     }
 }

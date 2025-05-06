@@ -92,6 +92,20 @@ namespace InterfaceProjeto.Repositório
                 }
             }
         }
+        public void JogoAlugado(int idJogoAlugado)
+        {
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
 
+                string query = "UPDATE jogo SET alugado = 1 WHERE id = @jogoAlugado;";
+
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@jogoAlugado", idJogoAlugado);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

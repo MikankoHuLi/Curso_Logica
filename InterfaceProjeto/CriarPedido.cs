@@ -100,13 +100,7 @@ namespace InterfaceProjeto
             }
 
             var linhaSelecionada = dataGridCliente.SelectedRows[0];
-            clienteCpfSelecionado = (string)linhaSelecionada.Cells[1].Value;
-
-            if (clienteCpfSelecionado == null)
-            {
-                labelAvisoCliente.Text = "Selecione um Cliente";
-                return;
-            }
+            clienteCpfSelecionado = (string)linhaSelecionada.Cells[1].Value;           
             labelAvisoCliente.Text = "Cliente selecionado";
         }
 
@@ -142,7 +136,11 @@ namespace InterfaceProjeto
 
         private void buttonFinalizarPedido_Click(object sender, EventArgs e)
         {
-            //adicionar precisa selecionar cliente
+            if (clienteCpfSelecionado == null)
+            {
+                labelAvisoCliente.Text = "Selecione um Cliente";
+                return;
+            }
             if (dataGridJogosPedido.DataSource == null)
             {
                 labelAvisoJogo.Text = "Adicione um jogo ao pedido";
@@ -163,11 +161,17 @@ namespace InterfaceProjeto
             int aluguelId = -1; //pegar id aluguel criado agr
             int jogoId = -1;
 
-            for (int i = 0; i < jogosSelecionado.Count; i++)
+            for (int i = 0; i < jogosSelecionado.Count; i++)//insert aluguel_jogo
             {
                 var linhaSelecionada = dataGridJogo.Rows; //informação tabela toda(?)
                 jogoId = 0;                              // for que passe pelos jogos da lista 
                 jogo.AdicionarJogoAoPedido(aluguelId, jogoId);
+            }
+            for (int i = 0; i < jogosSelecionado.Count; i++)//update alugado
+            {
+                var linhaSelecionada = dataGridJogo.Rows; //informação tabela toda(?)
+                jogoId = 0;                              // for que passe pelos jogos da lista 
+                jogo.JogoAlugado(jogoId);
             }
         }
     }

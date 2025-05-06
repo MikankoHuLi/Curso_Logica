@@ -27,5 +27,9 @@ namespace InterfaceProjeto.Domínio
         {
             repositorioJogo.AdicionarJogoAoPedido(aluguelId, jogoId);
         }
+        public void JogoAlugado(int idJogoAlugado)
+        {
+            repositorioJogo.JogoAlugado(idJogoAlugado);
+        }
     }
 }
