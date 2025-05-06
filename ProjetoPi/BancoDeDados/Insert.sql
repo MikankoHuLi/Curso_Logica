@@ -30,4 +30,10 @@ VALUES
 SELECT * FROM aluguel;
 
 UPDATE aluguel SET data_devolucao = @novaDataDevolucao , valor = @novoValor WHERE id = @clienteSelecionado;
+UPDATE aluguel SET entregue = 0  WHERE id = 2;
+UPDATE cliente SET cpf = '15553758692'  WHERE id = 1;
+
+
+
+
     

@@ -39,7 +39,7 @@ namespace InterfaceProjeto.Repositório
             using (var con = DataBase.GetConnection())
             {
                 con.Open();
-                string query = "SELECT * FROM cliente WHERE nome LIKE @nomedigitado;";
+                string query = "SELECT * FROM cliente WHERE nome LIKE @nomedigitado OR cpf LIKE @nomedigitado;";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {

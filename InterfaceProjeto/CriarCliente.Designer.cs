@@ -380,7 +380,7 @@
             // comboBoxGenero
             // 
             comboBoxGenero.FormattingEnabled = true;
-            comboBoxGenero.Items.AddRange(new object[] { "Feminino", "Masculino", "Não-Binário" });
+            comboBoxGenero.Items.AddRange(new object[] { "Feminino", "Masculino", "NãoBinário", "Outro" });
             comboBoxGenero.Location = new Point(152, 92);
             comboBoxGenero.Name = "comboBoxGenero";
             comboBoxGenero.Size = new Size(121, 23);

@@ -93,6 +93,7 @@ namespace InterfaceProjeto
             aluguel.PedidoEntregue((int)linhaSelecionada.Cells[0].Value);
             dataGridPedidos.DataSource = null;
             dataGridPedidos.DataSource = aluguel.BuscarPedidos();
+            labelErroPedido.Text = "Pedido Entregue";
         }
     }
 }

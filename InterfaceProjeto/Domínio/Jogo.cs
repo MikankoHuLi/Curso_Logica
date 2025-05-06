@@ -11,7 +11,6 @@ namespace InterfaceProjeto.Domínio
     {
         public int id { get; set; }
         public string nome { get; set; }
-        public bool alugado { get; set; }
         public decimal valor { get; set; }
         private readonly AluguelRepositorio repositorioAluguel = new AluguelRepositorio();
 

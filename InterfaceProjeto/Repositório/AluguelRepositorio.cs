@@ -18,7 +18,7 @@ namespace InterfaceProjeto.Repositório
             using (var con = DataBase.GetConnection())
             {
                 con.Open();
-                string query = "SELECT * FROM jogo WHERE nome LIKE @jogodigitado; ";
+                string query = "SELECT * FROM jogo WHERE nome LIKE @jogodigitado OR id LIKE @jogodigitado; ";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
@@ -33,7 +33,6 @@ namespace InterfaceProjeto.Repositório
 
                                 id = reader.GetInt32("id"),
                                 nome = reader.GetString("nome"),
-                                alugado = reader.GetBoolean("alugado"),
                                 valor = reader.GetDecimal("valor")
                             });
                         }
@@ -51,7 +50,7 @@ namespace InterfaceProjeto.Repositório
             using (var con = DataBase.GetConnection())
             {
                 con.Open();
-                string query = "SELECT * FROM jogo; ";
+                string query = "SELECT * FROM jogo WHERE alugado = 0; ";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
@@ -64,7 +63,6 @@ namespace InterfaceProjeto.Repositório
 
                                 id = reader.GetInt32("id"),
                                 nome = reader.GetString("nome"),
-                                alugado = reader.GetBoolean("alugado"),
                                 valor = reader.GetDecimal("valor")
                             });
                         }
@@ -121,7 +119,7 @@ namespace InterfaceProjeto.Repositório
             using (var con = DataBase.GetConnection())
             {
                 con.Open();
-                string query = "SELECT cliente.nome ,aluguel.id , data_inicio, data_devolucao, pagamento, aluguel.valor, cliente_id FROM aluguel  INNER JOIN cliente ON cliente.id = aluguel.cliente_id ; ";
+                string query = "SELECT cliente.nome ,aluguel.id , data_inicio, data_devolucao, pagamento, aluguel.valor, cliente_id FROM aluguel  INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE entregue = 0; ";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
@@ -155,7 +153,7 @@ namespace InterfaceProjeto.Repositório
             using (var con = DataBase.GetConnection())
             {
                 con.Open();
-                string query = "SELECT cliente.nome ,aluguel.id , data_inicio, data_devolucao, pagamento, aluguel.valor, cliente_id FROM aluguel  INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE cliente.nome LIKE @pedidoDigitado; ";
+                string query = "SELECT cliente.nome ,aluguel.id , data_inicio, data_devolucao, pagamento, aluguel.valor, cliente_id FROM aluguel  INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE cliente.nome LIKE @pedidoDigitado OR cliente.cpf LIKE @pedidoDigitado; ";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
