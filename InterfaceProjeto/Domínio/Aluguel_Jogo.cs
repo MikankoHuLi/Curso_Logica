@@ -9,6 +9,7 @@ namespace InterfaceProjeto.Domínio
     class Aluguel_Jogo
     {
         public string nome { get; set; }
+        public string genero { get; set; }
         public decimal valor { get; set; }
     }
 }

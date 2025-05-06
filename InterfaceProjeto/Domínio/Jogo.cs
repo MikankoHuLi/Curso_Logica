@@ -11,16 +11,21 @@ namespace InterfaceProjeto.Domínio
     {
         public int id { get; set; }
         public string nome { get; set; }
+        public string genero { get; set; }
         public decimal valor { get; set; }
-        private readonly AluguelRepositorio repositorioAluguel = new AluguelRepositorio();
+        private readonly JogoRepositorio repositorioJogo = new JogoRepositorio();
 
         public List<Jogo> BuscarJogoPorNome(string jogodigitado)
         {
-            return repositorioAluguel.BuscarJogoPorNome(jogodigitado);
+            return repositorioJogo.BuscarJogoPorNome(jogodigitado);
         }
         public List<Jogo> BuscarTodosJogos()
         {
-            return repositorioAluguel.BuscarTodosJogos();
+            return repositorioJogo.BuscarTodosJogos();
+        }
+        public void AdicionarJogoAoPedido(int aluguelId, int jogoId)
+        {
+            repositorioJogo.AdicionarJogoAoPedido(aluguelId, jogoId);
         }
     }
 }

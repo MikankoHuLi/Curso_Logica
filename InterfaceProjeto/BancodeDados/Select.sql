@@ -28,3 +28,4 @@ FROM aluguel_jogo
  INNER JOIN cliente ON cliente.id = aluguel.cliente_id
  where aluguel.id = 1
 ;
+select * from aluguel_jogo;

@@ -20,11 +20,7 @@ namespace InterfaceProjeto.Domínio
         public void CriarPedidos(Aluguel novoAluguel)
         {
             repositorioAluguel.CriarPedidos(novoAluguel);
-        }
-        public void AdicionarJogoAoPedido(int aluguelId, int jogoId)
-        {
-            repositorioAluguel.AdicionarJogoAoPedido(aluguelId, jogoId);
-        }
+        }    
         public void ExtenderAluguel(DateTime novaDataDevolucao, int clienteSelecionado, decimal novoValor)
         {
             repositorioAluguel.ExtenderAluguel(novaDataDevolucao, clienteSelecionado, novoValor);

@@ -14,6 +14,7 @@ namespace InterfaceProjeto
     public partial class CriarCliente : Form
     {
         private Cliente? cliente;
+        private Endereco? endereco;
         public CriarCliente()
         {
             InitializeComponent();
@@ -34,8 +35,19 @@ namespace InterfaceProjeto
                 telefone = maskTextTelefone.Text,
                 email = textEmail.Text,
                 cpf = textCpf.Text,
+                genero = (Genero)comboBoxGenero.SelectedIndex,
+                data_de_nascimento = Convert.ToDateTime(maskedTextBoxDataDeNascimento.Text)
+                
+            };
+            endereco = new Endereco()
+            {
+                logradouro = textLogradouro.Text,
+                numero = textNumero.Text,
+                complemento = textComplemento.Text,
+                bairro = textBairro.Text,
                 cep = textCep.Text,
-                //popular novos dados
+                cidade = textCidade.Text
+
             };
 
             if (!cliente.VALIDARCADASTRO())
@@ -45,7 +57,7 @@ namespace InterfaceProjeto
             }
             labelErro.Text = "cadastro";
 
-            cliente.CriarClientes(cliente);
+            cliente.CriarClientes(cliente,endereco);
         }
 
         private void CriarCliente_Load(object sender, EventArgs e)

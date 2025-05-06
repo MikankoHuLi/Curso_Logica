@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 namespace InterfaceProjeto.Domínio
 {
     class Cliente
-    {
-        public int id { get; set; }
+    {       
         public string nome { get; set; }
-        public string telefone { get; set; }
-        public string email { get; set; }
         public string cpf { get; set; }
-        public string cep { get; set; }
+        public string email { get; set; }
+        public string telefone { get; set; }
+        public Genero genero { get; set; }
+        public DateTime data_de_nascimento { get; set; }
+
+
 
         private readonly ClienteRepositoriocs repositorioCliente = new ClienteRepositoriocs();
 
@@ -26,9 +28,9 @@ namespace InterfaceProjeto.Domínio
         {
             return repositorioCliente.BuscarTodosClientes();
         }
-        public void CriarClientes(Cliente novoCliente)
+        public void CriarClientes(Cliente novoCliente, Endereco novoEndereco)
         {
-            repositorioCliente.CriarClientes(this);
+            repositorioCliente.CriarClientes(novoCliente, novoEndereco);
         }
         public bool VALIDARNOME()
         {
@@ -89,20 +91,7 @@ namespace InterfaceProjeto.Domínio
 
             return !string.IsNullOrWhiteSpace(cpf);
         }
-        public bool VALIDARCEP() //validar numeros sequenciais ou repetidos
-        {
-
-            if (cep.Any(char.IsWhiteSpace))
-            {
-                return false;
-            }
-            if (cep.Length < 9)
-            {
-                return false;
-            }
-
-            return !string.IsNullOrWhiteSpace(cep);
-        }
+        
 
         public bool VALIDARCADASTRO()
         {
@@ -111,9 +100,7 @@ namespace InterfaceProjeto.Domínio
             if (!VALIDARTELEFONE())
             { return false; }
             if (!VALIDAREMAIL())
-            { return false; }
-            if (!VALIDARCEP())
-            { return false; }
+            { return false; }            
             if (!VALIDARCPF())
             { return false; }
 

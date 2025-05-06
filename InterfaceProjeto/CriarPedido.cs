@@ -16,7 +16,7 @@ namespace InterfaceProjeto
         private Cliente cliente = new Cliente();
         private Jogo jogo = new Jogo();
         private Aluguel? aluguel;
-        private int clienteIdSelecionado;
+        private string clienteCpfSelecionado;
         private List<Jogo> jogosSelecionado = [];
         public CriarPedido()
         {
@@ -92,7 +92,7 @@ namespace InterfaceProjeto
 
         private void buttonSelecionarCliente_Click(object sender, EventArgs e)
         {
-            // to do armazenar id cliente selecionado
+            // to do armazenar cpf cliente selecionado
             if (dataGridCliente.SelectedRows.Count <= 0)
             {
                 labelAvisoCliente.Text = "Selecione um Cliente";
@@ -100,12 +100,14 @@ namespace InterfaceProjeto
             }
 
             var linhaSelecionada = dataGridCliente.SelectedRows[0];
-            clienteIdSelecionado = (int)linhaSelecionada.Cells[0].Value;
+            clienteCpfSelecionado = (string)linhaSelecionada.Cells[1].Value;
 
-            if (clienteIdSelecionado != -1)
+            if (clienteCpfSelecionado == null)
             {
-                labelAvisoCliente.Text = "Cliente Selecionado";
+                labelAvisoCliente.Text = "Selecione um Cliente";
+                return;
             }
+            labelAvisoCliente.Text = "Cliente selecionado";
         }
 
         private void buttonRemover_Click(object sender, EventArgs e)
@@ -165,7 +167,7 @@ namespace InterfaceProjeto
             {
                 var linhaSelecionada = dataGridJogo.Rows; //informação tabela toda(?)
                 jogoId = 0;                              // for que passe pelos jogos da lista 
-                aluguel.AdicionarJogoAoPedido(aluguelId, jogoId);
+                jogo.AdicionarJogoAoPedido(aluguelId, jogoId);
             }
         }
     }

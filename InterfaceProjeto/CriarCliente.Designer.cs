@@ -34,10 +34,10 @@
             textCep = new TextBox();
             textCpf = new TextBox();
             textEmail = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            textBox8 = new TextBox();
-            textBox9 = new TextBox();
+            textLogradouro = new TextBox();
+            textNumero = new TextBox();
+            textComplemento = new TextBox();
+            textBairro = new TextBox();
             labelEmail = new Label();
             labelCEP = new Label();
             labelCPF = new Label();
@@ -49,7 +49,7 @@
             labelBairro = new Label();
             labelComplemento = new Label();
             labelCidade = new Label();
-            textBox10 = new TextBox();
+            textCidade = new TextBox();
             buttonCadastrar = new Button();
             groupBoxDadosCliente = new GroupBox();
             label9 = new Label();
@@ -125,33 +125,33 @@
             textEmail.Size = new Size(199, 23);
             textEmail.TabIndex = 10;
             // 
-            // textBox6
+            // textLogradouro
             // 
-            textBox6.Location = new Point(14, 47);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(477, 23);
-            textBox6.TabIndex = 12;
+            textLogradouro.Location = new Point(14, 47);
+            textLogradouro.Name = "textLogradouro";
+            textLogradouro.Size = new Size(477, 23);
+            textLogradouro.TabIndex = 12;
             // 
-            // textBox7
+            // textNumero
             // 
-            textBox7.Location = new Point(516, 47);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(100, 23);
-            textBox7.TabIndex = 13;
+            textNumero.Location = new Point(516, 47);
+            textNumero.Name = "textNumero";
+            textNumero.Size = new Size(100, 23);
+            textNumero.TabIndex = 13;
             // 
-            // textBox8
+            // textComplemento
             // 
-            textBox8.Location = new Point(628, 47);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(100, 23);
-            textBox8.TabIndex = 14;
+            textComplemento.Location = new Point(628, 47);
+            textComplemento.Name = "textComplemento";
+            textComplemento.Size = new Size(100, 23);
+            textComplemento.TabIndex = 14;
             // 
-            // textBox9
+            // textBairro
             // 
-            textBox9.Location = new Point(14, 97);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(215, 23);
-            textBox9.TabIndex = 15;
+            textBairro.Location = new Point(14, 97);
+            textBairro.Name = "textBairro";
+            textBairro.Size = new Size(215, 23);
+            textBairro.TabIndex = 15;
             // 
             // labelEmail
             // 
@@ -252,12 +252,12 @@
             labelCidade.TabIndex = 27;
             labelCidade.Text = "Cidade:";
             // 
-            // textBox10
+            // textCidade
             // 
-            textBox10.Location = new Point(400, 97);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(100, 23);
-            textBox10.TabIndex = 26;
+            textCidade.Location = new Point(400, 97);
+            textCidade.Name = "textCidade";
+            textCidade.Size = new Size(100, 23);
+            textCidade.TabIndex = 26;
             // 
             // buttonCadastrar
             // 
@@ -412,17 +412,17 @@
             groupBoxEndereço.Controls.Add(label4);
             groupBoxEndereço.Controls.Add(label1);
             groupBoxEndereço.Controls.Add(labelLogradouro);
-            groupBoxEndereço.Controls.Add(textBox6);
-            groupBoxEndereço.Controls.Add(textBox7);
-            groupBoxEndereço.Controls.Add(textBox10);
+            groupBoxEndereço.Controls.Add(textLogradouro);
+            groupBoxEndereço.Controls.Add(textNumero);
+            groupBoxEndereço.Controls.Add(textCidade);
             groupBoxEndereço.Controls.Add(labelCidade);
-            groupBoxEndereço.Controls.Add(textBox8);
+            groupBoxEndereço.Controls.Add(textComplemento);
             groupBoxEndereço.Controls.Add(labelNumero);
             groupBoxEndereço.Controls.Add(labelBairro);
             groupBoxEndereço.Controls.Add(textCep);
             groupBoxEndereço.Controls.Add(labelCEP);
             groupBoxEndereço.Controls.Add(labelComplemento);
-            groupBoxEndereço.Controls.Add(textBox9);
+            groupBoxEndereço.Controls.Add(textBairro);
             groupBoxEndereço.Location = new Point(12, 198);
             groupBoxEndereço.Name = "groupBoxEndereço";
             groupBoxEndereço.Size = new Size(776, 184);
@@ -521,10 +521,10 @@
         private TextBox textCep;
         private TextBox textCpf;
         private TextBox textEmail;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private TextBox textBox8;
-        private TextBox textBox9;
+        private TextBox textLogradouro;
+        private TextBox textNumero;
+        private TextBox textComplemento;
+        private TextBox textBairro;
         private Label labelEmail;
         private Label labelCEP;
         private Label labelCPF;
@@ -536,7 +536,7 @@
         private Label labelBairro;
         private Label labelComplemento;
         private Label labelCidade;
-        private TextBox textBox10;
+        private TextBox textCidade;
         private Button buttonCadastrar;
         private GroupBox groupBoxDadosCliente;
         private Label labelDataDeNascimento;

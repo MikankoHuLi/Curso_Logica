@@ -12,13 +12,13 @@ namespace InterfaceProjeto.Repositório
 {
     class ClienteRepositoriocs
     {
-        public void CriarClientes(Cliente novoCliente)
+        public void CriarClientes(Cliente novoCliente, Endereco novoEndereco)
         {
             using (var con = DataBase.GetConnection())
             {
                 con.Open();
 
-                string query = "INSERT INTO cliente (nome, telefone, email, cpf, cep) VALUES (@nome, @telefone, @email, @cpf, @cep);";
+                string query = "INSERT INTO cliente (nome, telefone, email, cpf,genero,data_de_nascimento,logradouro,numero,complemento, bairro, cep,cidade) VALUES (@nome, @telefone, @email, @cpf,@genero,@data_de_nascimento,@logradouro,@numero,@complemento,@bairro, @cep,@cidade);";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
@@ -26,7 +26,14 @@ namespace InterfaceProjeto.Repositório
                     cmd.Parameters.AddWithValue("@telefone", novoCliente.telefone);
                     cmd.Parameters.AddWithValue("@email", novoCliente.email);
                     cmd.Parameters.AddWithValue("@cpf", novoCliente.cpf);
-                    cmd.Parameters.AddWithValue("@cep", novoCliente.cep);
+                    cmd.Parameters.AddWithValue("@genero", novoCliente.genero);
+                    cmd.Parameters.AddWithValue("@data_de_nascimento", novoCliente.data_de_nascimento);
+                    cmd.Parameters.AddWithValue("@logradouro", novoEndereco.logradouro);
+                    cmd.Parameters.AddWithValue("@numero", novoEndereco.numero);
+                    cmd.Parameters.AddWithValue("@complemento", novoEndereco.complemento);
+                    cmd.Parameters.AddWithValue("@bairro", novoEndereco.bairro);
+                    cmd.Parameters.AddWithValue("@cep", novoEndereco.cep);
+                    cmd.Parameters.AddWithValue("@cidade", novoEndereco.cidade);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -51,13 +58,12 @@ namespace InterfaceProjeto.Repositório
                         {
                             buscaClientes.Add(new Cliente()
                             {
-
-                                id = reader.GetInt32("id"),
                                 nome = reader.GetString("nome"),
                                 telefone = reader.GetString("telefone"),
                                 email = reader.GetString("email"),
                                 cpf = reader.GetString("cpf"),
-                                cep = reader.GetString("cep")
+                                genero = (Genero)reader.GetInt32("genero"),
+                                data_de_nascimento = reader.GetDateTime("data_de_nascimento")
 
                             });
                         }
@@ -84,13 +90,12 @@ namespace InterfaceProjeto.Repositório
                         {
                             buscaClientes.Add(new Cliente()
                             {
-
-                                id = reader.GetInt32("id"),
                                 nome = reader.GetString("nome"),
                                 telefone = reader.GetString("telefone"),
                                 email = reader.GetString("email"),
                                 cpf = reader.GetString("cpf"),
-                                cep = reader.GetString("cep")
+                                genero = (Genero)reader.GetInt32("genero"),
+                                data_de_nascimento = reader.GetDateTime("data_de_nascimento")
 
                             });
                         }
