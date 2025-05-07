@@ -4,7 +4,14 @@ nome VARCHAR(50) NOT NULL,
 telefone VARCHAR(11) NOT NULL UNIQUE,
 email VARCHAR(100) NOT NULL UNIQUE,
 cpf VARCHAR(11) NOT NULL UNIQUE,
-cep VARCHAR(8) NOT NULL
+genero INT NOT NULL,
+data_de_nascimento DATETIME NOT NULL,
+logradouro VARCHAR (100) NOT NULL,
+numero VARCHAR (5) NOT NULL,
+complemento VARCHAR (50) NULL,
+bairro VARCHAR (50) NULL,
+cep VARCHAR(8) NOT NULL,
+cidade VARCHAR (50) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS aluguel (
@@ -16,13 +23,13 @@ pagamento INT NOT NULL,
 valor DECIMAL(6,2) NOT NULL,
 multa  BIT NOT NULL DEFAULT 0,
 entregue BIT NOT NULL DEFAULT 0,
-
 FOREIGN KEY (cliente_id) REFERENCES cliente (id)
 );
 
 CREATE TABLE IF NOT EXISTS jogo (
 id INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100) NOT NULL,
+genero VARCHAR (50) NOT NULL,
 alugado BIT NOT NULL DEFAULT 0,
 valor DECIMAL(6,2) NOT NULL
 );
@@ -34,5 +41,3 @@ CREATE TABLE IF NOT EXISTS aluguel_jogo (
     FOREIGN KEY (aluguel_id) REFERENCES aluguel(id),
     FOREIGN KEY (jogo_id) REFERENCES jogo(id)
 );
-
-

@@ -58,6 +58,7 @@ namespace InterfaceProjeto.Repositório
                         {
                             buscaClientes.Add(new Cliente()
                             {
+                                id = reader.GetInt32("id"),
                                 nome = reader.GetString("nome"),
                                 telefone = reader.GetString("telefone"),
                                 email = reader.GetString("email"),
@@ -90,6 +91,7 @@ namespace InterfaceProjeto.Repositório
                         {
                             buscaClientes.Add(new Cliente()
                             {
+                                id = reader.GetInt32("id"),
                                 nome = reader.GetString("nome"),
                                 telefone = reader.GetString("telefone"),
                                 email = reader.GetString("email"),

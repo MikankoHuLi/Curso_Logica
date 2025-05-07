@@ -1,17 +1,15 @@
-INSERT INTO jogo (nome, valor)
+INSERT INTO jogo (nome,genero, valor)
 VALUES
-('Adventure', 33.99),
-('Donkey Kong', 25.90),
-('The Last Of Us', 19.92),
-('God Of War', 19.90)
+('Adventure','Aventura', 33.99),
+('Donkey Kong','Plataforma', 25.90),
+('The Last Of Us','Aventura', 19.92),
+('God Of War','Aventura', 19.90)
 ;
 
-SELECT * FROM cliente;
-
-INSERT INTO cliente (nome, telefone, email, cpf, cep)
+INSERT INTO cliente (nome, telefone, email, cpf,genero,data_de_nascimento,logradouro,numero,bairro, cep,cidade)
 VALUES
-('Mariana', '11999876541', 'mari.ana.lopes@gmail.com', '25553758692', '98789876'),
-('Paulo', '11999007541', 'paulo.coelhos@gmail.com', '25552228692', '98775676')
+('Mariana', '11999876541', 'mari.ana.lopes@gmail.com', '15553758692',1,'1995-04-24','Rua Algazarra','42','Campo Limpo', '98789876', 'São Paulo'),
+('Paulo', '11999007541', 'paulo.coelhos@gmail.com', '25552228692',2,'1990-09-17','Rua Rebimboca','7','Vila das Belezas', '98775676','São Paulo')
 ;
 
 INSERT INTO aluguel (cliente_id, data_inicio, data_devolucao, pagamento, valor)
@@ -27,13 +25,4 @@ VALUES
 (2,3),
 (2,4)
 ;
-SELECT * FROM aluguel;
-
-UPDATE aluguel SET data_devolucao = @novaDataDevolucao , valor = @novoValor WHERE id = @clienteSelecionado;
-UPDATE aluguel SET entregue = 0  WHERE id = 2;
-UPDATE cliente SET cpf = '15553758692'  WHERE id = 1;
-
-
-
-
-    
+SELECT id FROM aluguel where cliente_id = 1 AND data_devolucao = '2025-05-04'

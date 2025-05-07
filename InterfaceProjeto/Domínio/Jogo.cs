@@ -15,6 +15,11 @@ namespace InterfaceProjeto.Domínio
         public decimal valor { get; set; }
         private readonly JogoRepositorio repositorioJogo = new JogoRepositorio();
 
+        public List<Jogo> BuscarJogoPorId(int id)
+        {
+            return repositorioJogo.BuscarJogoPorId(id);
+        }
+        
         public List<Jogo> BuscarJogoPorNome(string jogodigitado)
         {
             return repositorioJogo.BuscarJogoPorNome(jogodigitado);
@@ -23,13 +28,18 @@ namespace InterfaceProjeto.Domínio
         {
             return repositorioJogo.BuscarTodosJogos();
         }
-        public void AdicionarJogoAoPedido(int aluguelId, int jogoId)
+        public void AdicionarJogoAoPedido(int aluguelId)
         {
-            repositorioJogo.AdicionarJogoAoPedido(aluguelId, jogoId);
+            repositorioJogo.AdicionarJogoAoPedido(aluguelId, id);
         }
-        public void JogoAlugado(int idJogoAlugado)
+        public void Alugar()
         {
-            repositorioJogo.JogoAlugado(idJogoAlugado);
+            repositorioJogo.JogoAlugado(id);
+        }
+
+        public void Devolver()
+        {
+            repositorioJogo.JogoDevolvido(id);
         }
     }
 }

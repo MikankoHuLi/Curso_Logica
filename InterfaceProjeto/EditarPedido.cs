@@ -1,19 +1,11 @@
 ﻿using InterfaceProjeto.Domínio;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace InterfaceProjeto
 {
     public partial class EditarPedido : Form
     {
         private Aluguel aluguel = new Aluguel();
+
         public EditarPedido()
         {
             InitializeComponent();
@@ -41,7 +33,7 @@ namespace InterfaceProjeto
 
         private void buttonDetalhes_Click(object sender, EventArgs e)
         {
-            
+
             if (buttonDetalhes.Text == "Retornar")
             {
                 dataGridPedidos.DataSource = null;
@@ -87,23 +79,31 @@ namespace InterfaceProjeto
             {
                 labelErroPedido.Text = "Selecione um Pedido";
                 return;
-            }         
-            var linhaSelecionada = dataGridPedidos.SelectedRows[0];          
-            aluguel.PedidoEntregue((int)linhaSelecionada.Cells[0].Value);
+            }
+
+            var idAluguel = (int) dataGridPedidos.SelectedRows[0].Cells[0].Value;
+            var dataDevoluacao = (DateTime) dataGridPedidos.SelectedRows[0].Cells[3].Value;
+            var valorAluguel = (decimal) dataGridPedidos.SelectedRows[0].Cells[5].Value;
+
+            aluguel.PedidoEntregue(idAluguel);
+
             dataGridPedidos.DataSource = null;
             dataGridPedidos.DataSource = aluguel.BuscarPedidos();
 
-            if ((DateTime)linhaSelecionada.Cells[3].Value < DateTime.Now)
+            List<Jogo> jogos = aluguel.ListarJogos(idAluguel);
+            jogos.ForEach(jogo => jogo.Devolver());
+
+            if (dataDevoluacao < DateTime.Now)
             {
-                decimal novoValor = ((decimal)linhaSelecionada.Cells[5].Value) + 20;
-                aluguel.Multa((int)linhaSelecionada.Cells[0].Value,novoValor);
+                decimal novoValor = valorAluguel + 20;
+                aluguel.Multa(idAluguel, novoValor);
                 labelErroPedido.Text = "Pedido entregue com multa de 20 reais";
                 return;
             }
 
             labelErroPedido.Text = "Pedido Entregue";
 
-            
+
         }
     }
 }

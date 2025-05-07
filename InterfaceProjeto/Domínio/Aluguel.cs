@@ -16,10 +16,11 @@ namespace InterfaceProjeto.Domínio
         public FormaDePagamento pagamento { get; set; }
         public decimal valor { get; set; }
         public int cliente_id { get; set; }
+        
         private readonly AluguelRepositorio repositorioAluguel = new AluguelRepositorio();
-        public void CriarPedidos(Aluguel novoAluguel)
+        public void CriarPedidos()
         {
-            repositorioAluguel.CriarPedidos(novoAluguel);
+            repositorioAluguel.CriarPedidos(this);
         }    
         public void ExtenderAluguel(DateTime novaDataDevolucao, int clienteSelecionado, decimal novoValor)
         {
@@ -29,9 +30,9 @@ namespace InterfaceProjeto.Domínio
         {
             repositorioAluguel.PedidoEntregue(pedidoSelecionado);
         }
-        public void Multa(int pedidoSelecionado, decimal novoValor)
+        public void Multa(int id, decimal novoValor)
         {
-            repositorioAluguel.Multa(pedidoSelecionado, novoValor);
+            repositorioAluguel.Multa(id, novoValor);
         }
         public List<Aluguel> BuscarPedidos()
         {
@@ -44,6 +45,20 @@ namespace InterfaceProjeto.Domínio
         public List<Aluguel_Jogo> BuscarDetalhesAluguel(int aluguel)
         {
             return repositorioAluguel.BuscarDetalhesAluguel(aluguel);
+        }
+        public int BuscarIdNovoAluguel()
+        {
+            return repositorioAluguel.BuscarIdNovoAluguel(cliente_id, data_inicio);
+        }
+
+        public List<Jogo> ListarJogos(int id)
+        {
+            return repositorioAluguel.BuscarJogosPorIdAluguel(id);
+        }
+
+        public string RelatorioAlugueisFinalizados()
+        {
+            return repositorioAluguel.RelatorioAlugueisFinalizados();
         }
     }
 }

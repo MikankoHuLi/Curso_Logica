@@ -7,7 +7,7 @@ VALUES
 (2, '2025-04-24','2025-05-04',1,39.82)
 ;
 select * from cliente WHERE nome LIKE 'mari%';
-SELECT * FROM jogo;
+SELECT * FROM jogo WHERE nome LIKE 'd%';
 select * from cliente;
 
 SELECT cliente.nome AS 'cliente',aluguel.id AS 'numero pedido', data_inicio,data_devolucao,pagamento,aluguel.valor,jogo.nome,jogo.valor
@@ -28,7 +28,7 @@ FROM aluguel_jogo
  INNER JOIN cliente ON cliente.id = aluguel.cliente_id
  where aluguel.id = 1
 ;
-select * from aluguel;
 
-SELECT cliente.nome ,aluguel.id , data_inicio, data_devolucao, pagamento, aluguel.valor, cliente_id, cliente.cpf FROM aluguel  INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE cliente.nome LIKE '25553%' OR cliente.cpf LIKE '25553%'
+
+SELECT * FROM aluguel where cliente_id = 1 AND data_inicio = @dataPedido ;
 

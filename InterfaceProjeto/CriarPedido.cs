@@ -16,11 +16,29 @@ namespace InterfaceProjeto
         private Cliente cliente = new Cliente();
         private Jogo jogo = new Jogo();
         private Aluguel? aluguel;
-        private string clienteCpfSelecionado;
+        private int clienteIdSelecionado;
         private List<Jogo> jogosSelecionado = [];
         public CriarPedido()
         {
             InitializeComponent();
+        }
+        private void Carregar()
+        {
+            dataGridCliente.DataSource = cliente.BuscarTodosClientes();
+            dataGridJogo.DataSource = jogo.BuscarTodosJogos();
+            textData_Inicio.Text = Convert.ToString(DateTime.Now);
+            textData_Devolucao.Text = Convert.ToString(DateTime.Now.AddDays(10));
+
+            labelAvisoCliente.Text = string.Empty;
+            labelAvisoJogo.Text = string.Empty;
+        }
+        private void LimparPedido()
+        {
+            jogosSelecionado.Clear();
+            dataGridJogosPedido.DataSource = null;
+            dataGridJogosPedido.DataSource = jogosSelecionado;
+
+            textValor.Clear();
         }
         private void CalcularValorPedido()
         {
@@ -59,13 +77,7 @@ namespace InterfaceProjeto
 
         private void CriarPedido_Load(object sender, EventArgs e)
         {
-            dataGridCliente.DataSource = cliente.BuscarTodosClientes();
-            dataGridJogo.DataSource = jogo.BuscarTodosJogos();
-            textData_Inicio.Text = Convert.ToString(DateTime.Now);
-            textData_Devolucao.Text = Convert.ToString(DateTime.Now.AddDays(10));
-
-            labelAvisoCliente.Text = string.Empty;
-            labelAvisoJogo.Text = string.Empty;
+            Carregar();
         }
 
         private void buttonAdicionar_Click(object sender, EventArgs e)
@@ -79,7 +91,7 @@ namespace InterfaceProjeto
 
             var linhaSelecionada = dataGridJogo.SelectedRows[0];
 
-            var jogodigitado = jogo.BuscarJogoPorNome((string)linhaSelecionada.Cells[1].Value);
+            var jogodigitado = jogo.BuscarJogoPorId((int) linhaSelecionada.Cells[0].Value);
 
             jogosSelecionado.AddRange(jogodigitado);
 
@@ -100,7 +112,7 @@ namespace InterfaceProjeto
             }
 
             var linhaSelecionada = dataGridCliente.SelectedRows[0];
-            clienteCpfSelecionado = (string)linhaSelecionada.Cells[1].Value;           
+            clienteIdSelecionado = (int)linhaSelecionada.Cells[0].Value;           
             labelAvisoCliente.Text = "Cliente selecionado";
         }
 
@@ -127,52 +139,50 @@ namespace InterfaceProjeto
 
         private void buttonLimpar_Click(object sender, EventArgs e)
         {
-            jogosSelecionado.Clear();
-            dataGridJogosPedido.DataSource = null;
-            dataGridJogosPedido.DataSource = jogosSelecionado;
-
-            textValor.Clear();
+            LimparPedido();
         }
 
         private void buttonFinalizarPedido_Click(object sender, EventArgs e)
         {
-            if (clienteCpfSelecionado == null)
+            if (comboBoxPagamento.SelectedIndex== -1)
+            {
+                labelAvisoCliente.Text = "Selecione uma forma de pagamento";
+                return;
+            }
+            if (clienteIdSelecionado == -1)
             {
                 labelAvisoCliente.Text = "Selecione um Cliente";
                 return;
             }
-            if (dataGridJogosPedido.DataSource == null)
+            if (jogosSelecionado == null || jogosSelecionado.Count == 0)
             {
                 labelAvisoJogo.Text = "Adicione um jogo ao pedido";
                 return;
             }
-
+            DateTime dataPedido = DateTime.Now;
             aluguel = new Aluguel() //popular todos os dados
             {
-                cliente_id = (int)dataGridCliente.SelectedRows[0].Cells[0].Value,
-                data_inicio = DateTime.Now,
-                data_devolucao = DateTime.Now.AddDays(10),
+                cliente_id = clienteIdSelecionado,
+                data_inicio = dataPedido,
+                data_devolucao = dataPedido.AddDays(10),
                 pagamento = (FormaDePagamento)comboBoxPagamento.SelectedIndex,
                 valor = Convert.ToDecimal(textValor.Text)
             };
 
-            aluguel.CriarPedidos(aluguel);
+            aluguel.CriarPedidos();
 
-            int aluguelId = -1; //pegar id aluguel criado agr
-            int jogoId = -1;
+            int aluguelId = aluguel.BuscarIdNovoAluguel();
 
-            for (int i = 0; i < jogosSelecionado.Count; i++)//insert aluguel_jogo
+            foreach (var jogo in jogosSelecionado)
             {
-                var linhaSelecionada = dataGridJogo.Rows; //informação tabela toda(?)
-                jogoId = 0;                              // for que passe pelos jogos da lista 
-                jogo.AdicionarJogoAoPedido(aluguelId, jogoId);
+                jogo.AdicionarJogoAoPedido(aluguelId);
+                jogo.Alugar();
             }
-            for (int i = 0; i < jogosSelecionado.Count; i++)//update alugado
-            {
-                var linhaSelecionada = dataGridJogo.Rows; //informação tabela toda(?)
-                jogoId = 0;                              // for que passe pelos jogos da lista 
-                jogo.JogoAlugado(jogoId);
-            }
+            
+            LimparPedido();
+            Carregar();
+            labelAvisoCliente.Text = "Aluguel criado com sucesso";
+
         }
     }
 }

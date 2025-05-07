@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace InterfaceProjeto.Domínio
 {
     class Cliente
-    {       
+    {
+        public int id { get; set; }
         public string nome { get; set; }
         public string cpf { get; set; }
         public string email { get; set; }

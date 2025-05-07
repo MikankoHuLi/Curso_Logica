@@ -34,6 +34,7 @@
             buttonCriarCliente = new Button();
             buttonEditarPedido = new Button();
             pictureBox1 = new PictureBox();
+            buttonRelatorioAlugueisFinalizados = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -95,11 +96,22 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
+            // buttonRelatorioAlugueisFinalizados
+            // 
+            buttonRelatorioAlugueisFinalizados.Location = new Point(161, 349);
+            buttonRelatorioAlugueisFinalizados.Name = "buttonRelatorioAlugueisFinalizados";
+            buttonRelatorioAlugueisFinalizados.Size = new Size(75, 23);
+            buttonRelatorioAlugueisFinalizados.TabIndex = 5;
+            buttonRelatorioAlugueisFinalizados.Text = "Relatorio";
+            buttonRelatorioAlugueisFinalizados.UseVisualStyleBackColor = true;
+            buttonRelatorioAlugueisFinalizados.Click += buttonRelatorioAlugueisFinalizados_Click;
+            // 
             // FormMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonRelatorioAlugueisFinalizados);
             Controls.Add(pictureBox1);
             Controls.Add(buttonEditarPedido);
             Controls.Add(buttonCriarCliente);
@@ -122,5 +134,6 @@
         private Button buttonCriarCliente;
         private Button buttonEditarPedido;
         private PictureBox pictureBox1;
+        private Button buttonRelatorioAlugueisFinalizados;
     }
 }

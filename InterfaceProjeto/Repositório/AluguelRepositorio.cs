@@ -1,38 +1,35 @@
 ﻿using InterfaceProjeto.BancodeDados;
 using InterfaceProjeto.Domínio;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace InterfaceProjeto.Repositório
 {
     class AluguelRepositorio
     {
-       
+
         public void CriarPedidos(Aluguel novoAluguel)
         {
             using (var con = DataBase.GetConnection())
             {
                 con.Open();
 
-                string query = "INSERT INTO aluguel (cliente_id, data_inicio, data_devolução, pagamento, valor) VALUES (@cliente_id, @data_inicio, @data_devolução, @pagamento,@valor ;";
+                string query = "INSERT INTO aluguel (cliente_id, data_inicio, data_devolucao, pagamento, valor) VALUES (@cliente_id, @data_inicio, @data_devolucao, @pagamento, @valor) ;";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
+                    int pagamentoNum = Convert.ToInt32(novoAluguel.pagamento);
                     cmd.Parameters.AddWithValue("@cliente_id", novoAluguel.cliente_id);
                     cmd.Parameters.AddWithValue("@data_inicio", novoAluguel.data_inicio);
-                    cmd.Parameters.AddWithValue("@data_devolução", novoAluguel.data_devolucao);
-                    cmd.Parameters.AddWithValue("@pagamento", novoAluguel.pagamento);
+                    cmd.Parameters.AddWithValue("@data_devolucao", novoAluguel.data_devolucao);
+                    cmd.Parameters.AddWithValue("@pagamento", pagamentoNum);
                     cmd.Parameters.AddWithValue("@valor", novoAluguel.valor);
 
                     cmd.ExecuteNonQuery();
                 }
             }
         }
-       
+
         public List<Aluguel> BuscarPedidos()
         {
             List<Aluguel> buscaPedidos = [];
@@ -40,7 +37,7 @@ namespace InterfaceProjeto.Repositório
             using (var con = DataBase.GetConnection())
             {
                 con.Open();
-                string query = "SELECT cliente.nome ,aluguel.id , data_inicio, data_devolucao, pagamento, aluguel.valor, cliente_id FROM aluguel  INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE entregue = 0; ";
+                string query = "SELECT cliente.nome, aluguel.id, data_inicio, data_devolucao, pagamento, aluguel.valor, cliente_id FROM aluguel INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE entregue = 0; ";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
@@ -121,7 +118,7 @@ namespace InterfaceProjeto.Repositório
                         while (reader.Read())
                         {
                             AluguelJogos.Add(new Aluguel_Jogo()
-                            {                               
+                            {
                                 nome = reader.GetString("nome"),
                                 genero = reader.GetString("genero"),
                                 valor = reader.GetDecimal("valor")
@@ -159,7 +156,7 @@ namespace InterfaceProjeto.Repositório
             {
                 con.Open();
 
-                string query = "UPDATE aluguel SET entregue = 1 WHERE id = @pedidoSelecionado;";
+                string query = "UPDATE aluguel SET entregue = 1 WHERE id = @pedidoSelecionado ;";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
@@ -168,20 +165,97 @@ namespace InterfaceProjeto.Repositório
                 }
             }
         }
-        public void Multa(int pedidoSelecionado, decimal novoValor)
+        public void Multa(int id, decimal novoValor)
         {
             using (var con = DataBase.GetConnection())
             {
                 con.Open();
 
-                string query = "UPDATE aluguel SET multa = 1 , valor = @novoValor WHERE id = @pedidoSelecionado;";
+                string query = "UPDATE aluguel SET multa = 1 , valor = @novoValor WHERE id = @id ;";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@pedidoSelecionado", pedidoSelecionado);
+                    cmd.Parameters.AddWithValue("@id", id);
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+        public int BuscarIdNovoAluguel(int clienteSelecionado, DateTime dataPedido)
+        {
+            int idNovoAluguel = -1;
+
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+                string query = "SELECT id FROM aluguel where cliente_id = @clienteSelecionado AND data_inicio = @dataPedido ;";
+                string data = $"{dataPedido.Year}-{dataPedido.Month}-{dataPedido.Day} {dataPedido.Hour}:{dataPedido.Minute}:{dataPedido.Second}";
+
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@clienteSelecionado", clienteSelecionado);
+                    cmd.Parameters.AddWithValue("@dataPedido", data);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        idNovoAluguel = reader.Read() ? reader.GetInt32("id") : -1;
+                    }
+                }
+            }
+
+            return idNovoAluguel;
+        }
+    
+        public List<Jogo> BuscarJogosPorIdAluguel(int aluguelId)
+        {
+            List<Jogo> jogos = [];
+
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+                string query = "SELECT jogo_id FROM aluguel_jogo WHERE aluguel_id = @aluguel_id ;";
+
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@aluguel_id", aluguelId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+                            jogos.Add(new Jogo()
+                            {
+                                id = reader.GetInt32("jogo_id")
+                            });
+                        }
+                    }
+                }
+
+            }
+
+            return jogos;
+        }
+    
+        public string RelatorioAlugueisFinalizados()
+        {
+            var resultado = new StringBuilder();
+            resultado.AppendLine("id;nome;cpf;email;data_inicio;data_devolucao;valor;pagamento");
+
+            var query = "SELECT \r\n    a.id,\r\n    c.nome,\r\n    c.cpf,\r\n    c.email,\r\n    a.data_inicio,\r\n    a.data_devolucao,\r\n    a.valor,\r\n    a.pagamento\r\nFROM\r\n    aluguel a\r\n        INNER JOIN\r\n    cliente c ON a.cliente_id = c.id\r\nWHERE\r\n    a.entregue = 1;";
+
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+
+                using var cmd = new MySqlCommand(query, con);
+                using var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    resultado.AppendLine($"{reader.GetInt32("id")};{reader.GetString("nome")};{reader.GetString("cpf")};{reader.GetString("email")};{reader.GetDateTime("data_inicio")};{reader.GetDateTime("data_devolucao")};{reader.GetDecimal("valor")};{reader.GetInt32("pagamento")}");
+                }
+            }
+
+            return resultado.ToString();
         }
     }
 }
