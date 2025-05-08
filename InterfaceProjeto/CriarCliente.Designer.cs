@@ -363,7 +363,7 @@
             // maskTextTelefone
             // 
             maskTextTelefone.Location = new Point(516, 92);
-            maskTextTelefone.Mask = "(99) 00000-0000";
+            maskTextTelefone.Mask = "(99)00000-0000";
             maskTextTelefone.Name = "maskTextTelefone";
             maskTextTelefone.Size = new Size(115, 23);
             maskTextTelefone.TabIndex = 27;
@@ -483,7 +483,7 @@
             // labelErro
             // 
             labelErro.AutoSize = true;
-            labelErro.Location = new Point(20, 395);
+            labelErro.Location = new Point(403, 394);
             labelErro.Name = "labelErro";
             labelErro.Size = new Size(100, 15);
             labelErro.TabIndex = 31;

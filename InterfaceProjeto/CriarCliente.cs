@@ -1,4 +1,5 @@
 ﻿using InterfaceProjeto.Domínio;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +14,17 @@ namespace InterfaceProjeto
 {
     public partial class CriarCliente : Form
     {
-        private Cliente? cliente;
-        private Endereco? endereco;
+        private Cliente cliente = new Cliente();
+        private Endereco endereco = new Endereco();
         public CriarCliente()
         {
             InitializeComponent();
+        }
+
+
+        private void CriarCliente_Load(object sender, EventArgs e)
+        {
+            labelErro.Text = string.Empty;
         }
 
         private void buttonVoltarMenu_Click(object sender, EventArgs e)
@@ -29,16 +36,6 @@ namespace InterfaceProjeto
 
         private void buttonCadastrar_Click(object sender, EventArgs e)
         {
-            cliente = new Cliente()
-            {
-                nome = textNome.Text,
-                telefone = maskTextTelefone.Text,
-                email = textEmail.Text,
-                cpf = textCpf.Text,
-                genero = (Genero)comboBoxGenero.SelectedIndex,
-                data_de_nascimento = Convert.ToDateTime(maskedTextBoxDataDeNascimento.Text)
-                
-            };
             endereco = new Endereco()
             {
                 logradouro = textLogradouro.Text,
@@ -47,22 +44,121 @@ namespace InterfaceProjeto
                 bairro = textBairro.Text,
                 cep = textCep.Text,
                 cidade = textCidade.Text
-
             };
-
-            if (!cliente.VALIDARCADASTRO())
+            string tico = maskedTextBoxDataDeNascimento.Text;
+            if (maskedTextBoxDataDeNascimento.Text == "  /  /")
             {
-                labelErro.Text = "invalido";
+                labelErro.Text = "Digite uma data valida";
                 return;
             }
-            labelErro.Text = "cadastro";
+            cliente = new Cliente()               
+            {
+                
+                nome = textNome.Text,
+                cpf = textCpf.Text,
+                email = textEmail.Text,
+                telefone = maskTextTelefone.Text,
+                genero = (Genero)comboBoxGenero.SelectedIndex,
+                data_de_nascimento = Convert.ToDateTime(maskedTextBoxDataDeNascimento.Text)
+            };
+            if (!ValidarCadastro())
+            {           
+                return;
+            }
+            labelErro.Text = "Cadastro realizado com sucesso";
 
             cliente.CriarClientes(cliente,endereco);
         }
 
-        private void CriarCliente_Load(object sender, EventArgs e)
+        private bool ValidarCadastro()
         {
-            labelErro.Text = string.Empty;
+          
+            if ( !ValidarCliente() || !ValidarEndereco())
+            {  
+                return false; 
+            }
+
+            return true;
+        }
+
+        private bool ValidarCliente()
+        {
+            
+
+            if (!cliente.ValidarNome())
+            {
+                labelErro.Text = "Nome Inválido";
+                labelErro.ForeColor = Color.Red;
+                return false;
+            }
+            if (!cliente.ValidarTelefone())
+            {
+                labelErro.Text = "Telefone Inválido";
+                labelErro.ForeColor = Color.Red;
+                return false;
+            }
+            if (!cliente.ValidarNascimento())
+            {
+                labelErro.Text = "Data de Nascimento Inválida";
+                labelErro.ForeColor = Color.Red;
+                return false;
+            }
+            if (!cliente.ValidarEmail())
+            {
+                labelErro.Text = "Email Inválido";
+                labelErro.ForeColor = Color.Red;
+                return false;
+            }
+
+            if (!cliente.ValidarGenero())
+            {
+                labelErro.Text = "Gênero Inválido";
+                labelErro.ForeColor = Color.Red;
+                return false;
+            }
+
+
+            return true;
+        }
+
+        private bool ValidarEndereco()
+        {
+
+                if (!endereco.ValidarLogradouro())
+                {
+                    labelErro.Text = "Logradouro Inválido";
+                    labelErro.ForeColor = Color.Red;
+                    return false;
+                }
+                if (!endereco.ValidarNumeroCasa())
+                {
+                    labelErro.Text = "Número Inválido";
+                    labelErro.ForeColor = Color.Red;
+                    return false;
+                }
+                if (!endereco.ValidarComplemento())
+                {
+                    labelErro.Text = "Complemento Inválido";
+                    labelErro.ForeColor = Color.Red;
+                    return false;
+                }
+
+                if (!endereco.ValidarBairro())
+                {
+                    labelErro.Text = "Bairro Inválido";
+                    labelErro.ForeColor = Color.Red;
+                    return false;
+                }
+               
+                if (!endereco.ValidarCEP())
+                {
+                    labelErro.Text = "CEP Inválido";
+                    labelErro.ForeColor = Color.Red;
+                    return false;
+                }
+
+                return true;
+           
         }
     }
 }

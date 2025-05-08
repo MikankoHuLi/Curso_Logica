@@ -15,9 +15,72 @@ namespace InterfaceProjeto.Domínio
         public string cep { get; set; }
         public string cidade { get; set; }
 
-        public bool VALIDARCEP() //validar numeros sequenciais ou repetidos
-        {
 
+        public bool ValorBranco(string valor)
+        {
+            return string.IsNullOrWhiteSpace(valor);
+        }
+
+        public bool ValidarLogradouro()
+        {
+            if (ValorBranco(logradouro))
+            {
+                return false;
+            }
+            if (logradouro.Any(char.IsPunctuation) || logradouro.All(char.IsNumber))
+            {
+                return false;
+            }
+
+            return true;
+        }
+        public bool ValidarNumeroCasa()
+        {
+            if (ValorBranco(numero))
+            {
+                return false;
+            }
+            if (numero.Any(char.IsPunctuation) || numero.All(char.IsLetter) || !numero.Any(char.IsNumber))
+            {
+                return false;
+            }
+
+            return true;
+        }
+        public bool ValidarComplemento()
+        {
+            if (ValorBranco(complemento))
+            {
+                return true;
+
+            }
+            if (complemento.All(char.IsNumber) || complemento.All(char.IsPunctuation))
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool ValidarBairro()
+        {
+            if (ValorBranco(bairro))
+            {
+                return false;
+            }
+            if (bairro.Any(char.IsPunctuation) || bairro.All(char.IsNumber) || !bairro.Any(char.IsLetter))
+            {
+                return false;
+            }
+
+            return true;
+        }
+        
+        
+        public bool ValidarCEP()
+        {
+            if (ValorBranco(cep))
+            {
+                return false;
+            }
             if (cep.Any(char.IsWhiteSpace))
             {
                 return false;
@@ -27,8 +90,9 @@ namespace InterfaceProjeto.Domínio
                 return false;
             }
 
-            return !string.IsNullOrWhiteSpace(cep);
+            return true;
         }
+        
     }
 
 

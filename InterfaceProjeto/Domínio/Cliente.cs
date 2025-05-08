@@ -1,4 +1,5 @@
 ﻿using InterfaceProjeto.Repositório;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,21 +34,32 @@ namespace InterfaceProjeto.Domínio
         {
             repositorioCliente.CriarClientes(novoCliente, novoEndereco);
         }
-        public bool VALIDARNOME()
+        public bool ValorBranco(string valor)
         {
+            return string.IsNullOrWhiteSpace(valor);
+        }
 
+        public bool ValidarNome()
+        {
+            if (ValorBranco(nome))
+            {
+                return false;
+            }
             if (!nome.Any(char.IsWhiteSpace) || nome.Any(char.IsNumber) || nome.Any(char.IsPunctuation))
             {
                 return false;
             }
 
-            return !string.IsNullOrWhiteSpace(nome);
+            return true;
         }
-        public bool VALIDARTELEFONE()
+        public bool ValidarTelefone()
         {
+            if (ValorBranco(telefone))
+            {
+                return false;
+            }
 
-
-            if (telefone.Length < 14 || telefone.Any(char.IsWhiteSpace)) //validar numeros sequenciais ou repetidos
+            if (telefone.Length < 14 || telefone.Any(char.IsWhiteSpace))
             {
                 return false;
             }
@@ -58,12 +70,43 @@ namespace InterfaceProjeto.Domínio
             //    {
             //        return false;
             //    }
-            //} trocar trocar pelo metodo banco de dados
-            return !string.IsNullOrWhiteSpace(telefone);
+            //}
+            return true;
         }
-        public bool VALIDAREMAIL()
+        public bool ValidarNascimento()
         {
+            if (ValorBranco(data_de_nascimento.ToString()))
+            {
+                return false;
 
+            }
+
+            if (data_de_nascimento.ToString().Length < 9 || data_de_nascimento.ToString().Contains(" "))
+            {
+                return false;
+            }
+
+            int index = 6;
+            string ano = data_de_nascimento.ToString().Substring(index); 
+            if (Convert.ToInt32(ano) > 2007 || Convert.ToInt32(ano) < 1900)
+            {
+                return false;
+            }
+
+            DateTime temp;
+            if (!DateTime.TryParse(data_de_nascimento.ToString(), out temp))
+            {
+                return false;
+            }
+
+            return true;
+        }
+        public bool ValidarEmail()
+        {
+            if (ValorBranco(email))
+            {
+                return false;
+            }
             if (email.Any(char.IsWhiteSpace) || !email.Contains("@") || !email.Contains(".") || !email.Any(char.IsLetter))
             {
                 return false;
@@ -75,37 +118,22 @@ namespace InterfaceProjeto.Domínio
             //    {
             //        return false;
             //    }
-            //} trocar pelo metodo banco de dados
-            return !string.IsNullOrWhiteSpace(email);
+            //}
+            return true;
         }
-        public bool VALIDARCPF() //validar numeros sequenciais ou repetidos
-        {
 
-            if (cpf.Any(char.IsWhiteSpace))
-            {
-                return false;
-            }
-            if (cpf.Length < 9)
+        public bool ValidarGenero()
+        {
+            if (genero.ToString() == null)
             {
                 return false;
             }
 
-            return !string.IsNullOrWhiteSpace(cpf);
-        }
-        
-
-        public bool VALIDARCADASTRO()
-        {
-            if (!VALIDARNOME())
-            { return false; }
-            if (!VALIDARTELEFONE())
-            { return false; }
-            if (!VALIDAREMAIL())
-            { return false; }            
-            if (!VALIDARCPF())
-            { return false; }
 
             return true;
         }
+        
+
+        
     }
 }
