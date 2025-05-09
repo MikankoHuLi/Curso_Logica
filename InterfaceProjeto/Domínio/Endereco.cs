@@ -81,18 +81,32 @@ namespace InterfaceProjeto.Domínio
             {
                 return false;
             }
-            if (cep.Any(char.IsWhiteSpace))
+            if (cep.Any(char.IsWhiteSpace) || cep.Length != 8 || cep.Any(char.IsLetter))
             {
                 return false;
             }
-            if (cep.Length < 9)
+            if (cep.Length != 8)
             {
                 return false;
             }
 
             return true;
         }
-        
+
+        public bool ValidarCidade()
+        {
+            if (ValorBranco(cidade))
+            {
+                return true;
+
+            }
+            if (cidade.Any(char.IsNumber) || cidade.Any(char.IsPunctuation))
+            {
+                return false;
+            }
+            return true;
+        }
+
     }
 
 

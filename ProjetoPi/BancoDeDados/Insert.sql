@@ -25,4 +25,7 @@ VALUES
 (2,3),
 (2,4)
 ;
-SELECT id FROM aluguel where cliente_id = 1 AND data_devolucao = '2025-05-04'
+SELECT id FROM aluguel where cliente_id = 1 AND data_devolucao = '2025-05-04';
+select * from cliente;
+select * from aluguel;
+

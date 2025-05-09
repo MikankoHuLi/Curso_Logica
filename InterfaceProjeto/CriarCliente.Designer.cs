@@ -31,8 +31,6 @@
             pictureBox1 = new PictureBox();
             buttonVoltarMenu = new Button();
             textNome = new TextBox();
-            textCep = new TextBox();
-            textCpf = new TextBox();
             textEmail = new TextBox();
             textLogradouro = new TextBox();
             textNumero = new TextBox();
@@ -52,6 +50,7 @@
             textCidade = new TextBox();
             buttonCadastrar = new Button();
             groupBoxDadosCliente = new GroupBox();
+            textCpf = new MaskedTextBox();
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
@@ -64,6 +63,7 @@
             labelDataDeNascimento = new Label();
             maskedTextBoxDataDeNascimento = new MaskedTextBox();
             groupBoxEndereço = new GroupBox();
+            textCep = new MaskedTextBox();
             label12 = new Label();
             label11 = new Label();
             label10 = new Label();
@@ -103,20 +103,6 @@
             textNome.Name = "textNome";
             textNome.Size = new Size(477, 23);
             textNome.TabIndex = 7;
-            // 
-            // textCep
-            // 
-            textCep.Location = new Point(249, 97);
-            textCep.Name = "textCep";
-            textCep.Size = new Size(100, 23);
-            textCep.TabIndex = 8;
-            // 
-            // textCpf
-            // 
-            textCpf.Location = new Point(336, 92);
-            textCpf.Name = "textCpf";
-            textCpf.Size = new Size(155, 23);
-            textCpf.TabIndex = 9;
             // 
             // textEmail
             // 
@@ -246,7 +232,7 @@
             // labelCidade
             // 
             labelCidade.AutoSize = true;
-            labelCidade.Location = new Point(400, 79);
+            labelCidade.Location = new Point(391, 79);
             labelCidade.Name = "labelCidade";
             labelCidade.Size = new Size(47, 15);
             labelCidade.TabIndex = 27;
@@ -254,7 +240,7 @@
             // 
             // textCidade
             // 
-            textCidade.Location = new Point(400, 97);
+            textCidade.Location = new Point(391, 97);
             textCidade.Name = "textCidade";
             textCidade.Size = new Size(100, 23);
             textCidade.TabIndex = 26;
@@ -274,6 +260,7 @@
             // 
             // groupBoxDadosCliente
             // 
+            groupBoxDadosCliente.Controls.Add(textCpf);
             groupBoxDadosCliente.Controls.Add(label9);
             groupBoxDadosCliente.Controls.Add(label8);
             groupBoxDadosCliente.Controls.Add(label7);
@@ -291,13 +278,20 @@
             groupBoxDadosCliente.Controls.Add(labelCPF);
             groupBoxDadosCliente.Controls.Add(labelEmail);
             groupBoxDadosCliente.Controls.Add(labelTelefone);
-            groupBoxDadosCliente.Controls.Add(textCpf);
             groupBoxDadosCliente.Location = new Point(12, 55);
             groupBoxDadosCliente.Name = "groupBoxDadosCliente";
             groupBoxDadosCliente.Size = new Size(776, 128);
             groupBoxDadosCliente.TabIndex = 29;
             groupBoxDadosCliente.TabStop = false;
             groupBoxDadosCliente.Text = "Dados básicos";
+            // 
+            // textCpf
+            // 
+            textCpf.Location = new Point(336, 92);
+            textCpf.Mask = "00000000000";
+            textCpf.Name = "textCpf";
+            textCpf.Size = new Size(88, 23);
+            textCpf.TabIndex = 32;
             // 
             // label9
             // 
@@ -406,6 +400,7 @@
             // 
             // groupBoxEndereço
             // 
+            groupBoxEndereço.Controls.Add(textCep);
             groupBoxEndereço.Controls.Add(label12);
             groupBoxEndereço.Controls.Add(label11);
             groupBoxEndereço.Controls.Add(label10);
@@ -419,7 +414,6 @@
             groupBoxEndereço.Controls.Add(textComplemento);
             groupBoxEndereço.Controls.Add(labelNumero);
             groupBoxEndereço.Controls.Add(labelBairro);
-            groupBoxEndereço.Controls.Add(textCep);
             groupBoxEndereço.Controls.Add(labelCEP);
             groupBoxEndereço.Controls.Add(labelComplemento);
             groupBoxEndereço.Controls.Add(textBairro);
@@ -429,6 +423,14 @@
             groupBoxEndereço.TabIndex = 30;
             groupBoxEndereço.TabStop = false;
             groupBoxEndereço.Text = "Endereço";
+            // 
+            // textCep
+            // 
+            textCep.Location = new Point(240, 97);
+            textCep.Mask = "00000000";
+            textCep.Name = "textCep";
+            textCep.Size = new Size(100, 23);
+            textCep.TabIndex = 42;
             // 
             // label12
             // 
@@ -444,7 +446,7 @@
             // 
             label11.AutoSize = true;
             label11.ForeColor = Color.Red;
-            label11.Location = new Point(391, 79);
+            label11.Location = new Point(382, 79);
             label11.Name = "label11";
             label11.Size = new Size(12, 15);
             label11.TabIndex = 40;
@@ -518,8 +520,6 @@
         private PictureBox pictureBox1;
         private Button buttonVoltarMenu;
         private TextBox textNome;
-        private TextBox textCep;
-        private TextBox textCpf;
         private TextBox textEmail;
         private TextBox textLogradouro;
         private TextBox textNumero;
@@ -557,5 +557,7 @@
         private Label label4;
         private Label label1;
         private Label labelErro;
+        private MaskedTextBox textCpf;
+        private MaskedTextBox textCep;
     }
 }

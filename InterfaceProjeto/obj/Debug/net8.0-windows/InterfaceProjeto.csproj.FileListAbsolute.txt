@@ -117,3 +117,4 @@ D:\Curso_Logica\Curso_Logica\InterfaceProjeto\obj\Debug\net8.0-windows\refint\In
 D:\Curso_Logica\Curso_Logica\InterfaceProjeto\obj\Debug\net8.0-windows\InterfaceProjeto.pdb
 D:\Curso_Logica\Curso_Logica\InterfaceProjeto\obj\Debug\net8.0-windows\InterfaceProjeto.genruntimeconfig.cache
 D:\Curso_Logica\Curso_Logica\InterfaceProjeto\obj\Debug\net8.0-windows\ref\InterfaceProjeto.dll
+D:\Curso_Logica\Curso_Logica\InterfaceProjeto\obj\Debug\net8.0-windows\InterfaceProjeto.Historico.resources

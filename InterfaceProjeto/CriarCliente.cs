@@ -45,19 +45,21 @@ namespace InterfaceProjeto
                 cep = textCep.Text,
                 cidade = textCidade.Text
             };
-            string tico = maskedTextBoxDataDeNascimento.Text;
-            if (maskedTextBoxDataDeNascimento.Text == "  /  /")
+            
+            if (!cliente.ValidarNascimento(maskedTextBoxDataDeNascimento.Text) || maskedTextBoxDataDeNascimento.Text == "  /  /")
             {
-                labelErro.Text = "Digite uma data valida";
-                return;
+                labelErro.Text = "Data de Nascimento Inválida";
+                labelErro.ForeColor = Color.Red;
+                return ;
             }
+            
             cliente = new Cliente()               
             {
                 
                 nome = textNome.Text,
                 cpf = textCpf.Text,
                 email = textEmail.Text,
-                telefone = maskTextTelefone.Text,
+                telefone = maskTextTelefone.Text.Replace("(", "").Replace(")", "").Replace("-", ""),
                 genero = (Genero)comboBoxGenero.SelectedIndex,
                 data_de_nascimento = Convert.ToDateTime(maskedTextBoxDataDeNascimento.Text)
             };
@@ -91,28 +93,50 @@ namespace InterfaceProjeto
                 labelErro.ForeColor = Color.Red;
                 return false;
             }
-            if (!cliente.ValidarTelefone())
-            {
-                labelErro.Text = "Telefone Inválido";
-                labelErro.ForeColor = Color.Red;
-                return false;
-            }
-            if (!cliente.ValidarNascimento())
-            {
-                labelErro.Text = "Data de Nascimento Inválida";
-                labelErro.ForeColor = Color.Red;
-                return false;
-            }
+           
+            
             if (!cliente.ValidarEmail())
             {
                 labelErro.Text = "Email Inválido";
                 labelErro.ForeColor = Color.Red;
                 return false;
             }
+            if (!EmailUnico())
+            {
+                labelErro.Text = "Email já cadastrado";
+                labelErro.ForeColor = Color.Red;
+                return false;
+            }
 
             if (!cliente.ValidarGenero())
             {
-                labelErro.Text = "Gênero Inválido";
+                labelErro.Text = "Selecione um gênero";
+                labelErro.ForeColor = Color.Red;
+                return false;
+            }
+
+            if (!cliente.ValidarTelefone())
+            {
+                labelErro.Text = "Telefone Inválido";
+                labelErro.ForeColor = Color.Red;
+                return false;
+            }
+            if (!TelefoneUnico())
+            {
+                labelErro.Text = "Telefone já cadastrado";
+                labelErro.ForeColor = Color.Red;
+                return false;
+            }
+
+            if (!cliente.ValidarCpf())
+            {
+                labelErro.Text = "CPF Inválido";
+                labelErro.ForeColor = Color.Red;
+                return false;
+            }
+            if (!CpfUnico())
+            {
+                labelErro.Text = "CPF já cadastrado";
                 labelErro.ForeColor = Color.Red;
                 return false;
             }
@@ -157,8 +181,51 @@ namespace InterfaceProjeto
                     return false;
                 }
 
-                return true;
+               if (!endereco.ValidarCidade())
+               {
+                   labelErro.Text = "Cidade Inválida";
+                   labelErro.ForeColor = Color.Red;
+                   return false;
+               }
+
+            return true;
            
+        }
+        public bool EmailUnico()
+        {
+            foreach (var clientes in cliente.BuscarTodosClientes())
+            {
+                if (clientes.email == cliente.email)
+                {                   
+                    return false;
+                }
+                    
+            }
+            return true;
+        }
+        public bool TelefoneUnico()
+        {
+            foreach (var clientes in cliente.BuscarTodosClientes())
+            {
+                if (clientes.telefone == cliente.telefone)
+                {
+                    return false;
+                }
+
+            }
+            return true;
+        }
+        public bool CpfUnico()
+        {
+            foreach (var clientes in cliente.BuscarTodosClientes())
+            {
+                if (clientes.cpf == cliente.cpf)
+                {
+                    return false;
+                }
+
+            }
+            return true;
         }
     }
 }

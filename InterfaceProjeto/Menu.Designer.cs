@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
             buttonCriarPedido = new Button();
-            label1 = new Label();
             buttonCriarCliente = new Button();
             buttonEditarPedido = new Button();
             pictureBox1 = new PictureBox();
@@ -50,15 +49,6 @@
             buttonCriarPedido.Text = "Criar pedido";
             buttonCriarPedido.UseVisualStyleBackColor = true;
             buttonCriarPedido.Click += buttonCriarPedido_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(365, 426);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 1;
-            label1.Text = "label1";
             // 
             // buttonCriarCliente
             // 
@@ -115,7 +105,6 @@
             Controls.Add(pictureBox1);
             Controls.Add(buttonEditarPedido);
             Controls.Add(buttonCriarCliente);
-            Controls.Add(label1);
             Controls.Add(buttonCriarPedido);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -124,13 +113,11 @@
             Text = "Menu";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Button buttonCriarPedido;
-        private Label label1;
         private Button buttonCriarCliente;
         private Button buttonEditarPedido;
         private PictureBox pictureBox1;

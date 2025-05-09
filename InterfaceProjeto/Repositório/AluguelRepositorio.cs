@@ -64,6 +64,40 @@ namespace InterfaceProjeto.Repositório
 
             return buscaPedidos;
         }
+        public List<Aluguel> BuscarPedidosEntregues()
+        {
+            List<Aluguel> buscaPedidos = [];
+
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+                string query = "SELECT cliente.nome, aluguel.id, data_inicio, data_devolucao, pagamento, aluguel.valor, cliente_id FROM aluguel INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE entregue = 1; ";
+
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            buscaPedidos.Add(new Aluguel()
+                            {
+
+                                id = reader.GetInt32("id"),
+                                nome_cliente = reader.GetString("nome"),
+                                data_inicio = reader.GetDateTime("data_inicio"),
+                                data_devolucao = reader.GetDateTime("data_devolucao"),
+                                pagamento = (FormaDePagamento)reader.GetInt32("pagamento"),
+                                valor = reader.GetDecimal("valor"),
+                                cliente_id = reader.GetInt32("cliente_id")
+                            });
+                        }
+                    }
+                }
+
+            }
+
+            return buscaPedidos;
+        }
         public List<Aluguel> BuscarPedidosPorNome(string pedidoDigitado)
         {
             List<Aluguel> buscaPedidos = [];
@@ -71,7 +105,43 @@ namespace InterfaceProjeto.Repositório
             using (var con = DataBase.GetConnection())
             {
                 con.Open();
-                string query = "SELECT cliente.nome ,aluguel.id , data_inicio, data_devolucao, pagamento, aluguel.valor, cliente_id FROM aluguel  INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE cliente.nome LIKE @pedidoDigitado OR cliente.cpf LIKE @pedidoDigitado; ";
+                string query = "SELECT cliente.nome ,aluguel.id , data_inicio, data_devolucao, pagamento, aluguel.valor, cliente_id FROM aluguel  INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE cliente.nome LIKE @pedidoDigitado AND entregue = 0 OR cliente.cpf LIKE @pedidoDigitado AND entregue = 0; ";
+
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@pedidoDigitado", $"{pedidoDigitado}%");
+                    using (var reader = cmd.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+                            buscaPedidos.Add(new Aluguel()
+                            {
+
+                                id = reader.GetInt32("id"),
+                                nome_cliente = reader.GetString("nome"),
+                                data_inicio = reader.GetDateTime("data_inicio"),
+                                data_devolucao = reader.GetDateTime("data_devolucao"),
+                                pagamento = (FormaDePagamento)reader.GetInt32("pagamento"),
+                                valor = reader.GetDecimal("valor"),
+                                cliente_id = reader.GetInt32("cliente_id")
+                            });
+                        }
+                    }
+                }
+
+            }
+
+            return buscaPedidos;
+        }
+        public List<Aluguel> BuscarPedidosEntreguesPorNome(string pedidoDigitado)
+        {
+            List<Aluguel> buscaPedidos = [];
+
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+                string query = "SELECT cliente.nome ,aluguel.id , data_inicio, data_devolucao, pagamento, aluguel.valor, cliente_id FROM aluguel  INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE cliente.nome LIKE @pedidoDigitado AND entregue = 1 OR cliente.cpf LIKE @pedidoDigitado AND entregue = 1 ; ";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
@@ -150,17 +220,18 @@ namespace InterfaceProjeto.Repositório
                 }
             }
         }
-        public void PedidoEntregue(int pedidoSelecionado)
+        public void PedidoEntregue(int pedidoSelecionado, DateTime data_retorno)
         {
             using (var con = DataBase.GetConnection())
             {
                 con.Open();
 
-                string query = "UPDATE aluguel SET entregue = 1 WHERE id = @pedidoSelecionado ;";
+                string query = "UPDATE aluguel SET entregue = 1, data_retorno = @data_retorno WHERE id = @pedidoSelecionado ;";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@pedidoSelecionado", pedidoSelecionado);
+                    cmd.Parameters.AddWithValue("@data_retorno", data_retorno);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -176,6 +247,7 @@ namespace InterfaceProjeto.Repositório
                 using (var cmd = new MySqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@novoValor", novoValor);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -252,6 +324,28 @@ namespace InterfaceProjeto.Repositório
                 while (reader.Read())
                 {
                     resultado.AppendLine($"{reader.GetInt32("id")};{reader.GetString("nome")};{reader.GetString("cpf")};{reader.GetString("email")};{reader.GetDateTime("data_inicio")};{reader.GetDateTime("data_devolucao")};{reader.GetDecimal("valor")};{reader.GetInt32("pagamento")}");
+                }
+            }
+
+            return resultado.ToString();
+        }
+        public string RelatorioJogosAlugados()
+        {
+            var resultado = new StringBuilder();
+            resultado.AppendLine("QuantidadeDeAlugueis;Nome");
+
+            var query = "SELECT count(aluguel_id) , jogo.nome FROM aluguel_jogo INNER JOIN aluguel ON aluguel.id = aluguel_jogo.aluguel_id INNER JOIN jogo ON jogo.id = aluguel_jogo.jogo_id INNER JOIN cliente ON cliente.id = aluguel.cliente_id GROUP BY jogo.nome;";
+
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+
+                using var cmd = new MySqlCommand(query, con);
+                using var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    resultado.AppendLine($"{reader.GetInt32("count(aluguel_id)")};{reader.GetString("nome")}");
                 }
             }
 

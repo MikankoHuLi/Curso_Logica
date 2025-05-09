@@ -82,7 +82,7 @@ namespace InterfaceProjeto
 
         private void buttonAdicionar_Click(object sender, EventArgs e)
         {
-            // deixar adicionar apenas uma copia por jogo
+            
             if (dataGridJogo.SelectedRows.Count <= 0)
             {
                 labelAvisoJogo.Text = "Selecione um Jogo";
@@ -90,15 +90,24 @@ namespace InterfaceProjeto
             }
 
             var linhaSelecionada = dataGridJogo.SelectedRows[0];
+            int idJogoSelecionado = (int)linhaSelecionada.Cells[0].Value;
+            foreach (var jogo in jogosSelecionado)
+            {
+                if (jogo.id == idJogoSelecionado)
+                {
+                    labelAvisoJogo.Text = "Jogo já foi selecionado";
+                    return;
+                }
 
-            var jogodigitado = jogo.BuscarJogoPorId((int) linhaSelecionada.Cells[0].Value);
-
+            }
+            var jogodigitado = jogo.BuscarJogoPorId(idJogoSelecionado);
             jogosSelecionado.AddRange(jogodigitado);
 
             dataGridJogosPedido.DataSource = null;
             dataGridJogosPedido.DataSource = jogosSelecionado;
 
             CalcularValorPedido();
+            labelAvisoJogo.Text = string.Empty;
 
         }
 
@@ -124,10 +133,6 @@ namespace InterfaceProjeto
                 labelAvisoJogo.Text = "Selecione um Jogo";
                 return;
             }
-
-            var linhaSelecionada = dataGridJogosPedido.SelectedRows[0];
-
-            var jogodigitado = jogo.BuscarJogoPorNome((string)linhaSelecionada.Cells[1].Value);
 
             jogosSelecionado.RemoveAt((dataGridJogosPedido.Rows.IndexOf(dataGridJogosPedido.SelectedRows[0])));
 

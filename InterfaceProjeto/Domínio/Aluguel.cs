@@ -26,9 +26,9 @@ namespace InterfaceProjeto.Domínio
         {
             repositorioAluguel.ExtenderAluguel(novaDataDevolucao, clienteSelecionado, novoValor);
         }
-        public void PedidoEntregue(int pedidoSelecionado)
+        public void PedidoEntregue(int pedidoSelecionado, DateTime data_retorno)
         {
-            repositorioAluguel.PedidoEntregue(pedidoSelecionado);
+            repositorioAluguel.PedidoEntregue(pedidoSelecionado, data_retorno);
         }
         public void Multa(int id, decimal novoValor)
         {
@@ -38,9 +38,17 @@ namespace InterfaceProjeto.Domínio
         {
             return repositorioAluguel.BuscarPedidos();
         }
+        public List<Aluguel> BuscarPedidosEntregues()
+        {
+            return repositorioAluguel.BuscarPedidosEntregues();
+        }
         public List<Aluguel> BuscarPedidosPorNome(string pedidoDigitado)
         {
             return repositorioAluguel.BuscarPedidosPorNome(pedidoDigitado);
+        }
+        public List<Aluguel> BuscarPedidosEntreguesPorNome(string pedidoDigitado)
+        {
+            return repositorioAluguel.BuscarPedidosEntreguesPorNome(pedidoDigitado);
         }
         public List<Aluguel_Jogo> BuscarDetalhesAluguel(int aluguel)
         {
@@ -59,6 +67,10 @@ namespace InterfaceProjeto.Domínio
         public string RelatorioAlugueisFinalizados()
         {
             return repositorioAluguel.RelatorioAlugueisFinalizados();
+        }
+        public string RelatorioJogosAlugados()
+        {
+            return repositorioAluguel.RelatorioJogosAlugados();
         }
     }
 }

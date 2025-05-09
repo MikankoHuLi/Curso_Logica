@@ -16,10 +16,10 @@ FROM aluguel_jogo
  INNER JOIN jogo ON jogo.id = aluguel_jogo.jogo_id
  INNER JOIN cliente ON cliente.id = aluguel.cliente_id
 ;
-SELECT cliente.nome ,aluguel.id , data_inicio,data_devolucao,pagamento,aluguel.valor, cliente_id
+SELECT cliente.nome ,aluguel.id , data_inicio,data_devolucao,pagamento,aluguel.valor, cliente_id, entregue
 FROM aluguel
  INNER JOIN cliente ON cliente.id = aluguel.cliente_id
- WHERE cliente.nome LIKE 'mari%'
+ WHERE cliente.nome LIKE '2%' AND entregue = 1 OR cliente.cpf LIKE '2%' AND entregue = 1;
 ;
 SELECT jogo.nome,jogo.valor
 FROM aluguel_jogo

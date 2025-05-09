@@ -59,7 +59,7 @@ namespace InterfaceProjeto.Domínio
                 return false;
             }
 
-            if (telefone.Length < 14 || telefone.Any(char.IsWhiteSpace))
+            if (telefone.Length < 11 || telefone.Any(char.IsWhiteSpace))
             {
                 return false;
             }
@@ -73,28 +73,28 @@ namespace InterfaceProjeto.Domínio
             //}
             return true;
         }
-        public bool ValidarNascimento()
+        public bool ValidarNascimento(string nascimento)
         {
-            if (ValorBranco(data_de_nascimento.ToString()))
+            if (ValorBranco(nascimento))
             {
                 return false;
 
             }
 
-            if (data_de_nascimento.ToString().Length < 9 || data_de_nascimento.ToString().Contains(" "))
+            if (nascimento.Length < 10 || nascimento.Contains(" "))
             {
                 return false;
             }
 
             int index = 6;
-            string ano = data_de_nascimento.ToString().Substring(index); 
+            string ano = nascimento.Substring(index); 
             if (Convert.ToInt32(ano) > 2007 || Convert.ToInt32(ano) < 1900)
             {
                 return false;
             }
 
             DateTime temp;
-            if (!DateTime.TryParse(data_de_nascimento.ToString(), out temp))
+            if (!DateTime.TryParse(nascimento, out temp))
             {
                 return false;
             }
@@ -111,20 +111,13 @@ namespace InterfaceProjeto.Domínio
             {
                 return false;
             }
-
-            //for (int i = 0; i < clientes.Count; i++)
-            //{
-            //    if (clientes[i].email == textEmail.Text)
-            //    {
-            //        return false;
-            //    }
-            //}
+                       
             return true;
         }
 
         public bool ValidarGenero()
         {
-            if (genero.ToString() == null)
+            if (genero.ToString() == null || (genero.ToString() == "-1"))
             {
                 return false;
             }
@@ -132,8 +125,21 @@ namespace InterfaceProjeto.Domínio
 
             return true;
         }
-        
+        public bool ValidarCpf()
+        {
+            if (ValorBranco(cpf))
+            {
+                return false;
+            }
+            if (cpf.Any(char.IsWhiteSpace) || cpf.Any(char.IsLetter) || cpf.Any(char.IsPunctuation) || cpf.Length != 11)
+            {
+                return false;
+            }
 
-        
+            return true;
+        }
+
+
+
     }
 }

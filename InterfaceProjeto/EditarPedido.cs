@@ -85,7 +85,7 @@ namespace InterfaceProjeto
             var dataDevoluacao = (DateTime) dataGridPedidos.SelectedRows[0].Cells[3].Value;
             var valorAluguel = (decimal) dataGridPedidos.SelectedRows[0].Cells[5].Value;
 
-            aluguel.PedidoEntregue(idAluguel);
+            aluguel.PedidoEntregue(idAluguel, DateTime.Now);
 
             dataGridPedidos.DataSource = null;
             dataGridPedidos.DataSource = aluguel.BuscarPedidos();
