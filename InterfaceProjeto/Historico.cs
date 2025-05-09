@@ -27,16 +27,42 @@ namespace InterfaceProjeto
             MessageBox.Show($"Arquivo salvo em {fileName}");
             labelErro.Text = string.Empty;
         }
-        private void RelatorioJogosAlugados()
+        private void RelatorioQuantidadePedidosCliente()
         {
             var downloadsPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\Downloads";
-            var fileName = $"relatorio-jogos-alugados_{DateTime.Now.ToLocalTime().ToString().Replace("/", "").Replace(":", "").Replace(" ", "-")}.csv";
-            var data = new Aluguel().RelatorioJogosAlugados();
+            var fileName = $"relatorio-quantidade-pedidos-cliente_{DateTime.Now.ToLocalTime().ToString().Replace("/", "").Replace(":", "").Replace(" ", "-")}.csv";
+            var data = new Aluguel().RelatorioQuantidadePedidosCliente();
             File.WriteAllText(Path.Combine(downloadsPath, Path.GetFileName(fileName)), data);
             MessageBox.Show($"Arquivo salvo em {fileName}");
             labelErro.Text = string.Empty;
         }
-
+        private void RelatorioJogosMaisAlugados()
+        {
+            var downloadsPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\Downloads";
+            var fileName = $"relatorio-jogos-mais-alugados_{DateTime.Now.ToLocalTime().ToString().Replace("/", "").Replace(":", "").Replace(" ", "-")}.csv";
+            var data = new Aluguel().RelatorioJogosMaisAlugados();
+            File.WriteAllText(Path.Combine(downloadsPath, Path.GetFileName(fileName)), data);
+            MessageBox.Show($"Arquivo salvo em {fileName}");
+            labelErro.Text = string.Empty;
+        }
+        private void JogosIndisponiveis()
+        {           
+            var downloadsPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\Downloads";
+            var fileName = $"relatorio-jogos-indisponiveis_{DateTime.Now.ToLocalTime().ToString().Replace("/", "").Replace(":", "").Replace(" ", "-")}.csv";
+            var data = new Aluguel().JogosIndisponiveis();
+            File.WriteAllText(Path.Combine(downloadsPath, Path.GetFileName(fileName)), data);
+            MessageBox.Show($"Arquivo salvo em {fileName}");
+            labelErro.Text = string.Empty;
+        }
+        private void RelatorioPedidosComMulta()
+        {
+            var downloadsPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\Downloads";
+            var fileName = $"relatorio-pedidos-com-multa_{DateTime.Now.ToLocalTime().ToString().Replace("/", "").Replace(":", "").Replace(" ", "-")}.csv";
+            var data = new Aluguel().RelatorioPedidosComMulta();
+            File.WriteAllText(Path.Combine(downloadsPath, Path.GetFileName(fileName)), data);
+            MessageBox.Show($"Arquivo salvo em {fileName}");
+            labelErro.Text = string.Empty;
+        }
         private void Historico_Load(object sender, EventArgs e)
         {
             dataGridPedidos.DataSource = aluguel.BuscarPedidosEntregues();
@@ -62,8 +88,21 @@ namespace InterfaceProjeto
                 RelatorioAlugueisFinalizados();               
             }
             if (indice == 1)
+            {   //alugueis por cliente
+                RelatorioQuantidadePedidosCliente();
+            }
+            if (indice == 2)
+            {   //mais vendidos
+                RelatorioJogosMaisAlugados();
+            }
+            if (indice == 3)
             {
-                RelatorioJogosAlugados();
+                //pedidos multa 
+                RelatorioPedidosComMulta();
+            }
+            if (indice == 4)
+            {                  
+                JogosIndisponiveis();
             }
 
         }

@@ -68,9 +68,21 @@ namespace InterfaceProjeto.Domínio
         {
             return repositorioAluguel.RelatorioAlugueisFinalizados();
         }
-        public string RelatorioJogosAlugados()
+        public string RelatorioQuantidadePedidosCliente()
         {
-            return repositorioAluguel.RelatorioJogosAlugados();
+            return repositorioAluguel.RelatorioQuantidadePedidosCliente();
+        }
+        public string RelatorioJogosMaisAlugados()
+        {
+            return repositorioAluguel.RelatorioJogosMaisAlugados();
+        }
+        public string JogosIndisponiveis()
+        {
+            return repositorioAluguel.JogosIndisponiveis();
+        }
+        public string RelatorioPedidosComMulta()
+        {
+            return repositorioAluguel.RelatorioPedidosComMulta();
         }
     }
 }

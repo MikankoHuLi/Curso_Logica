@@ -310,9 +310,9 @@ namespace InterfaceProjeto.Repositório
         public string RelatorioAlugueisFinalizados()
         {
             var resultado = new StringBuilder();
-            resultado.AppendLine("id;nome;cpf;email;data_inicio;data_devolucao;valor;pagamento");
+            resultado.AppendLine("NumeroPedido;IdCliente;Cliente;cpf;data_inicio;data_devolucao;data_retorno;pagamento;valor;multa");
 
-            var query = "SELECT \r\n    a.id,\r\n    c.nome,\r\n    c.cpf,\r\n    c.email,\r\n    a.data_inicio,\r\n    a.data_devolucao,\r\n    a.valor,\r\n    a.pagamento\r\nFROM\r\n    aluguel a\r\n        INNER JOIN\r\n    cliente c ON a.cliente_id = c.id\r\nWHERE\r\n    a.entregue = 1;";
+            var query = "SELECT aluguel.id, cliente_id, cliente.nome, cliente.cpf, data_inicio, data_devolucao, data_retorno, pagamento, valor, multa FROM aluguel INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE entregue = 1;";
 
             using (var con = DataBase.GetConnection())
             {
@@ -323,13 +323,35 @@ namespace InterfaceProjeto.Repositório
 
                 while (reader.Read())
                 {
-                    resultado.AppendLine($"{reader.GetInt32("id")};{reader.GetString("nome")};{reader.GetString("cpf")};{reader.GetString("email")};{reader.GetDateTime("data_inicio")};{reader.GetDateTime("data_devolucao")};{reader.GetDecimal("valor")};{reader.GetInt32("pagamento")}");
+                    resultado.AppendLine($"{reader.GetInt32("id")};{reader.GetInt32("cliente_id")};{reader.GetString("nome")};{reader.GetString("cpf")};{reader.GetDateTime("data_inicio")};{reader.GetDateTime("data_devolucao")};{reader.GetDateTime("data_retorno")};{reader.GetInt32("pagamento")};{reader.GetDecimal("valor")};{reader.GetInt32("multa")}");
                 }
             }
 
             return resultado.ToString();
         }
-        public string RelatorioJogosAlugados()
+        public string RelatorioQuantidadePedidosCliente()
+        {
+            var resultado = new StringBuilder();
+            resultado.AppendLine("NumeroDePedidos;Nome;CPF");
+
+            var query = "SELECT count(aluguel.id) AS 'NumeroPedidos', cliente.nome,cliente.cpf FROM aluguel INNER JOIN cliente ON cliente.id = aluguel.cliente_id GROUP BY cliente.nome ;";
+
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+
+                using var cmd = new MySqlCommand(query, con);
+                using var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    resultado.AppendLine($"{reader.GetInt32("NumeroPedidos")};{reader.GetString("nome")};{reader.GetString("cpf")}");
+                }
+            }
+
+            return resultado.ToString();
+        }
+        public string RelatorioJogosMaisAlugados()
         {
             var resultado = new StringBuilder();
             resultado.AppendLine("QuantidadeDeAlugueis;Nome");
@@ -346,6 +368,50 @@ namespace InterfaceProjeto.Repositório
                 while (reader.Read())
                 {
                     resultado.AppendLine($"{reader.GetInt32("count(aluguel_id)")};{reader.GetString("nome")}");
+                }
+            }
+
+            return resultado.ToString();
+        }       
+        public string RelatorioPedidosComMulta()
+        {
+            var resultado = new StringBuilder();
+            resultado.AppendLine("NumeroPedido;Valor;Cliente;CPF;Email;data_inicio;data_devolucao;data_retorno;pagamento");
+
+            var query = "SELECT aluguel.id , aluguel.valor  ,cliente.nome, cliente.cpf, cliente.email, data_inicio,data_devolucao,data_retorno,pagamento FROM aluguel INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE multa = 1;";
+
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+
+                using var cmd = new MySqlCommand(query, con);
+                using var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    resultado.AppendLine($"{reader.GetInt32("id")};{reader.GetDecimal("valor")};{reader.GetString("nome")};{reader.GetString("cpf")};{reader.GetString("email")};{reader.GetDateTime("data_inicio")};{reader.GetDateTime("data_devolucao")};{reader.GetDateTime("data_retorno")};{reader.GetInt32("pagamento")}");
+                }
+            }
+
+            return resultado.ToString();
+        }
+        public string JogosIndisponiveis()
+        {
+            var resultado = new StringBuilder();
+            resultado.AppendLine("NumeroPedido;Cliente;IdJogo;NomeJogo;Genero;Valor");
+
+            var query = "SELECT aluguel_id, cliente.nome AS 'cliente', jogo_id, jogo.nome, jogo.genero, jogo.valor FROM aluguel_jogo INNER JOIN aluguel ON aluguel.id = aluguel_jogo.aluguel_id INNER JOIN jogo ON jogo.id = aluguel_jogo.jogo_id INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE alugado = 1 AND entregue = 0;";
+
+            using (var con = DataBase.GetConnection())
+            {
+                con.Open();
+
+                using var cmd = new MySqlCommand(query, con);
+                using var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    resultado.AppendLine($"{reader.GetInt32("aluguel_id")};{reader.GetString("cliente")};{reader.GetInt32("jogo_id")};{reader.GetString("nome")};{reader.GetString("genero")};{reader.GetDecimal("valor")}");
                 }
             }
 

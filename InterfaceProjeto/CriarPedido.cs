@@ -138,8 +138,12 @@ namespace InterfaceProjeto
 
             dataGridJogosPedido.DataSource = null;
             dataGridJogosPedido.DataSource = jogosSelecionado;
-
+           
             CalcularValorPedido();
+            if (jogosSelecionado.Count == 0)
+            {
+                textValor.Clear();
+            }
         }
 
         private void buttonLimpar_Click(object sender, EventArgs e)
@@ -154,7 +158,7 @@ namespace InterfaceProjeto
                 labelAvisoCliente.Text = "Selecione uma forma de pagamento";
                 return;
             }
-            if (clienteIdSelecionado == -1)
+            if (clienteIdSelecionado == 0)
             {
                 labelAvisoCliente.Text = "Selecione um Cliente";
                 return;
@@ -165,7 +169,7 @@ namespace InterfaceProjeto
                 return;
             }
             DateTime dataPedido = DateTime.Now;
-            aluguel = new Aluguel() //popular todos os dados
+            aluguel = new Aluguel() 
             {
                 cliente_id = clienteIdSelecionado,
                 data_inicio = dataPedido,
