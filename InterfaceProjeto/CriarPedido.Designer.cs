@@ -287,7 +287,7 @@
             // 
             comboBoxPagamento.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxPagamento.FormattingEnabled = true;
-            comboBoxPagamento.Items.AddRange(new object[] { "Crédito", "Débito" });
+            comboBoxPagamento.Items.AddRange(new object[] { "Crédito", "Débito", "Dinheiro", "Pix" });
             comboBoxPagamento.Location = new Point(173, 442);
             comboBoxPagamento.Name = "comboBoxPagamento";
             comboBoxPagamento.Size = new Size(121, 23);

@@ -9,6 +9,8 @@ namespace InterfaceProjeto.Domínio
     enum FormaDePagamento
     {
         Crédito,
-        Débito
+        Débito,
+        Dinheiro,
+        Pix       
     }
 }

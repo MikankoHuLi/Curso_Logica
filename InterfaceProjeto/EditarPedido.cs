@@ -20,9 +20,15 @@ namespace InterfaceProjeto
 
         private void buttonBuscarPedido_Click(object sender, EventArgs e)
         {
+            if (buttonDetalhes.Text == "Retornar")
+            {           
+                labelErroPedido.Text = "Finalize a visualização de detalhes";
+                return;
+            }
             var pedidoDigitado = aluguel.BuscarPedidosPorNome(textBuscarPedido.Text);
             dataGridPedidos.DataSource = null;
             dataGridPedidos.DataSource = pedidoDigitado;
+            labelErroPedido.Text = string.Empty;
         }
 
         private void EditarPedido_Load(object sender, EventArgs e)
@@ -33,12 +39,16 @@ namespace InterfaceProjeto
 
         private void buttonDetalhes_Click(object sender, EventArgs e)
         {
-
+            
             if (buttonDetalhes.Text == "Retornar")
             {
                 dataGridPedidos.DataSource = null;
                 dataGridPedidos.DataSource = aluguel.BuscarPedidos();
                 buttonDetalhes.Text = "Detalhes";
+
+                buttonExtender.Enabled = true;
+                buttonFinalizar.Enabled = true;
+                labelErroPedido.Text = string.Empty;
                 return;
             }
 
@@ -55,7 +65,13 @@ namespace InterfaceProjeto
                 dataGridPedidos.DataSource = null;
                 dataGridPedidos.DataSource = aluguelDetalhes;
                 buttonDetalhes.Text = "Retornar";
+
+                buttonExtender.Enabled = false;
+                buttonFinalizar.Enabled = false;
+                labelErroPedido.Text = string.Empty;
                 return;
+
+                
             }
         }
 
@@ -68,7 +84,7 @@ namespace InterfaceProjeto
             }
 
             var linhaSelecionada = dataGridPedidos.SelectedRows[0];
-            aluguel.ExtenderAluguel(((DateTime)linhaSelecionada.Cells[3].Value).AddDays(10), (int)linhaSelecionada.Cells[0].Value, ((decimal)linhaSelecionada.Cells[5].Value) + 20);
+            aluguel.ExtenderAluguel(((DateTime)linhaSelecionada.Cells[3].Value).AddDays(10), (int)linhaSelecionada.Cells[0].Value, ((decimal)linhaSelecionada.Cells[6].Value) + 20);
             dataGridPedidos.DataSource = null;
             dataGridPedidos.DataSource = aluguel.BuscarPedidos();
         }
@@ -83,7 +99,7 @@ namespace InterfaceProjeto
 
             var idAluguel = (int) dataGridPedidos.SelectedRows[0].Cells[0].Value;
             var dataDevoluacao = (DateTime) dataGridPedidos.SelectedRows[0].Cells[3].Value;
-            var valorAluguel = (decimal) dataGridPedidos.SelectedRows[0].Cells[5].Value;
+            var valorAluguel = (decimal) dataGridPedidos.SelectedRows[0].Cells[6].Value;
 
             aluguel.PedidoEntregue(idAluguel, DateTime.Now);
 

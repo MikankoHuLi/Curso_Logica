@@ -1,4 +1,4 @@
-select * from cliente WHERE nome LIKE '@%';
+select * from cliente;
 select * from jogo WHERE nome LIKE '@%';
 
 INSERT INTO aluguel (cliente_id, data_inicio, data_devolucao, pagamento, valor)
@@ -29,6 +29,4 @@ FROM aluguel_jogo
  where aluguel.id = 1
 ;
 
-
-SELECT * FROM aluguel where cliente_id = 1 AND data_inicio = @dataPedido ;
 

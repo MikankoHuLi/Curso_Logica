@@ -68,6 +68,7 @@ namespace InterfaceProjeto
                 return;
             }
             labelErro.Text = "Cadastro realizado com sucesso";
+            labelErro.ForeColor = Color.Green;
 
             cliente.CriarClientes(cliente,endereco);
         }
@@ -113,6 +114,19 @@ namespace InterfaceProjeto
                 labelErro.Text = "Selecione um gênero";
                 labelErro.ForeColor = Color.Red;
                 return false;
+            }            
+
+            if (!cliente.ValidarCpf())
+            {
+                labelErro.Text = "CPF Inválido";
+                labelErro.ForeColor = Color.Red;
+                return false;
+            }
+            if (!CpfUnico())
+            {
+                labelErro.Text = "CPF já cadastrado";
+                labelErro.ForeColor = Color.Red;
+                return false;
             }
 
             if (!cliente.ValidarTelefone())
@@ -124,19 +138,6 @@ namespace InterfaceProjeto
             if (!TelefoneUnico())
             {
                 labelErro.Text = "Telefone já cadastrado";
-                labelErro.ForeColor = Color.Red;
-                return false;
-            }
-
-            if (!cliente.ValidarCpf())
-            {
-                labelErro.Text = "CPF Inválido";
-                labelErro.ForeColor = Color.Red;
-                return false;
-            }
-            if (!CpfUnico())
-            {
-                labelErro.Text = "CPF já cadastrado";
                 labelErro.ForeColor = Color.Red;
                 return false;
             }

@@ -68,7 +68,7 @@
             // comboRelatorio
             // 
             comboRelatorio.FormattingEnabled = true;
-            comboRelatorio.Items.AddRange(new object[] { "Relatório de Pedidos Entregues", "Relatório Aluguéis por Cliente", "Relatório de Aluguéis de Jogos", "Relatório Pedidos com Multa", "Jogos em Aluguel" });
+            comboRelatorio.Items.AddRange(new object[] { "Relatório de Pedidos Entregues", "Relatório Aluguéis por Cliente", "Relatório Jogos Mais Alugados", "Relatório Pedidos com Multa", "Relatório Jogos em Aluguel" });
             comboRelatorio.Location = new Point(242, 315);
             comboRelatorio.Name = "comboRelatorio";
             comboRelatorio.Size = new Size(195, 23);

@@ -45,11 +45,11 @@ namespace InterfaceProjeto
             MessageBox.Show($"Arquivo salvo em {fileName}");
             labelErro.Text = string.Empty;
         }
-        private void JogosIndisponiveis()
+        private void RelatorioJogosIndisponiveis()
         {           
             var downloadsPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\Downloads";
             var fileName = $"relatorio-jogos-indisponiveis_{DateTime.Now.ToLocalTime().ToString().Replace("/", "").Replace(":", "").Replace(" ", "-")}.csv";
-            var data = new Aluguel().JogosIndisponiveis();
+            var data = new Aluguel().RelatorioJogosIndisponiveis();
             File.WriteAllText(Path.Combine(downloadsPath, Path.GetFileName(fileName)), data);
             MessageBox.Show($"Arquivo salvo em {fileName}");
             labelErro.Text = string.Empty;
@@ -102,7 +102,7 @@ namespace InterfaceProjeto
             }
             if (indice == 4)
             {                  
-                JogosIndisponiveis();
+                RelatorioJogosIndisponiveis();
             }
 
         }

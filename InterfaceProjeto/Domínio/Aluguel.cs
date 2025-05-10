@@ -13,10 +13,11 @@ namespace InterfaceProjeto.Domínio
         public string? nome_cliente { get; set; }
         public DateTime data_inicio { get; set; }
         public DateTime data_devolucao { get; set; }
+        public DateTime? data_retorno { get; set; }
         public FormaDePagamento pagamento { get; set; }
         public decimal valor { get; set; }
         public int cliente_id { get; set; }
-        
+
         private readonly AluguelRepositorio repositorioAluguel = new AluguelRepositorio();
         public void CriarPedidos()
         {
@@ -76,9 +77,9 @@ namespace InterfaceProjeto.Domínio
         {
             return repositorioAluguel.RelatorioJogosMaisAlugados();
         }
-        public string JogosIndisponiveis()
+        public string RelatorioJogosIndisponiveis()
         {
-            return repositorioAluguel.JogosIndisponiveis();
+            return repositorioAluguel.RelatorioJogosIndisponiveis();
         }
         public string RelatorioPedidosComMulta()
         {

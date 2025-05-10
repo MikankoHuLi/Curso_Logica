@@ -71,7 +71,7 @@ namespace InterfaceProjeto.Repositório
             using (var con = DataBase.GetConnection())
             {
                 con.Open();
-                string query = "SELECT cliente.nome, aluguel.id, data_inicio, data_devolucao, pagamento, aluguel.valor, cliente_id FROM aluguel INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE entregue = 1; ";
+                string query = "SELECT cliente.nome, aluguel.id, data_inicio, data_devolucao, data_retorno, pagamento, aluguel.valor, cliente_id FROM aluguel INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE entregue = 1; ";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
@@ -86,6 +86,7 @@ namespace InterfaceProjeto.Repositório
                                 nome_cliente = reader.GetString("nome"),
                                 data_inicio = reader.GetDateTime("data_inicio"),
                                 data_devolucao = reader.GetDateTime("data_devolucao"),
+                                data_retorno = reader.GetDateTime("data_retorno"),
                                 pagamento = (FormaDePagamento)reader.GetInt32("pagamento"),
                                 valor = reader.GetDecimal("valor"),
                                 cliente_id = reader.GetInt32("cliente_id")
@@ -395,7 +396,7 @@ namespace InterfaceProjeto.Repositório
 
             return resultado.ToString();
         }
-        public string JogosIndisponiveis()
+        public string RelatorioJogosIndisponiveis()
         {
             var resultado = new StringBuilder();
             resultado.AppendLine("NumeroPedido;Cliente;IdJogo;NomeJogo;Genero;Valor");

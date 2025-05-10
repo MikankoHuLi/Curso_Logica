@@ -97,7 +97,7 @@ namespace InterfaceProjeto.Domínio
         {
             if (ValorBranco(cidade))
             {
-                return true;
+                return false;
 
             }
             if (cidade.Any(char.IsNumber) || cidade.Any(char.IsPunctuation))
