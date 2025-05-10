@@ -54,6 +54,8 @@
             label2 = new Label();
             comboBoxPagamento = new ComboBox();
             buttonFinalizarPedido = new Button();
+            labelAvisoListaJogo = new Label();
+            labelPedidoFinalizado = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridCliente).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridJogo).BeginInit();
@@ -241,7 +243,7 @@
             // labelValor
             // 
             labelValor.AutoSize = true;
-            labelValor.Location = new Point(509, 630);
+            labelValor.Location = new Point(542, 643);
             labelValor.Name = "labelValor";
             labelValor.Size = new Size(33, 15);
             labelValor.TabIndex = 25;
@@ -249,7 +251,7 @@
             // 
             // textValor
             // 
-            textValor.Location = new Point(548, 627);
+            textValor.Location = new Point(581, 640);
             textValor.Name = "textValor";
             textValor.ReadOnly = true;
             textValor.Size = new Size(100, 23);
@@ -303,11 +305,31 @@
             buttonFinalizarPedido.UseVisualStyleBackColor = true;
             buttonFinalizarPedido.Click += buttonFinalizarPedido_Click;
             // 
+            // labelAvisoListaJogo
+            // 
+            labelAvisoListaJogo.AutoSize = true;
+            labelAvisoListaJogo.Location = new Point(581, 611);
+            labelAvisoListaJogo.Name = "labelAvisoListaJogo";
+            labelAvisoListaJogo.Size = new Size(100, 15);
+            labelAvisoListaJogo.TabIndex = 32;
+            labelAvisoListaJogo.Text = "me deixe invisivel";
+            // 
+            // labelPedidoFinalizado
+            // 
+            labelPedidoFinalizado.AutoSize = true;
+            labelPedidoFinalizado.Location = new Point(376, 643);
+            labelPedidoFinalizado.Name = "labelPedidoFinalizado";
+            labelPedidoFinalizado.Size = new Size(100, 15);
+            labelPedidoFinalizado.TabIndex = 33;
+            labelPedidoFinalizado.Text = "me deixe invisivel";
+            // 
             // CriarPedido
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(971, 709);
+            Controls.Add(labelPedidoFinalizado);
+            Controls.Add(labelAvisoListaJogo);
             Controls.Add(buttonFinalizarPedido);
             Controls.Add(comboBoxPagamento);
             Controls.Add(label2);
@@ -373,5 +395,7 @@
         private Label label2;
         private ComboBox comboBoxPagamento;
         private Button buttonFinalizarPedido;
+        private Label labelAvisoListaJogo;
+        private Label labelPedidoFinalizado;
     }
 }

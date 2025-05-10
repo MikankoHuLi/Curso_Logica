@@ -31,6 +31,8 @@ namespace InterfaceProjeto
 
             labelAvisoCliente.Text = string.Empty;
             labelAvisoJogo.Text = string.Empty;
+            labelAvisoListaJogo.Text = string.Empty;
+            labelPedidoFinalizado.Text = string.Empty;
         }
         private void LimparPedido()
         {
@@ -38,6 +40,7 @@ namespace InterfaceProjeto
             dataGridJogosPedido.DataSource = null;
             dataGridJogosPedido.DataSource = jogosSelecionado;
 
+            labelAvisoListaJogo.Text = string.Empty;
             textValor.Clear();
         }
         private void CalcularValorPedido()
@@ -130,7 +133,7 @@ namespace InterfaceProjeto
             //criar label de erro propria
             if (dataGridJogosPedido.SelectedRows.Count <= 0)
             {
-                labelAvisoJogo.Text = "Selecione um Jogo";
+                labelAvisoListaJogo.Text = "Selecione um Jogo";
                 return;
             }
 
@@ -144,6 +147,7 @@ namespace InterfaceProjeto
             {
                 textValor.Clear();
             }
+            labelAvisoListaJogo.Text = string.Empty;
         }
 
         private void buttonLimpar_Click(object sender, EventArgs e)
@@ -152,12 +156,7 @@ namespace InterfaceProjeto
         }
 
         private void buttonFinalizarPedido_Click(object sender, EventArgs e)
-        {
-            if (comboBoxPagamento.SelectedIndex== -1)
-            {
-                labelAvisoCliente.Text = "Selecione uma forma de pagamento";
-                return;
-            }
+        {           
             if (clienteIdSelecionado == 0)
             {
                 labelAvisoCliente.Text = "Selecione um Cliente";
@@ -166,6 +165,11 @@ namespace InterfaceProjeto
             if (jogosSelecionado == null || jogosSelecionado.Count == 0)
             {
                 labelAvisoJogo.Text = "Adicione um jogo ao pedido";
+                return;
+            }
+            if (comboBoxPagamento.SelectedIndex == -1)
+            {
+                labelAvisoCliente.Text = "Selecione uma forma de pagamento";
                 return;
             }
             DateTime dataPedido = DateTime.Now;
@@ -190,7 +194,7 @@ namespace InterfaceProjeto
             
             LimparPedido();
             Carregar();
-            labelAvisoCliente.Text = "Aluguel criado com sucesso";
+            labelPedidoFinalizado.Text = "Aluguel criado com sucesso";
 
         }
     }

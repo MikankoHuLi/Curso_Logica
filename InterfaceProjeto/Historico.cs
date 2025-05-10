@@ -88,16 +88,15 @@ namespace InterfaceProjeto
                 RelatorioAlugueisFinalizados();               
             }
             if (indice == 1)
-            {   //alugueis por cliente
+            {   
                 RelatorioQuantidadePedidosCliente();
             }
             if (indice == 2)
-            {   //mais vendidos
+            {   
                 RelatorioJogosMaisAlugados();
             }
             if (indice == 3)
-            {
-                //pedidos multa 
+            { 
                 RelatorioPedidosComMulta();
             }
             if (indice == 4)

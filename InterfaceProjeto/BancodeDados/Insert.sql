@@ -5,9 +5,11 @@ VALUES
 ('The Last Of Us','Aventura', 19.90),
 ('God Of War','Aventura', 19.90),
 ('Sonic Heroes','Plataforma', 33.90),
-('Dark Souls 2','RPG', 12.50),
+('Dark Souls 2','RPG', 10.50),
 ('Marvel Rivals','Hero Shooter', 52.90),
-('Minecraft','Aventura', 26.90)
+('Minecraft','Sandbox', 26.90),
+('Cyberpunk 2077','RPG', 31.90),
+('Stardew Valley','Simulador', 12.50)
 ;
 
 INSERT INTO cliente (nome, telefone, email, cpf,genero,data_de_nascimento,logradouro,numero,bairro, cep,cidade)

@@ -48,7 +48,7 @@ namespace InterfaceProjeto.Repositório
                             buscaPedidos.Add(new Aluguel()
                             {
 
-                                id = reader.GetInt32("id"),
+                                numero_pedido = reader.GetInt32("id"),
                                 nome_cliente = reader.GetString("nome"),
                                 data_inicio = reader.GetDateTime("data_inicio"),
                                 data_devolucao = reader.GetDateTime("data_devolucao"),
@@ -82,7 +82,7 @@ namespace InterfaceProjeto.Repositório
                             buscaPedidos.Add(new Aluguel()
                             {
 
-                                id = reader.GetInt32("id"),
+                                numero_pedido = reader.GetInt32("id"),
                                 nome_cliente = reader.GetString("nome"),
                                 data_inicio = reader.GetDateTime("data_inicio"),
                                 data_devolucao = reader.GetDateTime("data_devolucao"),
@@ -119,7 +119,7 @@ namespace InterfaceProjeto.Repositório
                             buscaPedidos.Add(new Aluguel()
                             {
 
-                                id = reader.GetInt32("id"),
+                                numero_pedido = reader.GetInt32("id"),
                                 nome_cliente = reader.GetString("nome"),
                                 data_inicio = reader.GetDateTime("data_inicio"),
                                 data_devolucao = reader.GetDateTime("data_devolucao"),
@@ -155,7 +155,7 @@ namespace InterfaceProjeto.Repositório
                             buscaPedidos.Add(new Aluguel()
                             {
 
-                                id = reader.GetInt32("id"),
+                                numero_pedido = reader.GetInt32("id"),
                                 nome_cliente = reader.GetString("nome"),
                                 data_inicio = reader.GetDateTime("data_inicio"),
                                 data_devolucao = reader.GetDateTime("data_devolucao"),

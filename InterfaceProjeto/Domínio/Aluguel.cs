@@ -9,7 +9,7 @@ namespace InterfaceProjeto.Domínio
 {
     class Aluguel
     {
-        public int id { get; set; }
+        public int numero_pedido { get; set; }
         public string? nome_cliente { get; set; }
         public DateTime data_inicio { get; set; }
         public DateTime data_devolucao { get; set; }
