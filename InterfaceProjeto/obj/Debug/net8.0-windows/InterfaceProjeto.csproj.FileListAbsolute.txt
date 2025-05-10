@@ -118,3 +118,4 @@ D:\Curso_Logica\Curso_Logica\InterfaceProjeto\obj\Debug\net8.0-windows\Interface
 D:\Curso_Logica\Curso_Logica\InterfaceProjeto\obj\Debug\net8.0-windows\InterfaceProjeto.genruntimeconfig.cache
 D:\Curso_Logica\Curso_Logica\InterfaceProjeto\obj\Debug\net8.0-windows\ref\InterfaceProjeto.dll
 D:\Curso_Logica\Curso_Logica\InterfaceProjeto\obj\Debug\net8.0-windows\InterfaceProjeto.Historico.resources
+C:\Users\Júlia Diniz\source\repos\Guilherme\Curso_Logica\InterfaceProjeto\obj\Debug\net8.0-windows\InterfaceProjeto.Historico.resources

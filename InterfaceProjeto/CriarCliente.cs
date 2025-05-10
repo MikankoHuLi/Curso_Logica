@@ -6,9 +6,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace InterfaceProjeto
 {
@@ -20,7 +23,7 @@ namespace InterfaceProjeto
         {
             InitializeComponent();
         }
-
+        
 
         private void CriarCliente_Load(object sender, EventArgs e)
         {
@@ -71,6 +74,7 @@ namespace InterfaceProjeto
             labelErro.ForeColor = Color.Green;
 
             cliente.CriarClientes(cliente,endereco);
+            LimparFormulario();
         }
 
         private bool ValidarCadastro()
@@ -227,6 +231,21 @@ namespace InterfaceProjeto
 
             }
             return true;
+        }
+        private void LimparFormulario()
+        {
+            textNome.Text = string.Empty;
+            textCpf.Text = string.Empty;
+            textEmail.Text = string.Empty;
+            maskTextTelefone.Text = string.Empty;
+            comboBoxGenero.SelectedIndex = -1;
+            maskedTextBoxDataDeNascimento.Text = string.Empty;
+            textLogradouro.Text = string.Empty;
+            textNumero.Text = string.Empty;
+            textComplemento.Text = string.Empty;
+            textBairro.Text = string.Empty;
+            textCep.Text = string.Empty;
+            textCidade.Text = string.Empty;
         }
     }
 }
