@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IfpIh4OSTqM=",
+  "dgSpecHash": "wxp37BgtmPI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Júlia Diniz\\source\\repos\\Guilherme\\Senac---Programador-de-sistemas-\\GameBuster\\GameBuster.csproj",
+  "projectFilePath": "C:\\Users\\Júlia Diniz\\source\\repos\\Guilherme\\Curso_Logica\\GameBuster\\GameBuster.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Júlia Diniz\\.nuget\\packages\\bouncycastle.cryptography\\2.5.1\\bouncycastle.cryptography.2.5.1.nupkg.sha512",
     "C:\\Users\\Júlia Diniz\\.nuget\\packages\\google.protobuf\\3.30.0\\google.protobuf.3.30.0.nupkg.sha512",

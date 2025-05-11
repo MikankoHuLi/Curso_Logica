@@ -1615,11 +1615,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Júlia Diniz\\source\\repos\\Guilherme\\Senac---Programador-de-sistemas-\\GameBuster\\GameBuster.csproj",
+      "projectUniqueName": "C:\\Users\\Júlia Diniz\\source\\repos\\Guilherme\\Curso_Logica\\GameBuster\\GameBuster.csproj",
       "projectName": "GameBuster",
-      "projectPath": "C:\\Users\\Júlia Diniz\\source\\repos\\Guilherme\\Senac---Programador-de-sistemas-\\GameBuster\\GameBuster.csproj",
+      "projectPath": "C:\\Users\\Júlia Diniz\\source\\repos\\Guilherme\\Curso_Logica\\GameBuster\\GameBuster.csproj",
       "packagesPath": "C:\\Users\\Júlia Diniz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Júlia Diniz\\source\\repos\\Guilherme\\Senac---Programador-de-sistemas-\\GameBuster\\obj\\",
+      "outputPath": "C:\\Users\\Júlia Diniz\\source\\repos\\Guilherme\\Curso_Logica\\GameBuster\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
