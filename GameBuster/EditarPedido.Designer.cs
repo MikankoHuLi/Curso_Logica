@@ -51,10 +51,16 @@
             // 
             // dataGridPedidos
             // 
+            dataGridPedidos.AllowUserToAddRows = false;
+            dataGridPedidos.AllowUserToDeleteRows = false;
+            dataGridPedidos.AllowUserToResizeColumns = false;
+            dataGridPedidos.AllowUserToResizeRows = false;
             dataGridPedidos.Anchor = AnchorStyles.None;
             dataGridPedidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridPedidos.Location = new Point(272, 414);
+            dataGridPedidos.MultiSelect = false;
             dataGridPedidos.Name = "dataGridPedidos";
+            dataGridPedidos.ReadOnly = true;
             dataGridPedidos.Size = new Size(1251, 573);
             dataGridPedidos.TabIndex = 9;
             // 
