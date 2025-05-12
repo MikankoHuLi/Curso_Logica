@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameBuster")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d45d083e66143dc7d1732a052cb3093974697b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9855a6596264ac53be97c2eaa599d2e56ac9b32")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameBuster")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameBuster")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
