@@ -109,7 +109,7 @@ namespace GameBuster.Repositório
             using (var con = DataBase.GetConnection())
             {
                 con.Open();
-                string query = "SELECT cliente.nome ,aluguel.id , data_inicio, data_devolucao, data_retorno, pagamento, aluguel.valor, cliente_id FROM aluguel  INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE cliente.nome LIKE @pedidoDigitado AND entregue = 0 OR cliente.cpf LIKE @pedidoDigitado AND entregue = 0; ";
+                string query = "SELECT cliente.nome ,aluguel.id , data_inicio, data_devolucao, pagamento, aluguel.valor, cliente_id FROM aluguel  INNER JOIN cliente ON cliente.id = aluguel.cliente_id WHERE cliente.nome LIKE @pedidoDigitado AND entregue = 0 OR cliente.cpf LIKE @pedidoDigitado AND entregue = 0; ";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
@@ -126,7 +126,6 @@ namespace GameBuster.Repositório
                                 nome_cliente = reader.GetString("nome"),
                                 data_inicio = reader.GetDateTime("data_inicio"),
                                 data_devolucao = reader.GetDateTime("data_devolucao"),
-                                data_retorno = reader.GetDateTime("data_retorno"),
                                 pagamento = (FormaDePagamento)reader.GetInt32("pagamento"),
                                 valor = reader.GetDecimal("valor"),
                                 cliente_id = reader.GetInt32("cliente_id")

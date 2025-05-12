@@ -19,11 +19,12 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 cliente_id INT NOT NULL,
 data_inicio DATETIME NOT NULL,
 data_devolucao DATETIME NOT NULL,
+data_retorno DATETIME  NULL,
 pagamento INT NOT NULL,
 valor DECIMAL(6,2) NOT NULL,
 multa  BIT NOT NULL DEFAULT 0,
 entregue BIT NOT NULL DEFAULT 0,
-data_retorno DATETIME NULL,
+
 FOREIGN KEY (cliente_id) REFERENCES cliente (id)
 );
 
@@ -42,7 +43,3 @@ CREATE TABLE IF NOT EXISTS aluguel_jogo (
     FOREIGN KEY (aluguel_id) REFERENCES aluguel(id),
     FOREIGN KEY (jogo_id) REFERENCES jogo(id)
 );
-
-
-
-

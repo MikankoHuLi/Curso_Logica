@@ -167,7 +167,7 @@
             pictureBoxSetaRelatorios.Image = (Image)resources.GetObject("pictureBoxSetaRelatorios.Image");
             pictureBoxSetaRelatorios.Location = new Point(889, 571);
             pictureBoxSetaRelatorios.Name = "pictureBoxSetaRelatorios";
-            pictureBoxSetaRelatorios.Size = new Size(119, 79);
+            pictureBoxSetaRelatorios.Size = new Size(129, 79);
             pictureBoxSetaRelatorios.TabIndex = 8;
             pictureBoxSetaRelatorios.TabStop = false;
             // 
