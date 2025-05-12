@@ -100,3 +100,43 @@ C:\Users\Júlia Diniz\source\repos\Guilherme\Curso_Logica\GameBuster\obj\Debug\n
 C:\Users\Júlia Diniz\source\repos\Guilherme\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.pdb
 C:\Users\Júlia Diniz\source\repos\Guilherme\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.genruntimeconfig.cache
 C:\Users\Júlia Diniz\source\repos\Guilherme\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\ref\GameBuster.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\GameBuster.exe
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\GameBuster.deps.json
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\GameBuster.runtimeconfig.json
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\GameBuster.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\GameBuster.pdb
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\Google.Protobuf.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\K4os.Compression.LZ4.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\K4os.Compression.LZ4.Streams.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\K4os.Hash.xxHash.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\MySql.Data.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\System.Text.Encodings.Web.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\System.Text.Json.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\ZstdSharp.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\runtimes\win-x64\native\comerr64.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\runtimes\win-x64\native\gssapi64.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\runtimes\win-x64\native\k5sprt64.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\runtimes\win-x64\native\krb5_64.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\runtimes\win-x64\native\krbcc64.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.csproj.AssemblyReference.cache
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\InterfaceProjeto.CriarCliente.resources
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\InterfaceProjeto.CriarPedido.resources
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\InterfaceProjeto.EditarPedido.resources
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\InterfaceProjeto.Historico.resources
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\InterfaceProjeto.FormMenu.resources
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.Properties.Resources.resources
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.csproj.GenerateResource.cache
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.GeneratedMSBuildEditorConfig.editorconfig
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.AssemblyInfoInputs.cache
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.AssemblyInfo.cs
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.csproj.CoreCompileInputs.cache
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.sourcelink.json
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.csproj.Up2Date
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\refint\GameBuster.dll
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.pdb
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\GameBuster.genruntimeconfig.cache
+D:\Curso_Logica\Curso_Logica\GameBuster\obj\Debug\net8.0-windows\ref\GameBuster.dll

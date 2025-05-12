@@ -109,6 +109,7 @@
             // 
             // comboRelatorio
             // 
+            comboRelatorio.DropDownStyle = ComboBoxStyle.DropDownList;
             comboRelatorio.FormattingEnabled = true;
             comboRelatorio.Items.AddRange(new object[] { "Relatório de Pedidos Entregues", "Relatório Aluguéis por Cliente", "Relatório Jogos Mais Alugados", "Relatório Pedidos com Multa", "Relatório Jogos em Aluguel" });
             comboRelatorio.Location = new Point(842, 902);
